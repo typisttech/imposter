@@ -6,5 +6,13 @@ namespace Helper;
 
 class Unit extends \Codeception\Module
 {
+    public function _before(\Codeception\TestInterface $test)
+    {
+        $this->getModule('Filesystem')->copyDir(codecept_data_dir('fake-vendor'), codecept_data_dir('tmp-vendor'));
+    }
 
+    public function _after(\Codeception\TestInterface $test)
+    {
+        $this->getModule('Filesystem')->deleteDir(codecept_data_dir('tmp-vendor'));
+    }
 }

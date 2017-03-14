@@ -22,8 +22,7 @@
     ],
     "require": {
         "php": "^7.0",
-        "illuminate/filesystem": "^5.4",
-        "symfony/finder": "^3.2"
+        "illuminate/filesystem": "^5.4"
     },
     "require-dev": {
         "codeception/codeception": "^2.2",
