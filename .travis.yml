@@ -1,35 +1,56 @@
 language: php
 
-php:
-  - 5.6
-  - 7.0
-  - 7.1
-  - hhvm
-
 # This triggers builds to run on the new TravisCI infrastructure.
 # See: http://docs.travis-ci.com/user/workers/container-based-infrastructure/
 sudo: false
+
+branches:
+  only:
+    - master
+    - /^(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)$/
 
 ## Cache composer
 cache:
   directories:
     - $HOME/.composer/cache
 
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+
+php:
+  - 7.1
+  - nightly
+
+env:
+  global:
+    - COMPOSER_NO_INTERACTION=1
+
 matrix:
+  allow_failures:
+    - php: nightly
+  fast_finish: true
   include:
-    - php: 5.6
-      env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
+    - php: 7.0
+      env: WITH_COVERAGE=true
 
 before_script:
-  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
+  # Disable xDebug to speed up the build unless test coverage is needed
+  - if [[ "$WITH_COVERAGE" != "true" && $(phpenv version-name) != "nightly" ]]; then phpenv config-rm xdebug.ini; fi
+
+  - travis_retry composer install --prefer-dist
 
 script:
-  - vendor/bin/phpcs --standard=psr2 src/
-  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+    - if [[ "$WITH_COVERAGE" == "true" ]]; then vendor/bin/codecept run unit --coverage --coverage-xml; fi
+    - if [[ "$WITH_COVERAGE" != "true" ]]; then vendor/bin/codecept run unit; fi
 
 after_script:
-  - |
-    if [[ "$TRAVIS_PHP_VERSION" != 'hhvm' && "$TRAVIS_PHP_VERSION" != '7.0' ]]; then
-      wget https://scrutinizer-ci.com/ocular.phar
-      php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-    fi
+  # Install helper scripts
+  - travis_retry composer global require --prefer-dist --no-suggest "typisttech/travis-nginx-wordpress:^1.2"
+  - export PATH=$HOME/.composer/vendor/bin:$PATH
+
+  # Upload coverage report
+  - if [[ "$WITH_COVERAGE" == "true" ]]; then travis_retry tnw-upload-coverage-to-scrutinizer; fi
+  - if [[ "$WITH_COVERAGE" == "true" ]]; then travis_retry tnw-upload-coverage-to-codecov; fi
+
