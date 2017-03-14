@@ -1,11 +1,8 @@
 {
     "autoload": {
-        "psr-4": {
-            "Monolog\\": [
-                "src/",
-                "lib/"
-            ]
-        }
+        "files": [
+            "DummyClass.php"
+        ]
     },
     "require": {
         "dummy-dependency": "*"

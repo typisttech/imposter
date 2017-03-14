@@ -1,11 +1,5 @@
 {
-    "autoload": {
-        "files": [
-            "DummyClass.php",
-            "DummyClass2.php"
-        ]
-    },
     "require": {
-        "dummy-common": "*"
+        "dummy/dummy-common": "*"
     }
 }

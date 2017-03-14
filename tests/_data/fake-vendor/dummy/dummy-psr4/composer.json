@@ -1,14 +1,7 @@
 {
     "autoload": {
         "psr-4": {
-            "Monolog\\": [
-                "src/",
-                "lib/"
-            ],
-            "Monolog\\Second\\": [
-                "src/2",
-                "lib/2"
-            ]
+            "Monolog\\": "src/"
         }
     },
     "require": {

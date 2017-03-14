@@ -1,11 +1,51 @@
 {
     "require": {
         "dummy/dummy": "*",
-        "dummy/dummy-classmap": "*",
-        "dummy/dummy-psr0": "*",
-        "dummy/dummy-psr4": "*"
+        "dummy/dummy-psr4": "*",
+        "typisttech/imposter": "*"
+    },
+    "require-dev": {
+        "dummy/dummy-dev": "*"
     },
     "config": {
-        "vendor-dir": "fake-vendor"
+        "vendor-dir": "tmp-vendor"
+    },
+    "autoload": {
+        "simple-string": "i-am-simple-string",
+        "array-single": [
+            "i-am-single-array"
+        ],
+        "array": [
+            "i-am-array-1",
+            "i-am-array-2"
+        ],
+        "object-simple-string": {
+            "namespace": "i-am-object-simple-string"
+        },
+        "object-single-array-single": {
+            "namespace": [
+                "i-am-object-single-array-single"
+            ]
+        },
+        "object-single-array": {
+            "namespace": [
+                "i-am-object-single-array-1",
+                "i-am-object-single-array-2"
+            ]
+        },
+        "object-array-single": {
+            "namespace": [
+                "i-am-object-array-single"
+            ]
+        },
+        "object-array": {
+            "namespace-1": [
+                "i-am-object-array-1",
+                "i-am-object-array-2"
+            ],
+            "namespace-2": [
+                "i-am-object-array-3"
+            ]
+        }
     }
 }
