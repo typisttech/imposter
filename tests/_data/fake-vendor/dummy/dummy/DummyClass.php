@@ -1,6 +1,6 @@
 <?php
 
-namespace Dummy\SubDummy;
+namespace Dummy\File;
 
 use Dummy\SubOtherDummy;
 use OtherDummy\SubOtherDummy;

@@ -1,0 +1,9 @@
+{
+    "autoload": {
+        "classmap": [
+            "src/",
+            "lib/",
+            "Something.php"
+        ]
+    }
+}

@@ -20,13 +20,13 @@ class TransformerTest extends \Codeception\Test\Unit
 
     protected function _before()
     {
-        $this->tester->copyDir(codecept_data_dir('dummy'), codecept_data_dir('tmp'));
-        $this->dummyFile = codecept_data_dir('tmp/DummyClass.php');
+        $this->tester->copyDir(codecept_data_dir('fake-vendor'), codecept_data_dir('tmp-vendor'));
+        $this->dummyFile = codecept_data_dir('tmp-vendor/dummy/dummy/DummyClass.php');
     }
 
     protected function _after()
     {
-        $this->tester->deleteDir(codecept_data_dir('tmp'));
+        $this->tester->deleteDir(codecept_data_dir('tmp-vendor'));
     }
 
     /**
@@ -44,7 +44,7 @@ class TransformerTest extends \Codeception\Test\Unit
 
         $tester->openFile($this->dummyFile);
         $tester->dontSeeInThisFile('namespace Dummy');
-        $tester->seeInThisFile('namespace MyPlugin\Vendor\Dummy\SubDummy;');
+        $tester->seeInThisFile('namespace MyPlugin\Vendor\Dummy\File;');
     }
 
     /**

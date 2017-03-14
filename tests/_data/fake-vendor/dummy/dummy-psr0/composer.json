@@ -1,0 +1,14 @@
+{
+    "autoload": {
+        "psr-0": {
+            "Monolog\\": [
+                "src/",
+                "lib/"
+            ],
+            "MonologSecond\\": [
+                "src2/",
+                "lib2/"
+            ]
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "require": {
+        "dummy/dummy": "*",
+        "dummy/dummy-classmap": "*",
+        "dummy/dummy-psr0": "*",
+        "dummy/dummy-psr4": "*"
+    },
+    "config": {
+        "vendor-dir": "fake-vendor"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Monolog\\": [
+                "src/",
+                "lib/"
+            ]
+        }
+    },
+    "require": {
+        "dummy-dependency": "*"
+    }
+}
