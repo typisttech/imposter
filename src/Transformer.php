@@ -30,8 +30,8 @@ class Transformer
      */
     public function __construct(string $target, string $prefix, Filesystem $filesystem)
     {
-        $this->prefix = $prefix;
-        $this->target = $target;
+        $this->prefix     = $prefix;
+        $this->target     = $target;
         $this->filesystem = $filesystem;
     }
 
@@ -50,7 +50,7 @@ class Transformer
      */
     private function prefix(string $keyword)
     {
-        $pattern  = "/$keyword\\s+(?!$this->prefix)/";
+        $pattern     = "/$keyword\\s+(?!$this->prefix)/";
         $replacement = "$keyword $this->prefix\\";
         $this->replace($pattern, $replacement);
     }

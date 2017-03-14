@@ -65,6 +65,7 @@ class ConfigReader
         $autoload = $this->get('autoload');
 
         $autoloads = array_map([$this, 'normalizeAutoload'], $autoload);
+
         return call_user_func_array('array_merge', $autoloads);
     }
 
@@ -75,6 +76,7 @@ class ConfigReader
         }
 
         $map = array_map([$this, 'normalizeAutoload'], $configs);
+
         return call_user_func_array('array_merge', $map);
     }
 }

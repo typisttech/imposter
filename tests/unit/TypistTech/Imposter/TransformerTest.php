@@ -18,11 +18,6 @@ class TransformerTest extends \Codeception\Test\Unit
      */
     private $dummyFile;
 
-    protected function _before()
-    {
-        $this->dummyFile = codecept_data_dir('tmp-vendor/dummy/dummy/DummyClass.php');
-    }
-
     public function it_prefixes_namespace()
     {
         $tester = $this->tester;
@@ -51,5 +46,10 @@ class TransformerTest extends \Codeception\Test\Unit
         $tester->seeInThisFile('use MyPlugin\Vendor\Dummy\SubOtherDummy;');
         $tester->seeInThisFile('use MyPlugin\Vendor\OtherDummy\SubOtherDummy;');
         $tester->seeInThisFile('use MyPlugin\Vendor\AnotherDummy\{');
+    }
+
+    protected function _before()
+    {
+        $this->dummyFile = codecept_data_dir('tmp-vendor/dummy/dummy/DummyClass.php');
     }
 }
