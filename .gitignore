@@ -4,7 +4,8 @@
 
 ### Codeception ###
 /codeception.yml
-/tests/_output/*
+/tests/_data/tmp/
+/tests/_output/
 /tests/_support/_generated/
 
 ### Composer ###
