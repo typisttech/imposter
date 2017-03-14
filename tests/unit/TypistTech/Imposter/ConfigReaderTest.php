@@ -6,7 +6,7 @@ use Illuminate\Filesystem\Filesystem;
 /**
  * @coversDefaultClass \TypistTech\Imposter\Package
  */
-class PackageTest extends \Codeception\Test\Unit
+class ConfigReaderTest extends \Codeception\Test\Unit
 {
     /**
      * @var \UnitTester
@@ -23,12 +23,6 @@ class PackageTest extends \Codeception\Test\Unit
      */
     private $tmpVendor;
 
-    protected function _before()
-    {
-        $this->json = codecept_data_dir('composer.json');
-        $this->tmpVendor = codecept_data_dir('tmp-vendor');
-    }
-
     /**
      * @covers ::getRequires
      */
@@ -38,7 +32,7 @@ class PackageTest extends \Codeception\Test\Unit
 
         $expected = [
             'dummy/dummy',
-            'dummy/dummy-psr4'
+            'dummy/dummy-psr4',
         ];
 
         $actual = $configReader->getRequires();
@@ -79,7 +73,7 @@ class PackageTest extends \Codeception\Test\Unit
             codecept_data_dir('i-am-object-array-single'),
             codecept_data_dir('i-am-object-array-1'),
             codecept_data_dir('i-am-object-array-2'),
-            codecept_data_dir('i-am-object-array-3')
+            codecept_data_dir('i-am-object-array-3'),
         ];
 
         $this->assertSame($expected, $actual);
@@ -95,9 +89,15 @@ class PackageTest extends \Codeception\Test\Unit
         $actual = $configReader->getAutoloads();
 
         $expected = [
-            $this->tmpVendor . '/dummy/dummy-psr4/src/'
+            $this->tmpVendor . '/dummy/dummy-psr4/src/',
         ];
 
         $this->assertSame($expected, $actual);
+    }
+
+    protected function _before()
+    {
+        $this->json      = codecept_data_dir('composer.json');
+        $this->tmpVendor = codecept_data_dir('tmp-vendor');
     }
 }
