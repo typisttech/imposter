@@ -5,13 +5,14 @@ declare(strict_types = 1);
 namespace TypistTech\Imposter;
 
 use Illuminate\Filesystem\Filesystem;
+use SplFileInfo;
 
 class Transformer
 {
     /**
      * @var string
      */
-    private $vendorPrefix;
+    private $namespacePrefix;
 
     /**
      * @var \Illuminate\Filesystem\Filesystem
@@ -21,13 +22,13 @@ class Transformer
     /**
      * Transformer constructor.
      *
-     * @param string     $vendorPrefix
+     * @param string     $namespacePrefix
      * @param Filesystem $filesystem
      */
-    public function __construct(string $vendorPrefix, Filesystem $filesystem)
+    public function __construct(string $namespacePrefix, Filesystem $filesystem)
     {
-        $this->vendorPrefix = $vendorPrefix;
-        $this->filesystem   = $filesystem;
+        $this->namespacePrefix = $namespacePrefix;
+        $this->filesystem      = $filesystem;
     }
 
     /**
@@ -37,23 +38,44 @@ class Transformer
      */
     public function transform(string $target)
     {
-        $this->prefix('namespace', $target);
-        $this->prefix('use', $target);
+        if ($this->filesystem->isFile($target)) {
+            $this->doTransform($target);
+
+            return;
+        }
+
+        $files = $this->filesystem->allFiles($target);
+
+        array_walk($files, function (SplFileInfo $file) {
+            $this->doTransform($file->getRealPath());
+        });
+    }
+
+    /**
+     * @param string $targetFile
+     *
+     * @void
+     */
+    private function doTransform(string $targetFile)
+    {
+        $this->prefix('namespace', $targetFile);
+        $this->prefix('use', $targetFile);
     }
 
     /**
      * Prefix namespace or use keywords at the given path.
      *
      * @param string $keyword Should be one of {namespace, use}
-     * @param string $target
+     * @param string $targetFile
      *
      * @return void
      */
-    private function prefix(string $keyword, string $target)
+    private function prefix(string $keyword, string $targetFile)
     {
-        $pattern     = "/$keyword\\s+(?!$this->vendorPrefix)/";
-        $replacement = "$keyword $this->vendorPrefix\\";
-        $this->replace($pattern, $replacement, $target);
+        $pattern     = "/$keyword\\s+(?!$this->namespacePrefix)/";
+        $replacement = "$keyword $this->namespacePrefix\\";
+
+        $this->replace($pattern, $replacement, $targetFile);
     }
 
     /**
@@ -61,19 +83,19 @@ class Transformer
      *
      * @param string $pattern
      * @param string $replacement
-     * @param string $target
+     * @param string $targetFile
      *
      * @return void
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    private function replace(string $pattern, string $replacement, string $target)
+    private function replace(string $pattern, string $replacement, string $targetFile)
     {
         $this->filesystem->put(
-            $target,
+            $targetFile,
             preg_replace(
                 $pattern,
                 $replacement,
-                $this->filesystem->get($target)
+                $this->filesystem->get($targetFile)
             )
         );
     }
