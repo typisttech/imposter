@@ -28,7 +28,7 @@
     },
     "require-dev": {
         "codeception/aspect-mock": "^2.0",
-        "codeception/codeception": "^2.2",
+        "codeception/base": "^2.2",
         "squizlabs/php_codesniffer": "^2.8"
     },
     "autoload": {
