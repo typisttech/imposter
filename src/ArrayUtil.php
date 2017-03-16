@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace TypistTech\Imposter;
 
-class ArrayUtil
+final class ArrayUtil
 {
     private function __construct()
     {
@@ -14,9 +14,16 @@ class ArrayUtil
     {
         $map = array_map($callable, $array);
 
-        return ArrayUtil::flatten($map);
+        return self::flatten($map);
     }
 
+    /**
+     * Flatten array by one level.
+     *
+     * @param array $array
+     *
+     * @return array
+     */
     public static function flatten(array $array): array
     {
         return call_user_func_array('array_merge', $array);
