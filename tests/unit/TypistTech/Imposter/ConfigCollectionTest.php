@@ -121,8 +121,8 @@ class ConfigCollectionTest extends \Codeception\Test\Unit
         $filesystem    = new Filesystem;
         $json1         = codecept_data_dir('composer.json');
         $json2         = codecept_data_dir('tmp-vendor/dummy/dummy-psr4/composer.json');
-        $this->config1 = ConfigFactory::read($json1, $filesystem);
-        $this->config2 = ConfigFactory::read($json2, $filesystem);
+        $this->config1 = ConfigFactory::build($json1, $filesystem);
+        $this->config2 = ConfigFactory::build($json2, $filesystem);
 
         $this->configCollection = new ConfigCollection;
     }

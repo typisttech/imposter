@@ -12,9 +12,17 @@ final class ConfigCollectionFactory
     {
     }
 
-    public static function forProject(Config $config, string $vendorDir, Filesystem $filesystem): ConfigCollection
-    {
-        return self::addRequiredPackageConfigsRecursively(new ConfigCollection, $config, $vendorDir, $filesystem);
+    public static function forProject(
+        ProjectConfig $projectConfig,
+        string $vendorDir,
+        Filesystem $filesystem
+    ): ConfigCollection {
+        return self::addRequiredPackageConfigsRecursively(
+            new ConfigCollection,
+            $projectConfig,
+            StringUtil::addTrailingSlash($vendorDir),
+            $filesystem
+        );
     }
 
     private static function addRequiredPackageConfigsRecursively(
@@ -27,7 +35,7 @@ final class ConfigCollectionFactory
 
         $requires = $config->getRequires();
         foreach ($requires as $package) {
-            $packageConfig = ConfigFactory::read($vendorDir . $package . '/composer.json', $filesystem);
+            $packageConfig = ConfigFactory::build($vendorDir . $package . '/composer.json', $filesystem);
             self::addRequiredPackageConfigsRecursively($configCollection, $packageConfig, $vendorDir, $filesystem);
         }
 

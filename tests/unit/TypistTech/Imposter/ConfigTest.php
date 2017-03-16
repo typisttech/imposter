@@ -76,7 +76,7 @@ class ConfigTest extends \Codeception\Test\Unit
     public function testGetAutoloadsInVendorDir()
     {
         $json   = codecept_data_dir('tmp-vendor/dummy/dummy-psr4/composer.json');
-        $config = ConfigFactory::read($json, new Filesystem);
+        $config = ConfigFactory::build($json, new Filesystem);
 
         $actual = $config->getAutoloads();
 
@@ -90,7 +90,7 @@ class ConfigTest extends \Codeception\Test\Unit
     public function testGetAutoloadsUniqueness()
     {
         $json   = codecept_data_dir('tmp-vendor/dummy/dummy-dependency/composer.json');
-        $config = ConfigFactory::read($json, new Filesystem);
+        $config = ConfigFactory::build($json, new Filesystem);
 
         $actual = $config->getAutoloads();
 
@@ -105,6 +105,6 @@ class ConfigTest extends \Codeception\Test\Unit
     protected function _before()
     {
         $this->json   = codecept_data_dir('composer.json');
-        $this->config = ConfigFactory::read($this->json, new Filesystem);
+        $this->config = ConfigFactory::build($this->json, new Filesystem);
     }
 }

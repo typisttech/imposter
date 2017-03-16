@@ -45,6 +45,7 @@ final class Transformer
      * Prefix namespace or use keywords at the given path.
      *
      * @param string $keyword Should be one of {namespace, use}
+     * @param string $target
      *
      * @return void
      */
@@ -58,8 +59,8 @@ final class Transformer
     /**
      * Replace the given string in the given file.
      *
-     * @param  string $pattern
-     * @param  string $replacement
+     * @param string $pattern
+     * @param string $replacement
      * @param string $target
      *
      * @return void
