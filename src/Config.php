@@ -22,6 +22,11 @@ final class Config
         $this->config     = $config;
     }
 
+    public function getPackageDir(): string
+    {
+        return $this->packageDir;
+    }
+
     public function getRequires(): array
     {
         $require = $this->get('require');
@@ -40,7 +45,7 @@ final class Config
     {
         return array_map(function ($autoload) {
             return $this->packageDir . $autoload;
-        }, $this->getAutoloadPaths());
+        }, array_unique($this->getAutoloadPaths()));
     }
 
     private function getAutoloadPaths(): array

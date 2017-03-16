@@ -19,11 +19,6 @@ class ConfigTest extends \Codeception\Test\Unit
     private $json;
 
     /**
-     * @var string
-     */
-    private $tmpVendor;
-
-    /**
      * @var Config
      */
     private $config;
@@ -36,6 +31,15 @@ class ConfigTest extends \Codeception\Test\Unit
         ];
 
         $actual = $this->config->getRequires();
+
+        $this->assertSame($expected, $actual);
+    }
+
+    public function testGetPackageDir()
+    {
+        $expected = codecept_data_dir();
+
+        $actual = $this->config->getPackageDir();
 
         $this->assertSame($expected, $actual);
     }
@@ -71,12 +75,28 @@ class ConfigTest extends \Codeception\Test\Unit
 
     public function testGetAutoloadsInVendorDir()
     {
-        $config = ConfigFactory::read($this->tmpVendor . '/dummy/dummy-psr4/composer.json', new Filesystem);
+        $json   = codecept_data_dir('tmp-vendor/dummy/dummy-psr4/composer.json');
+        $config = ConfigFactory::read($json, new Filesystem);
 
         $actual = $config->getAutoloads();
 
         $expected = [
-            $this->tmpVendor . '/dummy/dummy-psr4/src/',
+            codecept_data_dir('tmp-vendor/dummy/dummy-psr4/src/'),
+        ];
+
+        $this->assertSame($expected, $actual);
+    }
+
+    public function testGetAutoloadsUniqueness()
+    {
+        $json   = codecept_data_dir('tmp-vendor/dummy/dummy-dependency/composer.json');
+        $config = ConfigFactory::read($json, new Filesystem);
+
+        $actual = $config->getAutoloads();
+
+        $expected = [
+            codecept_data_dir('tmp-vendor/dummy/dummy-dependency/src/'),
+            codecept_data_dir('tmp-vendor/dummy/dummy-dependency/lib/'),
         ];
 
         $this->assertSame($expected, $actual);
@@ -84,8 +104,7 @@ class ConfigTest extends \Codeception\Test\Unit
 
     protected function _before()
     {
-        $this->json      = codecept_data_dir('composer.json');
-        $this->tmpVendor = codecept_data_dir('tmp-vendor');
-        $this->config    = ConfigFactory::read($this->json, new Filesystem);
+        $this->json   = codecept_data_dir('composer.json');
+        $this->config = ConfigFactory::read($this->json, new Filesystem);
     }
 }
