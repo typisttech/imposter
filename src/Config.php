@@ -4,7 +4,7 @@ namespace TypistTech\Imposter;
 
 use Illuminate\Filesystem\Filesystem;
 
-class ConfigReader
+class Config
 {
     /**
      * @var string
@@ -15,6 +15,11 @@ class ConfigReader
      * @var Filesystem
      */
     private $filesystem;
+
+    /**
+     * @var array
+     */
+    private $config;
 
     /**
      * Finder constructor.
@@ -37,18 +42,13 @@ class ConfigReader
         });
     }
 
-    /**
-     * @todo refactor
-     *
-     * @param string $key
-     *
-     * @return array
-     */
-    public function get(string $key): array
+    private function get(string $key): array
     {
-        $config = json_decode($this->filesystem->get($this->path), true);
+        if (empty($this->config)) {
+            $this->config = json_decode($this->filesystem->get($this->path), true);
+        }
 
-        return $config[$key] ?? [];
+        return $this->config[$key] ?? [];
     }
 
     public function getAutoloads(): array
@@ -66,7 +66,12 @@ class ConfigReader
 
         $autoloads = array_map([$this, 'normalizeAutoload'], $autoload);
 
-        return call_user_func_array('array_merge', $autoloads);
+        return $this->flatten($autoloads);
+    }
+
+    private function flatten(array $array): array
+    {
+        return call_user_func_array('array_merge', $array);
     }
 
     private function normalizeAutoload($configs): array
@@ -77,6 +82,6 @@ class ConfigReader
 
         $map = array_map([$this, 'normalizeAutoload'], $configs);
 
-        return call_user_func_array('array_merge', $map);
+        return $this->flatten($map);
     }
 }

@@ -4,9 +4,9 @@ namespace TypistTech\Imposter;
 use Illuminate\Filesystem\Filesystem;
 
 /**
- * @coversDefaultClass \TypistTech\Imposter\Package
+ * @coversDefaultClass \TypistTech\Imposter\Config
  */
-class ConfigReaderTest extends \Codeception\Test\Unit
+class ConfigTest extends \Codeception\Test\Unit
 {
     /**
      * @var \UnitTester
@@ -28,14 +28,14 @@ class ConfigReaderTest extends \Codeception\Test\Unit
      */
     public function testGetRequires()
     {
-        $configReader = new ConfigReader($this->json, new Filesystem);
+        $config = new Config($this->json, new Filesystem);
 
         $expected = [
             'dummy/dummy',
             'dummy/dummy-psr4',
         ];
 
-        $actual = $configReader->getRequires();
+        $actual = $config->getRequires();
 
         $this->assertSame($expected, $actual);
     }
@@ -45,9 +45,9 @@ class ConfigReaderTest extends \Codeception\Test\Unit
      */
     public function testExcludeImposter()
     {
-        $configReader = new ConfigReader($this->json, new Filesystem);
+        $config = new Config($this->json, new Filesystem);
 
-        $actual = $configReader->getRequires();
+        $actual = $config->getRequires();
 
         $this->assertNotContains('typisttech/imposter', $actual);
     }
@@ -57,9 +57,9 @@ class ConfigReaderTest extends \Codeception\Test\Unit
      */
     public function testGetAutoloads()
     {
-        $configReader = new ConfigReader($this->json, new Filesystem);
+        $config = new Config($this->json, new Filesystem);
 
-        $actual = $configReader->getAutoloads();
+        $actual = $config->getAutoloads();
 
         $expected = [
             codecept_data_dir('i-am-simple-string'),
@@ -84,9 +84,9 @@ class ConfigReaderTest extends \Codeception\Test\Unit
      */
     public function testGetAutoloadsInVendorDir()
     {
-        $configReader = new ConfigReader($this->tmpVendor . '/dummy/dummy-psr4/composer.json', new Filesystem);
+        $config = new Config($this->tmpVendor . '/dummy/dummy-psr4/composer.json', new Filesystem);
 
-        $actual = $configReader->getAutoloads();
+        $actual = $config->getAutoloads();
 
         $expected = [
             $this->tmpVendor . '/dummy/dummy-psr4/src/',
