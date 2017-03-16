@@ -48,6 +48,31 @@ class TransformerTest extends \Codeception\Test\Unit
         $tester->seeInThisFile('use MyPlugin\Vendor\AnotherDummy\{');
     }
 
+    public function testTransformAllFilesInADirectory()
+    {
+        $transformer = new Transformer('MyPlugin\Vendor', new Filesystem);
+        $transformer->transform(codecept_data_dir('tmp-vendor/dummy/dummy-psr4/src'));
+
+        $this->assertTransformed(codecept_data_dir('tmp-vendor/dummy/dummy-psr4/src/DummyOne.php'));
+        $this->assertTransformed(codecept_data_dir('tmp-vendor/dummy/dummy-psr4/src/DummyTwo.php'));
+        $this->assertTransformed(codecept_data_dir('tmp-vendor/dummy/dummy-psr4/src/Sub/DummyOne.php'));
+    }
+
+    private function assertTransformed(string $path)
+    {
+        $tester = $this->tester;
+
+        $tester->openFile($path);
+        $tester->dontSeeInThisFile('namespace Dummy');
+        $tester->seeInThisFile('namespace MyPlugin\Vendor\Dummy\\');
+        $tester->dontSeeInThisFile('use Dummy');
+        $tester->dontSeeInThisFile('use OtherDummy');
+        $tester->dontSeeInThisFile('use AnotherDummy');
+        $tester->seeInThisFile('use MyPlugin\Vendor\Dummy\SubOtherDummy;');
+        $tester->seeInThisFile('use MyPlugin\Vendor\OtherDummy\SubOtherDummy;');
+        $tester->seeInThisFile('use MyPlugin\Vendor\AnotherDummy\{');
+    }
+
     protected function _before()
     {
         $this->dummyFile = codecept_data_dir('tmp-vendor/dummy/dummy/DummyClass.php');
