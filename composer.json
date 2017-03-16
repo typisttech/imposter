@@ -1,8 +1,10 @@
 {
     "name": "typisttech/imposter",
     "type": "library",
-    "description": "Change package dependency namespaces inside a WordPress plugin",
+    "description": "Change vendor package namespaces. Intended for WordPress plugins",
     "keywords": [
+        "composer",
+        "dependency",
         "wordpress"
     ],
     "homepage": "https://www.typist.tech/projects/imposter",
@@ -22,11 +24,11 @@
     ],
     "require": {
         "php": "^7.0",
-        "codeception/mockery-module": "^0.2.2",
         "illuminate/filesystem": "^5.4"
     },
     "require-dev": {
-        "codeception/codeception": "^2.2",
+        "codeception/aspect-mock": "^2.0",
+        "codeception/base": "^2.2",
         "squizlabs/php_codesniffer": "^2.8"
     },
     "autoload": {
@@ -41,7 +43,9 @@
             "composer update",
             "doctoc README.md",
             "github_changelog_generator --no-verbose"
-        ]
+        ],
+        "test": "codecept run",
+        "test-with-coverage": "codecept run --coverage --coverage-xml --coverage-html"
     },
     "config": {
         "sort-packages": true

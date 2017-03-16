@@ -8,6 +8,9 @@ use Illuminate\Filesystem\Filesystem;
  */
 class ConfigCollectionFactoryTest extends \Codeception\Test\Unit
 {
+    /**
+     * @covers \TypistTech\Imposter\ConfigCollectionFactory
+     */
     public function testForProject()
     {
         $filesystem    = new Filesystem;

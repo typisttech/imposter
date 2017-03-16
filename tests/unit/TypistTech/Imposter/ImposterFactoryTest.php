@@ -8,7 +8,7 @@ use Illuminate\Filesystem\Filesystem;
  */
 class ImposterFactoryTest extends \Codeception\Test\Unit
 {
-    public function testFor()
+    public function testForProject()
     {
         $json       = codecept_data_dir('composer.json');
         $vendorDir  = codecept_data_dir('tmp-vendor');

@@ -8,6 +8,9 @@ use Illuminate\Filesystem\Filesystem;
  */
 class ConfigFactoryTest extends \Codeception\Test\Unit
 {
+    /**
+     * @covers \TypistTech\Imposter\ConfigFactory
+     */
     public function testBuild()
     {
         $json       = codecept_data_dir('composer.json');
@@ -25,6 +28,9 @@ class ConfigFactoryTest extends \Codeception\Test\Unit
         $this->assertEquals($expected, $actual);
     }
 
+    /**
+     * @covers \TypistTech\Imposter\ConfigFactory
+     */
     public function testBuildProjectConfig()
     {
         $json       = codecept_data_dir('composer.json');

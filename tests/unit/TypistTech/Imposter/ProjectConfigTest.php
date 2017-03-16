@@ -14,6 +14,9 @@ class ProjectConfigTest extends \Codeception\Test\Unit
      */
     protected $tester;
 
+    /**
+     * @covers \TypistTech\Imposter\ProjectConfig
+     */
     public function testsIsAnInstanceOfConfig()
     {
         $json   = codecept_data_dir('composer.json');
@@ -23,6 +26,9 @@ class ProjectConfigTest extends \Codeception\Test\Unit
         $this->assertInstanceOf(Config::class, $config);
     }
 
+    /**
+     * @covers \TypistTech\Imposter\ProjectConfig
+     */
     public function testsGetVendorDirWithDefaultFallback()
     {
         $json   = codecept_data_dir('tmp-vendor/dummy/dummy-dependency/composer.json');
@@ -35,6 +41,9 @@ class ProjectConfigTest extends \Codeception\Test\Unit
         $this->assertSame($expected, $actual);
     }
 
+    /**
+     * @covers \TypistTech\Imposter\ProjectConfig
+     */
     public function testsGetVendorDir()
     {
         $json   = codecept_data_dir('composer.json');
@@ -47,6 +56,9 @@ class ProjectConfigTest extends \Codeception\Test\Unit
         $this->assertSame($expected, $actual);
     }
 
+    /**
+     * @covers \TypistTech\Imposter\ProjectConfig
+     */
     public function testsGetImposterNamespace()
     {
         $json   = codecept_data_dir('composer.json');
@@ -59,6 +71,9 @@ class ProjectConfigTest extends \Codeception\Test\Unit
         $this->assertSame($expected, $actual);
     }
 
+    /**
+     * @covers \TypistTech\Imposter\ProjectConfig
+     */
     public function testsGetImposterNamespaceThrowsUnexpectedValueException()
     {
         $json   = codecept_data_dir('tmp-vendor/dummy/dummy-dependency/composer.json');

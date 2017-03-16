@@ -18,6 +18,9 @@ class TransformerTest extends \Codeception\Test\Unit
      */
     private $dummyFile;
 
+    /**
+     * @covers \TypistTech\Imposter\Transformer
+     */
     public function testPrefixNamespace()
     {
         $tester = $this->tester;
@@ -30,6 +33,9 @@ class TransformerTest extends \Codeception\Test\Unit
         $tester->seeInThisFile('namespace MyPlugin\Vendor\Dummy\File;');
     }
 
+    /**
+     * @covers \TypistTech\Imposter\Transformer
+     */
     public function testsPrefixUses()
     {
         $tester = $this->tester;
@@ -48,6 +54,9 @@ class TransformerTest extends \Codeception\Test\Unit
         $tester->seeInThisFile('use MyPlugin\Vendor\AnotherDummy\{');
     }
 
+    /**
+     * @covers \TypistTech\Imposter\Transformer
+     */
     public function testTransformAllFilesInADirectory()
     {
         $transformer = new Transformer('MyPlugin\Vendor', new Filesystem);
@@ -58,6 +67,9 @@ class TransformerTest extends \Codeception\Test\Unit
         $this->assertTransformed(codecept_data_dir('tmp-vendor/dummy/dummy-psr4/src/Sub/DummyOne.php'));
     }
 
+    /**
+     * @covers \TypistTech\Imposter\Transformer
+     */
     private function assertTransformed(string $path)
     {
         $tester = $this->tester;

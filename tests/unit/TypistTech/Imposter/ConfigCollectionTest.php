@@ -23,6 +23,9 @@ class ConfigCollectionTest extends \Codeception\Test\Unit
      */
     private $configCollection;
 
+    /**
+     * @covers \TypistTech\Imposter\ConfigCollection
+     */
     public function testAddOneConfig()
     {
         $this->configCollection->add($this->config1);
@@ -35,6 +38,9 @@ class ConfigCollectionTest extends \Codeception\Test\Unit
         $this->assertSame($expected, $actual);
     }
 
+    /**
+     * @covers \TypistTech\Imposter\ConfigCollection
+     */
     public function testAddMultipleConfigs()
     {
         $this->configCollection->add($this->config1);
@@ -49,6 +55,9 @@ class ConfigCollectionTest extends \Codeception\Test\Unit
         $this->assertSame($expected, $actual);
     }
 
+    /**
+     * @covers \TypistTech\Imposter\ConfigCollection
+     */
     public function testAddConfigsUniqueness()
     {
         $this->configCollection->add($this->config1);
@@ -62,6 +71,9 @@ class ConfigCollectionTest extends \Codeception\Test\Unit
         $this->assertSame($expected, $actual);
     }
 
+    /**
+     * @covers \TypistTech\Imposter\ConfigCollection
+     */
     public function testGetAutoloads()
     {
         $this->configCollection->add($this->config1);
@@ -88,6 +100,9 @@ class ConfigCollectionTest extends \Codeception\Test\Unit
         $this->assertSame($expected, $actual);
     }
 
+    /**
+     * @covers \TypistTech\Imposter\ConfigCollection
+     */
     public function testGetAutoloadsUniqueness()
     {
         $this->configCollection->add($this->config1);

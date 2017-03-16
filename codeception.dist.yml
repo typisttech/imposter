@@ -7,15 +7,13 @@ paths:
     envs: tests/_envs
 settings:
     bootstrap: _bootstrap.php
+    shuffle: true
     colors: true
     memory_limit: 1024M
+coverage:
+  enabled: true
+  include:
+    - src/*
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
-modules:
-    config:
-        Db:
-            dsn: ''
-            user: ''
-            password: ''
-            dump: tests/_data/dump.sql
