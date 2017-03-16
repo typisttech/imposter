@@ -47,5 +47,10 @@
                 "i-am-object-array-3"
             ]
         }
+    },
+    "extra": {
+        "imposter": {
+            "namespace": "TypistTech\\Imposter\\Vendor"
+        }
     }
 }
