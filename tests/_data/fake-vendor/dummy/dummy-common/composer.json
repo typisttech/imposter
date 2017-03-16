@@ -5,6 +5,6 @@
         ]
     },
     "require": {
-        "dummy-dependency": "*"
+        "dummy/dummy-dependency": "*"
     }
 }
