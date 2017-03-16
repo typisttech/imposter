@@ -1,4 +1,17 @@
 <?xml version="1.0"?>
+<!--
+  ~ Imposter
+  ~
+  ~ Wrapping all composer vendor packages inside your own namespace.
+  ~ Intended for WordPress plugins.
+  ~
+  ~ @package TypistTech\Imposter
+  ~ @author Typist Tech <imposter@typist.tech>
+  ~ @copyright 2017 Typist Tech
+  ~ @license MIT
+  ~ @see https://www.typist.tech/projects/imposter
+  -->
+
 <ruleset name="PSR 2">
 
     <description>PSR 2</description>
