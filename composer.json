@@ -6,7 +6,7 @@
         "composer",
         "dependency",
         "monkey-patching",
-	"namespace",
+        "namespace",
         "wordpress"
     ],
     "homepage": "https://www.typist.tech/projects/imposter",

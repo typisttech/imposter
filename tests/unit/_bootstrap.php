@@ -3,6 +3,6 @@
 
 $kernel = \AspectMock\Kernel::getInstance();
 $kernel->init([
-    'debug' => true,
-    'includePaths' => [codecept_root_dir('src')]
+    'debug'        => true,
+    'includePaths' => [codecept_root_dir('src')],
 ]);
