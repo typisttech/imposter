@@ -18,7 +18,7 @@ class TransformerTest extends \Codeception\Test\Unit
      */
     private $dummyFile;
 
-    public function it_prefixes_namespace()
+    public function testPrefixNamespace()
     {
         $tester = $this->tester;
 
@@ -30,7 +30,7 @@ class TransformerTest extends \Codeception\Test\Unit
         $tester->seeInThisFile('namespace MyPlugin\Vendor\Dummy\File;');
     }
 
-    public function it_prefixes_uses()
+    public function testsPrefixUses()
     {
         $tester = $this->tester;
 

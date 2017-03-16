@@ -11,7 +11,7 @@ final class Transformer
     /**
      * @var string
      */
-    private $prefix;
+    private $vendorPrefix;
 
     /**
      * @var string
@@ -26,15 +26,15 @@ final class Transformer
     /**
      * Transformer constructor.
      *
-     * @param string     $prefix
+     * @param string     $vendorPrefix
      * @param string     $target
      * @param Filesystem $filesystem
      */
-    public function __construct(string $target, string $prefix, Filesystem $filesystem)
+    public function __construct(string $target, string $vendorPrefix, Filesystem $filesystem)
     {
-        $this->prefix     = $prefix;
-        $this->target     = $target;
-        $this->filesystem = $filesystem;
+        $this->vendorPrefix = $vendorPrefix;
+        $this->target       = $target;
+        $this->filesystem   = $filesystem;
     }
 
     public function run()
@@ -52,8 +52,8 @@ final class Transformer
      */
     private function prefix(string $keyword)
     {
-        $pattern     = "/$keyword\\s+(?!$this->prefix)/";
-        $replacement = "$keyword $this->prefix\\";
+        $pattern     = "/$keyword\\s+(?!$this->vendorPrefix)/";
+        $replacement = "$keyword $this->vendorPrefix\\";
         $this->replace($pattern, $replacement);
     }
 
