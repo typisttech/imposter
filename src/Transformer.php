@@ -6,7 +6,7 @@ namespace TypistTech\Imposter;
 
 use Illuminate\Filesystem\Filesystem;
 
-final class Transformer
+class Transformer
 {
     /**
      * @var string
