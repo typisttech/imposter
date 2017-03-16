@@ -28,9 +28,6 @@ class ConfigTest extends \Codeception\Test\Unit
      */
     private $config;
 
-    /**
-     * @covers ::getRequires
-     */
     public function testGetRequires()
     {
         $expected = [
@@ -43,9 +40,6 @@ class ConfigTest extends \Codeception\Test\Unit
         $this->assertSame($expected, $actual);
     }
 
-    /**
-     * @covers ::getRequires
-     */
     public function testExcludeImposter()
     {
         $actual = $this->config->getRequires();
@@ -53,9 +47,6 @@ class ConfigTest extends \Codeception\Test\Unit
         $this->assertNotContains('typisttech/imposter', $actual);
     }
 
-    /**
-     * @covers ::getAutoloads
-     */
     public function testGetAutoloads()
     {
         $actual = $this->config->getAutoloads();
@@ -78,9 +69,6 @@ class ConfigTest extends \Codeception\Test\Unit
         $this->assertSame($expected, $actual);
     }
 
-    /**
-     * @covers ::getAutoloads
-     */
     public function testGetAutoloadsInVendorDir()
     {
         $config = ConfigFactory::read($this->tmpVendor . '/dummy/dummy-psr4/composer.json', new Filesystem);
