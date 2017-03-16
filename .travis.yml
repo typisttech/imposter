@@ -39,18 +39,17 @@ before_script:
   # Disable xDebug to speed up the build unless test coverage is needed
   - if [[ "$WITH_COVERAGE" != "true" && $(phpenv version-name) != "nightly" ]]; then phpenv config-rm xdebug.ini; fi
 
-  - travis_retry composer install --prefer-dist
+  - travis_retry composer update --prefer-dist
 
 script:
-    - if [[ "$WITH_COVERAGE" == "true" ]]; then vendor/bin/codecept run unit --coverage --coverage-xml; fi
-    - if [[ "$WITH_COVERAGE" != "true" ]]; then vendor/bin/codecept run unit; fi
+    - if [[ "$WITH_COVERAGE" != "true" ]]; then composer test; fi
+    - if [[ "$WITH_COVERAGE" == "true" ]]; then composer test-with-coverage; fi
 
 after_script:
   # Install helper scripts
-  - travis_retry composer global require --prefer-dist --no-suggest "typisttech/travis-nginx-wordpress:^1.2"
-  - export PATH=$HOME/.composer/vendor/bin:$PATH
+  - if [[ "$WITH_COVERAGE" == "true" ]]; then travis_retry composer global require --prefer-dist --no-suggest typisttech/travis-nginx-wordpress; fi
+  - if [[ "$WITH_COVERAGE" == "true" ]]; then export PATH=$HOME/.composer/vendor/bin:$PATH; fi
 
   # Upload coverage report
   - if [[ "$WITH_COVERAGE" == "true" ]]; then travis_retry tnw-upload-coverage-to-scrutinizer; fi
   - if [[ "$WITH_COVERAGE" == "true" ]]; then travis_retry tnw-upload-coverage-to-codecov; fi
-

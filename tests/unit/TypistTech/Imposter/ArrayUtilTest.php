@@ -6,6 +6,9 @@ namespace TypistTech\Imposter;
  */
 class ArrayUtilTest extends \Codeception\Test\Unit
 {
+    /**
+     * @covers \TypistTech\Imposter\ArrayUtil
+     */
     public function testFlatten()
     {
         $array = [
@@ -29,6 +32,9 @@ class ArrayUtilTest extends \Codeception\Test\Unit
         $this->assertSame($expected, $actual);
     }
 
+    /**
+     * @covers \TypistTech\Imposter\ArrayUtil
+     */
     public function testFlattenMap()
     {
         $array = [

@@ -6,6 +6,9 @@ namespace TypistTech\Imposter;
  */
 class StringUtilTest extends \Codeception\Test\Unit
 {
+    /**
+     * @covers \TypistTech\Imposter\StringUtil
+     */
     public function testAddTrailingSlash()
     {
         $actual = StringUtil::addTrailingSlash('foo');
@@ -13,6 +16,9 @@ class StringUtilTest extends \Codeception\Test\Unit
         $this->assertSame('foo/', $actual);
     }
 
+    /**
+     * @covers \TypistTech\Imposter\StringUtil
+     */
     public function testAddTrailingSlashToSlashed()
     {
         $actual = StringUtil::addTrailingSlash('foo/');

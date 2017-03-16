@@ -17,6 +17,9 @@ class ImposterTest extends \Codeception\Test\Unit
 
     private $transformer;
 
+    /**
+     * @covers \TypistTech\Imposter\Imposter
+     */
     public function testRunTransformOnAllAutoloadPaths()
     {
         $this->imposter->run();

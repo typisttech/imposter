@@ -23,6 +23,9 @@ class ConfigTest extends \Codeception\Test\Unit
      */
     private $config;
 
+    /**
+     * @covers \TypistTech\Imposter\Config
+     */
     public function testGetRequires()
     {
         $expected = [
@@ -35,6 +38,9 @@ class ConfigTest extends \Codeception\Test\Unit
         $this->assertSame($expected, $actual);
     }
 
+    /**
+     * @covers \TypistTech\Imposter\Config
+     */
     public function testGetPackageDir()
     {
         $expected = codecept_data_dir();
@@ -44,6 +50,9 @@ class ConfigTest extends \Codeception\Test\Unit
         $this->assertSame($expected, $actual);
     }
 
+    /**
+     * @covers \TypistTech\Imposter\Config
+     */
     public function testExcludeImposter()
     {
         $actual = $this->config->getRequires();
@@ -51,6 +60,9 @@ class ConfigTest extends \Codeception\Test\Unit
         $this->assertNotContains('typisttech/imposter', $actual);
     }
 
+    /**
+     * @covers \TypistTech\Imposter\Config
+     */
     public function testGetAutoloads()
     {
         $actual = $this->config->getAutoloads();
@@ -73,6 +85,9 @@ class ConfigTest extends \Codeception\Test\Unit
         $this->assertSame($expected, $actual);
     }
 
+    /**
+     * @covers \TypistTech\Imposter\Config
+     */
     public function testGetAutoloadsInVendorDir()
     {
         $json   = codecept_data_dir('tmp-vendor/dummy/dummy-psr4/composer.json');
@@ -87,6 +102,9 @@ class ConfigTest extends \Codeception\Test\Unit
         $this->assertSame($expected, $actual);
     }
 
+    /**
+     * @covers \TypistTech\Imposter\Config
+     */
     public function testGetAutoloadsUniqueness()
     {
         $json   = codecept_data_dir('tmp-vendor/dummy/dummy-dependency/composer.json');
