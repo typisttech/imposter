@@ -78,7 +78,6 @@ checks:
       minimum: '3'
     no_property_on_interface: true
     no_non_implemented_abstract_methods: true
-    no_new_line_at_end_of_file: true
     no_long_variable_names:
       maximum: '20'
     no_goto: true
@@ -94,7 +93,6 @@ checks:
     naming_conventions:
       local_variable: '^[a-z][a-zA-Z0-9]*$'
       abstract_class_name: ^Abstract|Factory$
-      utility_class_name: 'Utils?$'
       constant_name: '^[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)*$'
       property_name: '^[a-z][a-zA-Z0-9]*$'
       method_name: '^(?:[a-z]|__)[a-zA-Z0-9]*$'
