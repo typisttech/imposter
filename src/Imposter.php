@@ -30,6 +30,7 @@ final class Imposter
 
     /**
      * @return void
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function run()
     {

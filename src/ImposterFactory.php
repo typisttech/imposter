@@ -12,7 +12,7 @@ final class ImposterFactory
     {
     }
 
-    public static function for(string $projectPath): Imposter
+    public static function forProject(string $projectPath): Imposter
     {
         $filesystem    = new Filesystem;
         $projectConfig = ConfigFactory::buildProjectConfig($projectPath . '/composer.json', $filesystem);
