@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace TypistTech\Imposter;
 
-class StringUtil
+final class StringUtil
 {
     private function __construct()
     {

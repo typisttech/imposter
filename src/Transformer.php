@@ -7,7 +7,7 @@ namespace TypistTech\Imposter;
 use Illuminate\Filesystem\Filesystem;
 use SplFileInfo;
 
-class Transformer
+final class Transformer
 {
     /**
      * @var string

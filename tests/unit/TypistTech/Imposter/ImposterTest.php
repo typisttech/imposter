@@ -1,8 +1,7 @@
 <?php
 namespace TypistTech\Imposter;
 
-use Illuminate\Filesystem\Filesystem;
-use Mockery;
+use AspectMock\Test;
 
 /**
  * @coversDefaultClass \TypistTech\Imposter\Imposter
@@ -20,26 +19,30 @@ class ImposterTest extends \Codeception\Test\Unit
 
     public function testRunTransformOnAllAutoloadPaths()
     {
-        $this->configCollection->shouldReceive('getAutoloads')
-                               ->once()
-                               ->andReturn([
-                                   'path/to/dir',
-                                   'path/to/file.php',
-                               ]);
-        $this->transformer->shouldReceive('transform')
-                          ->once()
-                          ->with('path/to/dir');
-        $this->transformer->shouldReceive('transform')
-                          ->once()
-                          ->with('path/to/file.php');
-
         $this->imposter->run();
+
+        $this->transformer->verifyInvoked('transform', ['path/to/dir']);
+        $this->transformer->verifyInvoked('transform', ['path/to/file.php']);
+        $this->transformer->verifyInvokedMultipleTimes('transform', 2);
     }
 
     protected function _before()
     {
-        $this->configCollection = Mockery::mock(ConfigCollection::class . '[getAutoloads]');
-        $this->transformer      = Mockery::mock(Transformer::class . '[transform]', ['My\Prefix', new Filesystem]);
-        $this->imposter         = new Imposter($this->configCollection, $this->transformer);
+        $this->configCollection = Test::double(
+            new ConfigCollection,
+            [
+                'getAutoloads' => [
+                    'path/to/dir',
+                    'path/to/file.php',
+                ],
+            ]
+        );
+
+        $this->transformer = Test::double(
+            Test::double(Transformer::class)->make(),
+            ['transform' => null]
+        );
+
+        $this->imposter = new Imposter($this->configCollection->getObject(), $this->transformer->getObject());
     }
 }
