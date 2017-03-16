@@ -18,7 +18,7 @@ class ImposterFactoryTest extends \Codeception\Test\Unit
         $configCollection = ConfigCollectionFactory::forProject($projectConfig, $vendorDir, $filesystem);
         $transformer      = new Transformer('TypistTech\Imposter\Vendor', $filesystem);
 
-        $actual = ImposterFactory::for(codecept_data_dir());
+        $actual = ImposterFactory::forProject(codecept_data_dir());
 
         $expected = new Imposter($configCollection, $transformer);
 

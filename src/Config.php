@@ -31,8 +31,8 @@ class Config
     {
         $require = $this->get('require');
 
-        return array_filter(array_keys($require), function ($name) {
-            return $name !== 'typisttech/imposter';
+        return array_filter(array_keys($require), function (string $package) {
+            return $package !== 'typisttech/imposter';
         });
     }
 
@@ -43,7 +43,7 @@ class Config
 
     public function getAutoloads(): array
     {
-        return array_map(function ($autoload) {
+        return array_map(function (string $autoload) {
             return $this->packageDir . $autoload;
         }, array_unique($this->getAutoloadPaths()));
     }
@@ -52,14 +52,9 @@ class Config
     {
         $autoload = $this->get('autoload');
 
-        $autoloads = array_map([$this, 'normalizeAutoload'], $autoload);
-
-        return $this->flatten($autoloads);
-    }
-
-    private function flatten(array $array): array
-    {
-        return call_user_func_array('array_merge', $array);
+        return ArrayUtil::flattenMap(function ($autoloadConfig) {
+            return $this->normalizeAutoload($autoloadConfig);
+        }, $autoload);
     }
 
     private function normalizeAutoload($autoloadConfigs): array
@@ -68,8 +63,8 @@ class Config
             return [$autoloadConfigs];
         }
 
-        $autoloadPaths = array_map([$this, 'normalizeAutoload'], $autoloadConfigs);
-
-        return $this->flatten($autoloadPaths);
+        return ArrayUtil::flattenMap(function ($autoloadConfig) {
+            return $this->normalizeAutoload($autoloadConfig);
+        }, $autoloadConfigs);
     }
 }

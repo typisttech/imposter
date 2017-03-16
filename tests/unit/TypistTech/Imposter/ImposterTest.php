@@ -10,9 +10,13 @@ use Mockery;
 class ImposterTest extends \Codeception\Test\Unit
 {
     /**
-     * @var \UnitTester
+     * @var Imposter
      */
-    protected $tester;
+    private $imposter;
+
+    private $configCollection;
+
+    private $transformer;
 
     public function testRunTransformOnAllAutoloadPaths()
     {
@@ -37,9 +41,5 @@ class ImposterTest extends \Codeception\Test\Unit
         $this->configCollection = Mockery::mock(ConfigCollection::class . '[getAutoloads]');
         $this->transformer      = Mockery::mock(Transformer::class . '[transform]', ['My\Prefix', new Filesystem]);
         $this->imposter         = new Imposter($this->configCollection, $this->transformer);
-    }
-
-    protected function _after()
-    {
     }
 }

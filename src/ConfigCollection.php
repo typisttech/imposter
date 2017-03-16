@@ -23,11 +23,9 @@ class ConfigCollection
 
     public function getAutoloads(): array
     {
-        $autoloads = array_map(function (Config $config) {
+        $autoloads = ArrayUtil::flattenMap(function (Config $config) {
             return $config->getAutoloads();
         }, $this->all());
-
-        $autoloads = $this->flatten($autoloads);
 
         return array_unique($autoloads);
     }
@@ -38,10 +36,5 @@ class ConfigCollection
     public function all(): array
     {
         return $this->configs;
-    }
-
-    private function flatten(array $array): array
-    {
-        return call_user_func_array('array_merge', $array);
     }
 }

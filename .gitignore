@@ -4,7 +4,7 @@
 
 ### Codeception ###
 /codeception.yml
-/tests/_data/tmp/
+/tests/_data/tmp-vendor/
 /tests/_output/
 /tests/_support/_generated/
 

@@ -35,6 +35,7 @@ class Transformer
      * @param string $target
      *
      * @return void
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function transform(string $target)
     {
@@ -55,6 +56,7 @@ class Transformer
      * @param string $targetFile
      *
      * @void
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     private function doTransform(string $targetFile)
     {
@@ -69,6 +71,7 @@ class Transformer
      * @param string $targetFile
      *
      * @return void
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     private function prefix(string $keyword, string $targetFile)
     {
