@@ -4,9 +4,9 @@ namespace TypistTech\Imposter;
 use Illuminate\Filesystem\Filesystem;
 
 /**
- * @coversDefaultClass \TypistTech\Imposter\Package
+ * @coversDefaultClass \TypistTech\Imposter\Config
  */
-class ConfigReaderTest extends \Codeception\Test\Unit
+class ConfigTest extends \Codeception\Test\Unit
 {
     /**
      * @var \UnitTester
@@ -24,18 +24,21 @@ class ConfigReaderTest extends \Codeception\Test\Unit
     private $tmpVendor;
 
     /**
+     * @var Config
+     */
+    private $config;
+
+    /**
      * @covers ::getRequires
      */
     public function testGetRequires()
     {
-        $configReader = new ConfigReader($this->json, new Filesystem);
-
         $expected = [
             'dummy/dummy',
             'dummy/dummy-psr4',
         ];
 
-        $actual = $configReader->getRequires();
+        $actual = $this->config->getRequires();
 
         $this->assertSame($expected, $actual);
     }
@@ -45,9 +48,7 @@ class ConfigReaderTest extends \Codeception\Test\Unit
      */
     public function testExcludeImposter()
     {
-        $configReader = new ConfigReader($this->json, new Filesystem);
-
-        $actual = $configReader->getRequires();
+        $actual = $this->config->getRequires();
 
         $this->assertNotContains('typisttech/imposter', $actual);
     }
@@ -57,9 +58,7 @@ class ConfigReaderTest extends \Codeception\Test\Unit
      */
     public function testGetAutoloads()
     {
-        $configReader = new ConfigReader($this->json, new Filesystem);
-
-        $actual = $configReader->getAutoloads();
+        $actual = $this->config->getAutoloads();
 
         $expected = [
             codecept_data_dir('i-am-simple-string'),
@@ -84,9 +83,9 @@ class ConfigReaderTest extends \Codeception\Test\Unit
      */
     public function testGetAutoloadsInVendorDir()
     {
-        $configReader = new ConfigReader($this->tmpVendor . '/dummy/dummy-psr4/composer.json', new Filesystem);
+        $config = ConfigFactory::read($this->tmpVendor . '/dummy/dummy-psr4/composer.json', new Filesystem);
 
-        $actual = $configReader->getAutoloads();
+        $actual = $config->getAutoloads();
 
         $expected = [
             $this->tmpVendor . '/dummy/dummy-psr4/src/',
@@ -99,5 +98,6 @@ class ConfigReaderTest extends \Codeception\Test\Unit
     {
         $this->json      = codecept_data_dir('composer.json');
         $this->tmpVendor = codecept_data_dir('tmp-vendor');
+        $this->config    = ConfigFactory::read($this->json, new Filesystem);
     }
 }
