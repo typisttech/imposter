@@ -24,18 +24,21 @@ class ConfigTest extends \Codeception\Test\Unit
     private $tmpVendor;
 
     /**
+     * @var Config
+     */
+    private $config;
+
+    /**
      * @covers ::getRequires
      */
     public function testGetRequires()
     {
-        $config = new Config($this->json, new Filesystem);
-
         $expected = [
             'dummy/dummy',
             'dummy/dummy-psr4',
         ];
 
-        $actual = $config->getRequires();
+        $actual = $this->config->getRequires();
 
         $this->assertSame($expected, $actual);
     }
@@ -45,9 +48,7 @@ class ConfigTest extends \Codeception\Test\Unit
      */
     public function testExcludeImposter()
     {
-        $config = new Config($this->json, new Filesystem);
-
-        $actual = $config->getRequires();
+        $actual = $this->config->getRequires();
 
         $this->assertNotContains('typisttech/imposter', $actual);
     }
@@ -57,9 +58,7 @@ class ConfigTest extends \Codeception\Test\Unit
      */
     public function testGetAutoloads()
     {
-        $config = new Config($this->json, new Filesystem);
-
-        $actual = $config->getAutoloads();
+        $actual = $this->config->getAutoloads();
 
         $expected = [
             codecept_data_dir('i-am-simple-string'),
@@ -84,7 +83,7 @@ class ConfigTest extends \Codeception\Test\Unit
      */
     public function testGetAutoloadsInVendorDir()
     {
-        $config = new Config($this->tmpVendor . '/dummy/dummy-psr4/composer.json', new Filesystem);
+        $config = ConfigFactory::read($this->tmpVendor . '/dummy/dummy-psr4/composer.json', new Filesystem);
 
         $actual = $config->getAutoloads();
 
@@ -99,5 +98,6 @@ class ConfigTest extends \Codeception\Test\Unit
     {
         $this->json      = codecept_data_dir('composer.json');
         $this->tmpVendor = codecept_data_dir('tmp-vendor');
+        $this->config    = ConfigFactory::read($this->json, new Filesystem);
     }
 }

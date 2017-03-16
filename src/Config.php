@@ -1,36 +1,25 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace TypistTech\Imposter;
 
-use Illuminate\Filesystem\Filesystem;
-
-class Config
+final class Config
 {
     /**
      * @var string
      */
-    private $path;
-
-    /**
-     * @var Filesystem
-     */
-    private $filesystem;
+    private $packageDir;
 
     /**
      * @var array
      */
     private $config;
 
-    /**
-     * Finder constructor.
-     *
-     * @param string     $path Path to package composer.json
-     * @param Filesystem $filesystem
-     */
-    public function __construct(string $path, Filesystem $filesystem)
+    public function __construct(string $packageDir, array $config)
     {
-        $this->path       = $path;
-        $this->filesystem = $filesystem;
+        $this->packageDir = $packageDir;
+        $this->config     = $config;
     }
 
     public function getRequires(): array
@@ -44,19 +33,13 @@ class Config
 
     private function get(string $key): array
     {
-        if (empty($this->config)) {
-            $this->config = json_decode($this->filesystem->get($this->path), true);
-        }
-
         return $this->config[$key] ?? [];
     }
 
     public function getAutoloads(): array
     {
-        $packageDir = $this->filesystem->dirname($this->path);
-
-        return array_map(function ($autoload) use ($packageDir) {
-            return "$packageDir/$autoload";
+        return array_map(function ($autoload) {
+            return $this->packageDir . $autoload;
         }, $this->getAutoloadPaths());
     }
 
@@ -74,14 +57,14 @@ class Config
         return call_user_func_array('array_merge', $array);
     }
 
-    private function normalizeAutoload($configs): array
+    private function normalizeAutoload($autoloadConfigs): array
     {
-        if (is_string($configs)) {
-            return [$configs];
+        if (! is_array($autoloadConfigs)) {
+            return [$autoloadConfigs];
         }
 
-        $map = array_map([$this, 'normalizeAutoload'], $configs);
+        $autoloadPaths = array_map([$this, 'normalizeAutoload'], $autoloadConfigs);
 
-        return $this->flatten($map);
+        return $this->flatten($autoloadPaths);
     }
 }

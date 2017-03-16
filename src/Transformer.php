@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace TypistTech\Imposter;
 
 use Illuminate\Filesystem\Filesystem;
 
-class Transformer
+final class Transformer
 {
     /**
      * @var string
