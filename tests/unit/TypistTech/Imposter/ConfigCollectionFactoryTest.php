@@ -10,41 +10,42 @@ class ConfigCollectionFactoryTest extends \Codeception\Test\Unit
 {
     public function testForRootConfig()
     {
-        $actual = ConfigCollectionFactory::forRootConfig(
+        $filesystem = new Filesystem;
+        $rootConfig = ConfigFactory::read(
             codecept_data_dir('composer.json'),
+            $filesystem
+        );
+
+        $actual = ConfigCollectionFactory::forProject(
+            $rootConfig,
             codecept_data_dir('tmp-vendor/'),
-            new Filesystem
+            $filesystem
         );
 
         $expected = new ConfigCollection;
-        $expected->add(
-            ConfigFactory::read(
-                codecept_data_dir('composer.json'),
-                new Filesystem
-            )
-        );
+        $expected->add($rootConfig);
         $expected->add(
             ConfigFactory::read(
                 codecept_data_dir('tmp-vendor/dummy/dummy/composer.json'),
-                new Filesystem
+                $filesystem
             )
         );
         $expected->add(
             ConfigFactory::read(
                 codecept_data_dir('tmp-vendor/dummy/dummy-psr4/composer.json'),
-                new Filesystem
+                $filesystem
             )
         );
         $expected->add(
             ConfigFactory::read(
                 codecept_data_dir('tmp-vendor/dummy/dummy-common/composer.json'),
-                new Filesystem
+                $filesystem
             )
         );
         $expected->add(
             ConfigFactory::read(
                 codecept_data_dir('tmp-vendor/dummy/dummy-dependency/composer.json'),
-                new Filesystem
+                $filesystem
             )
         );
 
