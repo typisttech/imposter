@@ -1,83 +1,230 @@
-# imposter
+# Imposter
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Software License][ico-license]](LICENSE.md)
-[![Build Status][ico-travis]][link-travis]
-[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
-[![Quality Score][ico-code-quality]][link-code-quality]
-[![Total Downloads][ico-downloads]][link-downloads]
+[![Latest Stable Version](https://poser.pugx.org/typisttech/imposter/v/stable)](https://packagist.org/packages/typisttech/imposter)
+[![Total Downloads](https://poser.pugx.org/typisttech/imposter/downloads)](https://packagist.org/packages/typisttech/imposter)
+[![Build Status](https://travis-ci.org/TypistTech/imposter.svg?branch=master)](https://travis-ci.org/TypistTech/imposter)
+[![codecov](https://codecov.io/gh/TypistTech/imposter/branch/master/graph/badge.svg)](https://codecov.io/gh/TypistTech/imposter)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/TypistTech/imposter/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/TypistTech/imposter/?branch=master)
+[![PHP Versions Tested](http://php-eye.com/badge/typisttech/imposter/tested.svg)](https://travis-ci.org/TypistTech/imposter)
+[![StyleCI](https://styleci.io/repos/84912533/shield?branch=master)](https://styleci.io/repos/84912533)
+[![Dependency Status](https://gemnasium.com/badges/github.com/TypistTech/imposter.svg)](https://gemnasium.com/github.com/TypistTech/imposter)
+[![Latest Unstable Version](https://poser.pugx.org/typisttech/imposter/v/unstable)](https://packagist.org/packages/typisttech/imposter)
+[![License](https://poser.pugx.org/typisttech/imposter/license)](https://packagist.org/packages/typisttech/imposter)
+[![Donate via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.typist.tech/donate/imposter/)
+[![Hire Typist Tech](https://img.shields.io/badge/Hire-Typist%20Tech-ff69b4.svg)](https://www.typist.tech/contact/)
 
-**Note:** Replace ```Typist Tech``` ```typisttech``` ```https://www.typist.tech``` ```imposter@typist.tech``` ```typisttech``` ```imposter``` ```Composes all dependencies as a package inside a WordPress plugin``` with their correct values in [README.md](README.md), [CHANGELOG.md](CHANGELOG.md), [CONTRIBUTING.md](.github/CONTRIBUTING.md), [LICENSE.md](LICENSE.md) and [composer.json](composer.json) files, then delete this line. You can run `$ php prefill.php` in the command line to make all replacements at once. Delete the file prefill.php as well.
+Wrapping all composer vendor packages inside your own namespace. Intended for WordPress plugins.
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
 
-## Structure
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-If any of the following are applicable to your project, then the directory structure should follow industry best practises by being named the following.
 
-```
-bin/        
-config/
-src/
-tests/
-vendor/
-```
+- [Why?](#why)
+- [Install](#install)
+- [Usage](#usage)
+- [Frequently Asked Questions](#frequently-asked-questions)
+  - [Does Imposter support `PSR4`, `PSR0`, `Classmap` and `Files`?](#does-imposter-support-psr4-psr0-classmap-and-files)
+  - [Does Imposter support `exclude-from-classmap`?](#does-imposter-support-exclude-from-classmap)
+  - [How about `require-dev` packages?](#how-about-require-dev-packages)
+  - [How about packages that don't use namespaces?](#how-about-packages-that-dont-use-namespaces)
+  - [How about packages that use fully qualified name?](#how-about-packages-that-use-fully-qualified-name)
+- [Support!](#support)
+  - [Donate via PayPal *](#donate-via-paypal-)
+  - [Why don't you hire me?](#why-dont-you-hire-me)
+  - [Want to help in other way? Want to be a sponsor?](#want-to-help-in-other-way-want-to-be-a-sponsor)
+- [Alternatives](#alternatives)
+- [Developing](#developing)
+- [Running the Tests](#running-the-tests)
+- [Feedback](#feedback)
+- [Change log](#change-log)
+- [Security](#security)
+- [Contributing](#contributing)
+- [Credits](#credits)
+- [License](#license)
 
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## Why?
+
+Because of the lack of dependency management in WordPress, if two plugins bundled conflicting versions of the same package, hard-to-reproduce bugs arise.
+Monkey patching composer vendor packages, wrapping them inside your own namespace is a less-than-ideal solution to avoid such conflicts. 
+
+See:
+[A Narrative of Using Composer in a WordPress Plugin](https://wptavern.com/a-narrative-of-using-composer-in-a-wordpress-plugin)
+[A Warning About Using Composer With WordPress](https://blog.wppusher.com/a-warning-about-using-composer-with-wordpress/)
 
 ## Install
 
-Via Composer
+Installation should be done via composer, details of how to install composer can be found at [https://getcomposer.org/](https://getcomposer.org/).
 
 ``` bash
 $ composer require typisttech/imposter
 ```
 
+Then, config the imposter namespace in your `composer.json`
+
+```json
+"extra": {
+    "imposter": {
+        "namespace": "My\\App\\Vendor"
+    }
+}
+```
+
 ## Usage
 
-``` php
-$skeleton = new TypistTech\Imposter();
-echo $skeleton->echoPhrase('Hello, League!');
+After every `$ composer install` and `$ composer update`: 
+
+```php
+<?php 
+
+use TypistTech\Imposter\ImposterFactory;
+
+$imposter = ImposterFactory::forProject('/path/to/project/root');
+$imposter->run();
 ```
+
+The above snippet:
+1. Look for `/path/to/project/root/composer.json`
+2. Find out [vendor-dir](https://getcomposer.org/doc/06-config.md#vendor-dir)
+3. Find out all [required packages](https://getcomposer.org/doc/04-schema.md#require), including those required by dependencies
+4. Find out all [autoload paths](https://getcomposer.org/doc/04-schema.md#autoload) for all required packages
+5. Prefix all namespaces with the imposter namespace defined in your `composer.json`
+
+Before:
+```php
+<?php
+
+namespace Dummy\File;
+
+use AnotherDummy\{
+    SubAnotherDummy, SubOtherDummy
+};
+use Dummy\SubOtherDummy;
+use OtherDummy\SubOtherDummy;
+
+class DummyClass
+{
+}
+```
+
+After:
+```php
+<?php
+
+namespace My\App\Vendor\Dummy\File;
+
+use My\App\Vendor\AnotherDummy\{
+    SubAnotherDummy, SubOtherDummy
+};
+use My\App\Vendor\Dummy\SubOtherDummy;
+use My\App\Vendor\OtherDummy\SubOtherDummy;
+
+class DummyClass
+{
+}
+```
+
+## Frequently Asked Questions
+
+### Does Imposter support `PSR4`, `PSR0`, `Classmap` and `Files`?
+
+Yes for all. PSR-4 and PSR-0 autoloading, classmap generation and files includes are supported.
+
+### Does Imposter support `exclude-from-classmap`?
+
+Not for now. 
+Pull requests are welcome.
+
+### How about `require-dev` packages?
+
+Imposter do nothing on `require-dev` packages because imposter is intended for avoiding production environment., not for development environment. 
+
+
+### How about packages that don't use namespaces?
+
+Not for now. 
+Tell me your idea by [opening an issue](https://github.com/TypistTech/imposter/issues/new)
+
+### How about packages that use fully qualified name?
+
+Not for now. We need a better regex in the [Transformer](src/Transformer.php) class.
+Tell me your idea by [opening an issue](https://github.com/TypistTech/imposter/issues/new)
+
+## Support! 
+
+### Donate via PayPal [![Donate via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.typist.tech/donate/imposter/)
+
+Love Imposter? Help me maintain Imposter, a [donation here](https://www.typist.tech/donate/imposter/) can help with it. 
+
+### Why don't you hire me?
+Ready to take freelance WordPress jobs. Contact me via the contact form [here](https://www.typist.tech/contact/) or, via email info@typist.tech 
+
+### Want to help in other way? Want to be a sponsor? 
+Contact: [Tang Rufus](mailto:tangrufus@gmail.com)
+
+## Alternatives
+
+Here is a list of alternatives that I found. But none satisfied my requirements.
+
+*If you know other similar projects, feel free to edit this section!*
+
+* [Mozart](https://github.com/coenjacobs/mozart) by Coen Jacobs
+    - Works with PSR0 and PSR4 
+    - Dependency packages store in a different directory
+
+## Developing
+
+To setup a developer workable version you should run these commands:
+
+```bash
+$ composer create-project --keep-vcs --no-install typisttech/imposter:dev-master
+$ cd imposter
+$ composer install
+```
+
+## Running the Tests
+
+[Imposter](https://github.com/TypistTech/imposter) run tests on [Codeception](http://codeception.com/).
+
+Run the tests:
+
+``` bash
+$ composer test
+
+// Or, run with coverage support
+$ composer test-with-coverage
+```
+
+We also test all PHP files against [PSR-2: Coding Style Guide](http://www.php-fig.org/psr/psr-2/).
+
+Check the code style with ``$ composer check-style`` and fix it with ``$ composer fix-style``.
+
+## Feedback
+
+**Please provide feedback!** We want to make this library useful in as many projects as possible.
+Please submit an [issue](https://github.com/TypistTech/imposter/issues/new) and point out what you do and don't like, or fork the project and make suggestions.
+**No issue is too small.**
 
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
-## Testing
+## Security
 
-``` bash
-$ composer test
-```
+If you discover any security related issues, please email imposter@typist.tech instead of using the issue tracker.
 
 ## Contributing
 
 Please see [CONTRIBUTING](.github/CONTRIBUTING.md) and [CONDUCT](.github/CONDUCT.md) for details.
 
-## Security
-
-If you discover any security related issues, please email imposter@typist.tech instead of using the issue tracker.
-
 ## Credits
 
-- [Typist Tech][link-author]
-- [All Contributors][link-contributors]
+[Imposter](https://github.com/TypistTech/imposter) is a [Typist Tech](https://www.typist.tech) project and maintained by [Tang Rufus](https://twitter.com/Tangrufus), freelance developer for [hire](https://www.typist.tech/contact/).
+
+Full list of contributors can be found [here](https://github.com/TypistTech/imposter/graphs/contributors).
 
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
-
-[ico-version]: https://img.shields.io/packagist/v/typisttech/imposter.svg?style=flat-square
-[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/typisttech/imposter/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/typisttech/imposter.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/typisttech/imposter.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/typisttech/imposter.svg?style=flat-square
-
-[link-packagist]: https://packagist.org/packages/typisttech/imposter
-[link-travis]: https://travis-ci.org/typisttech/imposter
-[link-scrutinizer]: https://scrutinizer-ci.com/g/typisttech/imposter/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/typisttech/imposter
-[link-downloads]: https://packagist.org/packages/typisttech/imposter
-[link-author]: https://github.com/typisttech
-[link-contributors]: ../../contributors

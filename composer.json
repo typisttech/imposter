@@ -1,10 +1,12 @@
 {
     "name": "typisttech/imposter",
     "type": "library",
-    "description": "Change vendor package namespaces. Intended for WordPress plugins",
+    "description": "Wrapping all composer vendor packages inside your own namespace. Intended for WordPress plugins",
     "keywords": [
         "composer",
         "dependency",
+        "monkey-patching",
+	"namespace",
         "wordpress"
     ],
     "homepage": "https://www.typist.tech/projects/imposter",
