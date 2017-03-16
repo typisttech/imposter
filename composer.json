@@ -24,6 +24,11 @@
             "role": "Developer"
         }
     ],
+    "support": {
+        "email": "imposter@typist.tech",
+        "issues": "https://github.com/TypistTech/imposter/issues",
+        "source": "https://github.com/TypistTech/imposter"
+    },
     "require": {
         "php": "^7.0",
         "illuminate/filesystem": "^5.4"
