@@ -22,8 +22,8 @@ class TransformerTest extends \Codeception\Test\Unit
     {
         $tester = $this->tester;
 
-        $transformer = new Transformer($this->dummyFile, 'MyPlugin\Vendor', new Filesystem);
-        $transformer->run();
+        $transformer = new Transformer('MyPlugin\Vendor', new Filesystem);
+        $transformer->transform($this->dummyFile);
 
         $tester->openFile($this->dummyFile);
         $tester->dontSeeInThisFile('namespace Dummy');
@@ -34,8 +34,8 @@ class TransformerTest extends \Codeception\Test\Unit
     {
         $tester = $this->tester;
 
-        $transformer = new Transformer($this->dummyFile, 'MyPlugin\Vendor', new Filesystem);
-        $transformer->run();
+        $transformer = new Transformer('MyPlugin\Vendor', new Filesystem);
+        $transformer->transform($this->dummyFile);
 
         $tester->openFile($this->dummyFile);
 

@@ -22,6 +22,7 @@
     ],
     "require": {
         "php": "^7.0",
+        "codeception/mockery-module": "^0.2.2",
         "illuminate/filesystem": "^5.4"
     },
     "require-dev": {

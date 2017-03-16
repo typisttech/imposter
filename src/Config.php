@@ -4,12 +4,12 @@ declare(strict_types = 1);
 
 namespace TypistTech\Imposter;
 
-final class Config
+class Config
 {
     /**
      * @var string
      */
-    private $packageDir;
+    protected $packageDir;
 
     /**
      * @var array
@@ -18,7 +18,7 @@ final class Config
 
     public function __construct(string $packageDir, array $config)
     {
-        $this->packageDir = $packageDir;
+        $this->packageDir = StringUtil::addTrailingSlash($packageDir);
         $this->config     = $config;
     }
 
@@ -36,7 +36,7 @@ final class Config
         });
     }
 
-    private function get(string $key): array
+    protected function get(string $key): array
     {
         return $this->config[$key] ?? [];
     }

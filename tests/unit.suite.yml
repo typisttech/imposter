@@ -8,3 +8,4 @@ modules:
         - Asserts
         - \Helper\Unit
         - Filesystem
+        - Mockery
