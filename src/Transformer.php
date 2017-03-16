@@ -14,11 +14,6 @@ final class Transformer
     private $vendorPrefix;
 
     /**
-     * @var string
-     */
-    private $target;
-
-    /**
      * @var \Illuminate\Filesystem\Filesystem
      */
     private $filesystem;
@@ -27,20 +22,23 @@ final class Transformer
      * Transformer constructor.
      *
      * @param string     $vendorPrefix
-     * @param string     $target
      * @param Filesystem $filesystem
      */
-    public function __construct(string $target, string $vendorPrefix, Filesystem $filesystem)
+    public function __construct(string $vendorPrefix, Filesystem $filesystem)
     {
         $this->vendorPrefix = $vendorPrefix;
-        $this->target       = $target;
         $this->filesystem   = $filesystem;
     }
 
-    public function run()
+    /**
+     * @param string $target
+     *
+     * @return void
+     */
+    public function transform(string $target)
     {
-        $this->prefix('namespace');
-        $this->prefix('use');
+        $this->prefix('namespace', $target);
+        $this->prefix('use', $target);
     }
 
     /**
@@ -50,11 +48,11 @@ final class Transformer
      *
      * @return void
      */
-    private function prefix(string $keyword)
+    private function prefix(string $keyword, string $target)
     {
         $pattern     = "/$keyword\\s+(?!$this->vendorPrefix)/";
         $replacement = "$keyword $this->vendorPrefix\\";
-        $this->replace($pattern, $replacement);
+        $this->replace($pattern, $replacement, $target);
     }
 
     /**
@@ -62,18 +60,19 @@ final class Transformer
      *
      * @param  string $pattern
      * @param  string $replacement
+     * @param string $target
      *
      * @return void
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    private function replace(string $pattern, string $replacement)
+    private function replace(string $pattern, string $replacement, string $target)
     {
         $this->filesystem->put(
-            $this->target,
+            $target,
             preg_replace(
                 $pattern,
                 $replacement,
-                $this->filesystem->get($this->target)
+                $this->filesystem->get($target)
             )
         );
     }
