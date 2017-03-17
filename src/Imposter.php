@@ -57,6 +57,8 @@ class Imposter implements ImposterInterface
     }
 
     /**
+     * Transform all autoload files.
+     *
      * @return void
      */
     public function run()
@@ -75,6 +77,13 @@ class Imposter implements ImposterInterface
         return $this->configCollection->getAutoloads();
     }
 
+    /**
+     * Transform a file or directory recursively.
+     *
+     * @param string $target Path to the target file or directory.
+     *
+     * @return void
+     */
     public function transform(string $target)
     {
         $this->transformer->transform($target);

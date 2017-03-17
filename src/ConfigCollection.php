@@ -33,6 +33,9 @@ final class ConfigCollection implements ConfigCollectionInterface
         $this->configs[$config->getPackageDir()] = $config;
     }
 
+    /**
+     * @return string[]
+     */
     public function getAutoloads(): array
     {
         $autoloads = ArrayUtil::flattenMap(function (ConfigInterface $config) {
