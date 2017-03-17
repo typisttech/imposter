@@ -26,33 +26,6 @@ class ConfigTest extends \Codeception\Test\Unit
     /**
      * @covers \TypistTech\Imposter\Config
      */
-    public function testGetRequires()
-    {
-        $expected = [
-            'dummy/dummy',
-            'dummy/dummy-psr4',
-        ];
-
-        $actual = $this->config->getRequires();
-
-        $this->assertSame($expected, $actual);
-    }
-
-    /**
-     * @covers \TypistTech\Imposter\Config
-     */
-    public function testGetPackageDir()
-    {
-        $expected = codecept_data_dir();
-
-        $actual = $this->config->getPackageDir();
-
-        $this->assertSame($expected, $actual);
-    }
-
-    /**
-     * @covers \TypistTech\Imposter\Config
-     */
     public function testExcludeImposter()
     {
         $actual = $this->config->getRequires();
@@ -116,6 +89,33 @@ class ConfigTest extends \Codeception\Test\Unit
             codecept_data_dir('tmp-vendor/dummy/dummy-dependency/src/'),
             codecept_data_dir('tmp-vendor/dummy/dummy-dependency/lib/'),
         ];
+
+        $this->assertSame($expected, $actual);
+    }
+
+    /**
+     * @covers \TypistTech\Imposter\Config
+     */
+    public function testGetPackageDir()
+    {
+        $expected = codecept_data_dir();
+
+        $actual = $this->config->getPackageDir();
+
+        $this->assertSame($expected, $actual);
+    }
+
+    /**
+     * @covers \TypistTech\Imposter\Config
+     */
+    public function testGetRequires()
+    {
+        $expected = [
+            'dummy/dummy',
+            'dummy/dummy-psr4',
+        ];
+
+        $actual = $this->config->getRequires();
 
         $this->assertSame($expected, $actual);
     }

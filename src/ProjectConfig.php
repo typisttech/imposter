@@ -20,14 +20,6 @@ use UnexpectedValueException;
 
 final class ProjectConfig extends Config implements ProjectConfigInterface
 {
-    public function getVendorDir(): string
-    {
-        $config    = $this->get('config');
-        $vendorDir = $config['vendor-dir'] ?? 'vendor';
-
-        return StringUtil::addTrailingSlash($this->packageDir . $vendorDir);
-    }
-
     public function getImposterNamespace(): string
     {
         $extra = $this->get('extra');
@@ -37,5 +29,13 @@ final class ProjectConfig extends Config implements ProjectConfigInterface
         }
 
         return $extra['imposter']['namespace'];
+    }
+
+    public function getVendorDir(): string
+    {
+        $config    = $this->get('config');
+        $vendorDir = $config['vendor-dir'] ?? 'vendor';
+
+        return StringUtil::addTrailingSlash($this->packageDir . $vendorDir);
     }
 }

@@ -26,8 +26,9 @@ class ConfigCollectionTest extends \Codeception\Test\Unit
     /**
      * @covers \TypistTech\Imposter\ConfigCollection
      */
-    public function testAddOneConfig()
+    public function testAddConfigsUniqueness()
     {
+        $this->configCollection->add($this->config1);
         $this->configCollection->add($this->config1);
 
         $actual   = $this->configCollection->all();
@@ -58,9 +59,8 @@ class ConfigCollectionTest extends \Codeception\Test\Unit
     /**
      * @covers \TypistTech\Imposter\ConfigCollection
      */
-    public function testAddConfigsUniqueness()
+    public function testAddOneConfig()
     {
-        $this->configCollection->add($this->config1);
         $this->configCollection->add($this->config1);
 
         $actual   = $this->configCollection->all();
