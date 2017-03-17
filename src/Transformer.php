@@ -19,7 +19,7 @@ namespace TypistTech\Imposter;
 use Illuminate\Filesystem\Filesystem;
 use SplFileInfo;
 
-final class Transformer
+final class Transformer implements TransformerInterface
 {
     /**
      * @var string
@@ -44,7 +44,9 @@ final class Transformer
     }
 
     /**
-     * @param string $target
+     * Transform a file or directory recursively.
+     *
+     * @param string $target Path to the target file or directory.
      *
      * @return void
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException

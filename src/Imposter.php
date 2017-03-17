@@ -16,25 +16,41 @@ declare(strict_types = 1);
 
 namespace TypistTech\Imposter;
 
-final class Imposter
+class Imposter implements ImposterInterface
 {
     /**
-     * @var ConfigCollection
+     * @var ConfigCollectionInterface
      */
-    private $configCollection;
+    protected $configCollection;
 
     /**
-     * @var Transformer
+     * @var TransformerInterface
      */
-    private $transformer;
+    protected $transformer;
+
+    /**
+     * @return ConfigCollectionInterface
+     */
+    public function getConfigCollection(): ConfigCollectionInterface
+    {
+        return $this->configCollection;
+    }
+
+    /**
+     * @return TransformerInterface
+     */
+    public function getTransformer(): TransformerInterface
+    {
+        return $this->transformer;
+    }
 
     /**
      * Imposter constructor.
      *
-     * @param ConfigCollection $configCollection
-     * @param Transformer      $transformer
+     * @param ConfigCollectionInterface $configCollection
+     * @param TransformerInterface      $transformer
      */
-    public function __construct(ConfigCollection $configCollection, Transformer $transformer)
+    public function __construct(ConfigCollectionInterface $configCollection, TransformerInterface $transformer)
     {
         $this->configCollection = $configCollection;
         $this->transformer      = $transformer;
@@ -47,8 +63,11 @@ final class Imposter
     public function run()
     {
         $autoloads = $this->configCollection->getAutoloads();
-        array_walk($autoloads, function ($autoload) {
-            $this->transformer->transform($autoload);
-        });
+        array_walk($autoloads, [$this, 'transform']);
+    }
+
+    public function transform(string $target)
+    {
+        $this->transformer->transform($target);
     }
 }

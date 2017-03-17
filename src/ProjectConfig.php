@@ -18,7 +18,7 @@ namespace TypistTech\Imposter;
 
 use UnexpectedValueException;
 
-final class ProjectConfig extends Config
+final class ProjectConfig extends Config implements ProjectConfigInterface
 {
     public function getVendorDir(): string
     {

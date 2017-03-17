@@ -25,10 +25,10 @@ final class ConfigCollectionFactory
     }
 
     public static function forProject(
-        ProjectConfig $projectConfig,
+        ProjectConfigInterface $projectConfig,
         string $vendorDir,
         Filesystem $filesystem
-    ): ConfigCollection {
+    ): ConfigCollectionInterface {
         return self::addRequiredPackageConfigsRecursively(
             new ConfigCollection,
             $projectConfig,
@@ -38,11 +38,11 @@ final class ConfigCollectionFactory
     }
 
     private static function addRequiredPackageConfigsRecursively(
-        ConfigCollection $configCollection,
-        Config $config,
+        ConfigCollectionInterface $configCollection,
+        ConfigInterface $config,
         string $vendorDir,
         Filesystem $filesystem
-    ): ConfigCollection {
+    ): ConfigCollectionInterface {
         $configCollection->add($config);
 
         $requires = $config->getRequires();
