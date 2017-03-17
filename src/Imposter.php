@@ -57,15 +57,33 @@ class Imposter implements ImposterInterface
     }
 
     /**
+     * Transform all autoload files.
+     *
      * @return void
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function run()
     {
-        $autoloads = $this->configCollection->getAutoloads();
+        $autoloads = $this->getAutoloads();
         array_walk($autoloads, [$this, 'transform']);
     }
 
+    /**
+     * Get all autoload paths.
+     *
+     * @return string[]
+     */
+    public function getAutoloads(): array
+    {
+        return $this->configCollection->getAutoloads();
+    }
+
+    /**
+     * Transform a file or directory recursively.
+     *
+     * @param string $target Path to the target file or directory.
+     *
+     * @return void
+     */
     public function transform(string $target)
     {
         $this->transformer->transform($target);

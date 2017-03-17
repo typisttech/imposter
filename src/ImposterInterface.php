@@ -19,6 +19,13 @@ namespace TypistTech\Imposter;
 interface ImposterInterface
 {
     /**
+     * Get all autoload paths.
+     *
+     * @return string[]
+     */
+    public function getAutoloads();
+
+    /**
      * Transform all autoload files.
      *
      * @return void
@@ -26,7 +33,7 @@ interface ImposterInterface
     public function run();
 
     /**
-     * Transform a single files or directory recursively.
+     * Transform a file or directory recursively.
      *
      * @param string $target Path to the target file or directory.
      *

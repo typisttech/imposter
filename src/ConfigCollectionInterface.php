@@ -30,5 +30,8 @@ interface ConfigCollectionInterface
      */
     public function all(): array;
 
+    /**
+     * @return string[]
+     */
     public function getAutoloads(): array;
 }

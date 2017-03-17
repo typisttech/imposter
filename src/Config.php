@@ -34,6 +34,9 @@ class Config implements ConfigInterface
         $this->config     = $config;
     }
 
+    /**
+     * @return string[]
+     */
     public function getAutoloads(): array
     {
         return array_map(function (string $autoload) {
@@ -41,6 +44,9 @@ class Config implements ConfigInterface
         }, array_unique($this->getAutoloadPaths()));
     }
 
+    /**
+     * @return string[]
+     */
     private function getAutoloadPaths(): array
     {
         $autoload = $this->get('autoload');
@@ -55,6 +61,11 @@ class Config implements ConfigInterface
         return $this->config[$key] ?? [];
     }
 
+    /**
+     * @param $autoloadConfigs
+     *
+     * @return string[]
+     */
     private function normalizeAutoload($autoloadConfigs): array
     {
         if (! is_array($autoloadConfigs)) {
@@ -71,6 +82,9 @@ class Config implements ConfigInterface
         return $this->packageDir;
     }
 
+    /**
+     * @return string[]
+     */
     public function getRequires(): array
     {
         $require = $this->get('require');

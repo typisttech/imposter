@@ -69,7 +69,7 @@ final class Transformer implements TransformerInterface
     /**
      * @param string $targetFile
      *
-     * @void
+     * @return void
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     private function doTransform(string $targetFile)
@@ -96,7 +96,7 @@ final class Transformer implements TransformerInterface
     }
 
     /**
-     * Replace the given string in the given file.
+     * Replace string in the given file.
      *
      * @param string $pattern
      * @param string $replacement
