@@ -26,4 +26,9 @@ final class StringUtil
     {
         return rtrim($string, '/\\') . '/';
     }
+
+    public static function addDoubleTrailingBackwardSlash(string $string): string
+    {
+        return rtrim($string, '/\\') . '\\\\';
+    }
 }
