@@ -18,9 +18,9 @@ namespace TypistTech\Imposter;
 
 interface ConfigInterface
 {
+    public function getAutoloads(): array;
+
     public function getPackageDir(): string;
 
     public function getRequires(): array;
-
-    public function getAutoloads(): array;
 }

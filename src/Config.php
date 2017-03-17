@@ -34,25 +34,6 @@ class Config implements ConfigInterface
         $this->config     = $config;
     }
 
-    public function getPackageDir(): string
-    {
-        return $this->packageDir;
-    }
-
-    public function getRequires(): array
-    {
-        $require = $this->get('require');
-
-        return array_filter(array_keys($require), function (string $package) {
-            return $package !== 'typisttech/imposter';
-        });
-    }
-
-    protected function get(string $key): array
-    {
-        return $this->config[$key] ?? [];
-    }
-
     public function getAutoloads(): array
     {
         return array_map(function (string $autoload) {
@@ -69,6 +50,11 @@ class Config implements ConfigInterface
         }, $autoload);
     }
 
+    protected function get(string $key): array
+    {
+        return $this->config[$key] ?? [];
+    }
+
     private function normalizeAutoload($autoloadConfigs): array
     {
         if (! is_array($autoloadConfigs)) {
@@ -78,5 +64,19 @@ class Config implements ConfigInterface
         return ArrayUtil::flattenMap(function ($autoloadConfig) {
             return $this->normalizeAutoload($autoloadConfig);
         }, $autoloadConfigs);
+    }
+
+    public function getPackageDir(): string
+    {
+        return $this->packageDir;
+    }
+
+    public function getRequires(): array
+    {
+        $require = $this->get('require');
+
+        return array_filter(array_keys($require), function (string $package) {
+            return $package !== 'typisttech/imposter';
+        });
     }
 }

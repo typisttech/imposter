@@ -18,7 +18,7 @@ namespace TypistTech\Imposter;
 
 interface ProjectConfigInterface extends ConfigInterface
 {
-    public function getVendorDir(): string;
-
     public function getImposterNamespace(): string;
+
+    public function getVendorDir(): string;
 }

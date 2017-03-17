@@ -22,13 +22,13 @@ final class StringUtil
     {
     }
 
-    public static function addTrailingSlash(string $string): string
-    {
-        return rtrim($string, '/\\') . '/';
-    }
-
     public static function addDoubleTrailingBackwardSlash(string $string): string
     {
         return rtrim($string, '/\\') . '\\\\';
+    }
+
+    public static function addTrailingSlash(string $string): string
+    {
+        return rtrim($string, '/\\') . '/';
     }
 }

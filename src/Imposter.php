@@ -29,6 +29,18 @@ class Imposter implements ImposterInterface
     protected $transformer;
 
     /**
+     * Imposter constructor.
+     *
+     * @param ConfigCollectionInterface $configCollection
+     * @param TransformerInterface      $transformer
+     */
+    public function __construct(ConfigCollectionInterface $configCollection, TransformerInterface $transformer)
+    {
+        $this->configCollection = $configCollection;
+        $this->transformer      = $transformer;
+    }
+
+    /**
      * @return ConfigCollectionInterface
      */
     public function getConfigCollection(): ConfigCollectionInterface
@@ -42,18 +54,6 @@ class Imposter implements ImposterInterface
     public function getTransformer(): TransformerInterface
     {
         return $this->transformer;
-    }
-
-    /**
-     * Imposter constructor.
-     *
-     * @param ConfigCollectionInterface $configCollection
-     * @param TransformerInterface      $transformer
-     */
-    public function __construct(ConfigCollectionInterface $configCollection, TransformerInterface $transformer)
-    {
-        $this->configCollection = $configCollection;
-        $this->transformer      = $transformer;
     }
 
     /**

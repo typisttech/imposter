@@ -25,10 +25,10 @@ interface ConfigCollectionInterface
      */
     public function add(ConfigInterface $config);
 
-    public function getAutoloads(): array;
-
     /**
      * @return ConfigInterface[]
      */
     public function all(): array;
+
+    public function getAutoloads(): array;
 }

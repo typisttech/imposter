@@ -17,48 +17,6 @@ class ProjectConfigTest extends \Codeception\Test\Unit
     /**
      * @covers \TypistTech\Imposter\ProjectConfig
      */
-    public function testsIsAnInstanceOfConfig()
-    {
-        $json   = codecept_data_dir('composer.json');
-        $config = ConfigFactory::buildProjectConfig($json, new Filesystem);
-
-        $this->assertInstanceOf(ProjectConfig::class, $config);
-        $this->assertInstanceOf(Config::class, $config);
-    }
-
-    /**
-     * @covers \TypistTech\Imposter\ProjectConfig
-     */
-    public function testsGetVendorDirWithDefaultFallback()
-    {
-        $json   = codecept_data_dir('tmp-vendor/dummy/dummy-dependency/composer.json');
-        $config = ConfigFactory::buildProjectConfig($json, new Filesystem);
-
-        $expected = codecept_data_dir('tmp-vendor/dummy/dummy-dependency/vendor/');
-
-        $actual = $config->getVendorDir();
-
-        $this->assertSame($expected, $actual);
-    }
-
-    /**
-     * @covers \TypistTech\Imposter\ProjectConfig
-     */
-    public function testsGetVendorDir()
-    {
-        $json   = codecept_data_dir('composer.json');
-        $config = ConfigFactory::buildProjectConfig($json, new Filesystem);
-
-        $expected = codecept_data_dir('tmp-vendor/');
-
-        $actual = $config->getVendorDir();
-
-        $this->assertSame($expected, $actual);
-    }
-
-    /**
-     * @covers \TypistTech\Imposter\ProjectConfig
-     */
     public function testsGetImposterNamespace()
     {
         $json   = codecept_data_dir('composer.json');
@@ -84,5 +42,47 @@ class ProjectConfigTest extends \Codeception\Test\Unit
         $this->tester->expectException($expected, function () use ($config) {
             $config->getImposterNamespace();
         });
+    }
+
+    /**
+     * @covers \TypistTech\Imposter\ProjectConfig
+     */
+    public function testsGetVendorDir()
+    {
+        $json   = codecept_data_dir('composer.json');
+        $config = ConfigFactory::buildProjectConfig($json, new Filesystem);
+
+        $expected = codecept_data_dir('tmp-vendor/');
+
+        $actual = $config->getVendorDir();
+
+        $this->assertSame($expected, $actual);
+    }
+
+    /**
+     * @covers \TypistTech\Imposter\ProjectConfig
+     */
+    public function testsGetVendorDirWithDefaultFallback()
+    {
+        $json   = codecept_data_dir('tmp-vendor/dummy/dummy-dependency/composer.json');
+        $config = ConfigFactory::buildProjectConfig($json, new Filesystem);
+
+        $expected = codecept_data_dir('tmp-vendor/dummy/dummy-dependency/vendor/');
+
+        $actual = $config->getVendorDir();
+
+        $this->assertSame($expected, $actual);
+    }
+
+    /**
+     * @covers \TypistTech\Imposter\ProjectConfig
+     */
+    public function testsIsAnInstanceOfConfig()
+    {
+        $json   = codecept_data_dir('composer.json');
+        $config = ConfigFactory::buildProjectConfig($json, new Filesystem);
+
+        $this->assertInstanceOf(ProjectConfig::class, $config);
+        $this->assertInstanceOf(Config::class, $config);
     }
 }
