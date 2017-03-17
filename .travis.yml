@@ -39,7 +39,8 @@ before_script:
   # Disable xDebug to speed up the build unless test coverage is needed
   - if [[ "$WITH_COVERAGE" != "true" && $(phpenv version-name) != "nightly" ]]; then phpenv config-rm xdebug.ini; fi
 
-  - travis_retry composer update --prefer-dist
+  - if [[ "TRAVIS_EVENT_TYPE" != "cron" ]]; then travis_retry composer install --prefer-dist; fi
+  - if [[ "TRAVIS_EVENT_TYPE" == "cron" ]]; then travis_retry composer update --prefer-dist; fi
 
 script:
     - if [[ "$WITH_COVERAGE" != "true" ]]; then composer test; fi
