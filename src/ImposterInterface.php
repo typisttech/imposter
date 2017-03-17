@@ -19,6 +19,13 @@ namespace TypistTech\Imposter;
 interface ImposterInterface
 {
     /**
+     * Get all autoload paths.
+     *
+     * @return string[]
+     */
+    public function getAutoloads();
+
+    /**
      * Transform all autoload files.
      *
      * @return void

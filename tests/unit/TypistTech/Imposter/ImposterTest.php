@@ -25,6 +25,14 @@ class ImposterTest extends \Codeception\Test\Unit
         $this->assertSame($expected, $actual);
     }
 
+    public function testGetAutoloads()
+    {
+        $actual   = $this->imposter->getAutoloads();
+        $expected = $this->configCollection->getAutoloads();
+
+        $this->assertSame($expected, $actual);
+    }
+
     /**
      * @covers \TypistTech\Imposter\Imposter
      */
