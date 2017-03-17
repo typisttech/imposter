@@ -29,6 +29,30 @@ class ImposterTest extends \Codeception\Test\Unit
         $this->transformer->verifyInvokedMultipleTimes('transform', 2);
     }
 
+    public function testTransformerGetter()
+    {
+        $actual = $this->imposter->getTransformer();
+        $expected = $this->transformer->getObject();
+
+        $this->assertSame($expected, $actual);
+    }
+
+    public function testConfigCollectionGetter()
+    {
+        $actual = $this->imposter->getConfigCollection();
+        $expected = $this->configCollection->getObject();
+
+        $this->assertSame($expected, $actual);
+    }
+
+    public function testTransform()
+    {
+        $this->imposter->transform('my/path');
+
+        $this->transformer->verifyInvokedOnce('transform', ['my/path']);
+        $this->transformer->verifyInvokedMultipleTimes('transform', 1);
+    }
+
     protected function _before()
     {
         $this->configCollection = Test::double(

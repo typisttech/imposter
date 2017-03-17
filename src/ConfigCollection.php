@@ -16,26 +16,26 @@ declare(strict_types = 1);
 
 namespace TypistTech\Imposter;
 
-final class ConfigCollection
+final class ConfigCollection implements ConfigCollectionInterface
 {
     /**
-     * @var Config[]
+     * @var ConfigInterface[]
      */
     private $configs = [];
 
     /**
-     * @param Config $config
+     * @param ConfigInterface $config
      *
      * @return void
      */
-    public function add(Config $config)
+    public function add(ConfigInterface $config)
     {
         $this->configs[$config->getPackageDir()] = $config;
     }
 
     public function getAutoloads(): array
     {
-        $autoloads = ArrayUtil::flattenMap(function (Config $config) {
+        $autoloads = ArrayUtil::flattenMap(function (ConfigInterface $config) {
             return $config->getAutoloads();
         }, $this->all());
 
@@ -43,7 +43,7 @@ final class ConfigCollection
     }
 
     /**
-     * @return Config[]
+     * @return ConfigInterface[]
      */
     public function all(): array
     {

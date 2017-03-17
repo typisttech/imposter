@@ -16,7 +16,7 @@ declare(strict_types = 1);
 
 namespace TypistTech\Imposter;
 
-class Config
+class Config implements ConfigInterface
 {
     /**
      * @var string
