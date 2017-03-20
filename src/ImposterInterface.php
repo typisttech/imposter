@@ -23,7 +23,7 @@ interface ImposterInterface
      *
      * @return string[]
      */
-    public function getAutoloads();
+    public function getAutoloads(): array;
 
     /**
      * Transform all autoload files.
