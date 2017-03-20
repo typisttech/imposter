@@ -50,23 +50,6 @@ class TransformerTest extends \Codeception\Test\Unit
     /**
      * @covers \TypistTech\Imposter\Transformer
      */
-    public function testTransformTwiceHasNoEffects()
-    {
-        $transformer = new Transformer('MyPlugin\Vendor', new Filesystem);
-
-        $transformer->transform($this->dummyFile);
-        $transformer->transform($this->dummyFile);
-
-        $this->tester->openFile($this->dummyFile);
-        $this->tester->dontSeeInThisFile('MyPlugin\Vendor\MyPlugin\Vendor');
-
-        $this->assertTransformed($this->dummyFile);
-    }
-
-
-    /**
-     * @covers \TypistTech\Imposter\Transformer
-     */
     private function assertTransformed(string $path)
     {
         $tester = $this->tester;
@@ -82,6 +65,37 @@ class TransformerTest extends \Codeception\Test\Unit
         $tester->seeInThisFile('use MyPlugin\Vendor\Dummy\SubOtherDummy;');
         $tester->seeInThisFile('use MyPlugin\Vendor\OtherDummy\SubOtherDummy;');
         $tester->seeInThisFile('use MyPlugin\Vendor\AnotherDummy\{');
+    }
+
+    /**
+     * @covers \TypistTech\Imposter\Transformer
+     */
+    public function testTransformExcludesComposerNamespace()
+    {
+        $transformer = new Transformer('MyPlugin\Vendor', new Filesystem);
+
+        $transformer->transform($this->dummyFile);
+
+        $this->tester->openFile($this->dummyFile);
+        $this->tester->dontSeeInThisFile('MyPlugin\Vendor\Composer;');
+        $this->tester->dontSeeInThisFile('MyPlugin\Vendor\Composer\\');
+        $this->tester->seeInThisFile('MyPlugin\Vendor\ComposerExtra');
+    }
+
+    /**
+     * @covers \TypistTech\Imposter\Transformer
+     */
+    public function testTransformTwiceHasNoEffects()
+    {
+        $transformer = new Transformer('MyPlugin\Vendor', new Filesystem);
+
+        $transformer->transform($this->dummyFile);
+        $transformer->transform($this->dummyFile);
+
+        $this->tester->openFile($this->dummyFile);
+        $this->tester->dontSeeInThisFile('MyPlugin\Vendor\MyPlugin\Vendor');
+
+        $this->assertTransformed($this->dummyFile);
     }
 
     /**
