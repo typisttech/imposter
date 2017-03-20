@@ -93,6 +93,7 @@ This is the namespace prefix to be added to vendor packages.
 
 Vendor packages which needs to be excluded from namespace prefixing.
 All [composer made packages](https://packagist.org/packages/composer/) are excluded by default.
+Besides, anything under the `Composer` namespace will be excluded.
 
 ## Usage
 
