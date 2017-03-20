@@ -12,7 +12,7 @@
  * @see       https://www.typist.tech/projects/imposter
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace TypistTech\Imposter;
 
@@ -68,7 +68,7 @@ class Config implements ConfigInterface
      */
     private function normalizeAutoload($autoloadConfigs): array
     {
-        if (! is_array($autoloadConfigs)) {
+        if (!is_array($autoloadConfigs)) {
             return [$autoloadConfigs];
         }
 
@@ -87,10 +87,6 @@ class Config implements ConfigInterface
      */
     public function getRequires(): array
     {
-        $require = $this->get('require');
-
-        return array_filter(array_keys($require), function (string $package) {
-            return $package !== 'typisttech/imposter';
-        });
+        return array_keys($this->get('require'));
     }
 }

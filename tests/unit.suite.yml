@@ -6,5 +6,5 @@ class_name: UnitTester
 modules:
     enabled:
         - Asserts
-        - \Helper\Unit
         - Filesystem
+        - \TypistTech\Imposter\Helper\Unit

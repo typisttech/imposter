@@ -12,12 +12,14 @@
  * @see       https://www.typist.tech/projects/imposter
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace TypistTech\Imposter;
 
 interface ProjectConfigInterface extends ConfigInterface
 {
+    public function getImposterExcludes(): array;
+
     public function getImposterNamespace(): string;
 
     public function getVendorDir(): string;

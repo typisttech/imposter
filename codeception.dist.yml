@@ -1,3 +1,4 @@
+namespace: TypistTech\Imposter
 actor: Tester
 paths:
     tests: tests

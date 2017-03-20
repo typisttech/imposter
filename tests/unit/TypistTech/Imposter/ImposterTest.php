@@ -1,4 +1,5 @@
 <?php
+
 namespace TypistTech\Imposter;
 
 use AspectMock\Test;
@@ -8,12 +9,12 @@ use AspectMock\Test;
  */
 class ImposterTest extends \Codeception\Test\Unit
 {
+    private $configCollection;
+
     /**
      * @var Imposter
      */
     private $imposter;
-
-    private $configCollection;
 
     private $transformer;
 

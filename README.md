@@ -22,9 +22,13 @@ Wrapping all composer vendor packages inside your own namespace. Intended for Wo
 
 - [Why?](#why)
 - [Install](#install)
+- [Config](#config)
+  - [extra.imposter.namespace](#extraimposternamespace)
+  - [extra.imposter.excludes](#extraimposterexcludes)
 - [Usage](#usage)
 - [Frequently Asked Questions](#frequently-asked-questions)
   - [Does Imposter support `PSR4`, `PSR0`, `Classmap` and `Files`?](#does-imposter-support-psr4-psr0-classmap-and-files)
+  - [Can I exclude some of the packages from `Imposter`?](#can-i-exclude-some-of-the-packages-from-imposter)
   - [Does Imposter support `exclude-from-classmap`?](#does-imposter-support-exclude-from-classmap)
   - [How about `require-dev` packages?](#how-about-require-dev-packages)
   - [How about packages that don't use namespaces?](#how-about-packages-that-dont-use-namespaces)
@@ -62,15 +66,32 @@ Installation should be done via composer, details of how to install composer can
 $ composer require typisttech/imposter
 ```
 
-Then, config the imposter namespace in your `composer.json`
+## Config
+
+In your `composer.json`:
 
 ```json
 "extra": {
     "imposter": {
-        "namespace": "My\\App\\Vendor"
+        "namespace": "My\\App\\Vendor",
+        "excludes": [
+            "dummy/dummy-excluded"
+        ]
     }
 }
 ```
+
+### extra.imposter.namespace
+
+*Required* String
+
+This is the namespace prefix to be added to vendor packages.
+
+### extra.imposter.excludes
+
+*Optional* Array of strings
+
+Vendor packages which exclude from namespace prefixing.
 
 ## Usage
 
@@ -132,6 +153,10 @@ class DummyClass
 
 Yes for all. PSR-4 and PSR-0 autoloading, classmap generation and files includes are supported.
 
+### Can I exclude some of the packages from `Imposter`?
+
+Yes, see [`extra.imposter.excludes`](#extraimposterexcludes)
+
 ### Does Imposter support `exclude-from-classmap`?
 
 Not for now. 
@@ -140,7 +165,6 @@ Pull requests are welcome.
 ### How about `require-dev` packages?
 
 Imposter do nothing on `require-dev` packages because imposter is intended for avoiding production environment., not for development environment. 
-
 
 ### How about packages that don't use namespaces?
 

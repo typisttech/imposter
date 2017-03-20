@@ -1,5 +1,7 @@
 <?php
 
+namespace TypistTech\Imposter;
+
 /**
  * Inherited Methods
  * @method void wantToTest($text)
