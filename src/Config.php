@@ -87,10 +87,6 @@ class Config implements ConfigInterface
      */
     public function getRequires(): array
     {
-        $require = $this->get('require');
-
-        return array_filter(array_keys($require), function (string $package) {
-            return $package !== 'typisttech/imposter';
-        });
+        return array_keys($this->get('require'));
     }
 }

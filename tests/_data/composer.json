@@ -1,5 +1,6 @@
 {
     "require": {
+        "php": "^7.0",
         "dummy/dummy": "*",
         "dummy/dummy-psr4": "*",
         "typisttech/imposter": "*"
@@ -50,7 +51,10 @@
     },
     "extra": {
         "imposter": {
-            "namespace": "TypistTech\\Imposter\\Vendor"
+            "namespace": "TypistTech\\Imposter\\Vendor",
+            "excludes": [
+                "dummy/dummy-excluded"
+            ]
         }
     }
 }

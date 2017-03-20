@@ -62,6 +62,41 @@ class ProjectConfigTest extends \Codeception\Test\Unit
     /**
      * @covers \TypistTech\Imposter\ProjectConfig
      */
+    public function testsGetExcludes()
+    {
+        $json   = codecept_data_dir('composer.json');
+        $config = ConfigFactory::buildProjectConfig($json, new Filesystem);
+
+        $expected = [
+            'typisttech/imposter',
+            'dummy/dummy-excluded'
+        ];
+
+        $actual = $config->getImposterExcludes();
+
+        $this->assertSame($expected, $actual);
+    }
+
+    /**
+     * @covers \TypistTech\Imposter\ProjectConfig
+     */
+    public function testsGetExcludesDefault()
+    {
+        $json   = codecept_data_dir('tmp-vendor/dummy/dummy-dependency/composer.json');
+        $config = ConfigFactory::buildProjectConfig($json, new Filesystem);
+
+        $expected = [
+            'typisttech/imposter'
+        ];
+
+        $actual = $config->getImposterExcludes();
+
+        $this->assertSame($expected, $actual);
+    }
+
+    /**
+     * @covers \TypistTech\Imposter\ProjectConfig
+     */
     public function testsGetVendorDirWithDefaultFallback()
     {
         $json   = codecept_data_dir('tmp-vendor/dummy/dummy-dependency/composer.json');

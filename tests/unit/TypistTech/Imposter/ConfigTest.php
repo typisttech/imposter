@@ -26,16 +26,6 @@ class ConfigTest extends \Codeception\Test\Unit
     /**
      * @covers \TypistTech\Imposter\Config
      */
-    public function testExcludeImposter()
-    {
-        $actual = $this->config->getRequires();
-
-        $this->assertNotContains('typisttech/imposter', $actual);
-    }
-
-    /**
-     * @covers \TypistTech\Imposter\Config
-     */
     public function testGetAutoloads()
     {
         $actual = $this->config->getAutoloads();
@@ -111,8 +101,10 @@ class ConfigTest extends \Codeception\Test\Unit
     public function testGetRequires()
     {
         $expected = [
+            'php',
             'dummy/dummy',
             'dummy/dummy-psr4',
+            'typisttech/imposter'
         ];
 
         $actual = $this->config->getRequires();

@@ -38,4 +38,17 @@ final class ProjectConfig extends Config implements ProjectConfigInterface
 
         return StringUtil::addTrailingSlash($this->packageDir . $vendorDir);
     }
+
+    public function getImposterExcludes(): array
+    {
+        $extra = $this->get('extra');
+
+        $default = [
+            'typisttech/imposter'
+        ];
+
+        $excludes = $extra['imposter']['excludes'] ?? [];
+
+        return array_merge($default, $excludes);
+    }
 }

@@ -32,7 +32,6 @@ final class ImposterFactory
         $transformer      = new Transformer($projectConfig->getImposterNamespace(), $filesystem);
         $configCollection = ConfigCollectionFactory::forProject(
             $projectConfig,
-            $projectConfig->getVendorDir(),
             $filesystem
         );
 
