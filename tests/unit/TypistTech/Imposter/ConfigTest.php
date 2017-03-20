@@ -1,4 +1,5 @@
 <?php
+
 namespace TypistTech\Imposter;
 
 use Illuminate\Filesystem\Filesystem;
@@ -14,14 +15,14 @@ class ConfigTest extends \Codeception\Test\Unit
     protected $tester;
 
     /**
-     * @var string
-     */
-    private $json;
-
-    /**
      * @var Config
      */
     private $config;
+
+    /**
+     * @var string
+     */
+    private $json;
 
     /**
      * @covers \TypistTech\Imposter\Config
@@ -104,7 +105,7 @@ class ConfigTest extends \Codeception\Test\Unit
             'php',
             'dummy/dummy',
             'dummy/dummy-psr4',
-            'typisttech/imposter'
+            'typisttech/imposter',
         ];
 
         $actual = $this->config->getRequires();

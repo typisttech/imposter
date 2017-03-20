@@ -12,7 +12,7 @@
  * @see       https://www.typist.tech/projects/imposter
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace TypistTech\Imposter;
 
@@ -22,14 +22,14 @@ use SplFileInfo;
 final class Transformer implements TransformerInterface
 {
     /**
-     * @var string
-     */
-    private $namespacePrefix;
-
-    /**
      * @var \Illuminate\Filesystem\Filesystem
      */
     private $filesystem;
+
+    /**
+     * @var string
+     */
+    private $namespacePrefix;
 
     /**
      * Transformer constructor.

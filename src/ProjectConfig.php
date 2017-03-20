@@ -12,7 +12,7 @@
  * @see       https://www.typist.tech/projects/imposter
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace TypistTech\Imposter;
 
@@ -20,6 +20,19 @@ use UnexpectedValueException;
 
 final class ProjectConfig extends Config implements ProjectConfigInterface
 {
+    public function getImposterExcludes(): array
+    {
+        $extra = $this->get('extra');
+
+        $default = [
+            'typisttech/imposter',
+        ];
+
+        $excludes = $extra['imposter']['excludes'] ?? [];
+
+        return array_merge($default, $excludes);
+    }
+
     public function getImposterNamespace(): string
     {
         $extra = $this->get('extra');
@@ -37,18 +50,5 @@ final class ProjectConfig extends Config implements ProjectConfigInterface
         $vendorDir = $config['vendor-dir'] ?? 'vendor';
 
         return StringUtil::addTrailingSlash($this->packageDir . $vendorDir);
-    }
-
-    public function getImposterExcludes(): array
-    {
-        $extra = $this->get('extra');
-
-        $default = [
-            'typisttech/imposter'
-        ];
-
-        $excludes = $extra['imposter']['excludes'] ?? [];
-
-        return array_merge($default, $excludes);
     }
 }
