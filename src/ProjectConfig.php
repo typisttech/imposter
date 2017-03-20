@@ -23,12 +23,9 @@ final class ProjectConfig extends Config implements ProjectConfigInterface
     public function getImposterExcludes(): array
     {
         $extra = $this->get('extra');
-
-        $default = [
-            'typisttech/imposter',
-        ];
-
         $excludes = $extra['imposter']['excludes'] ?? [];
+
+        $default = ['typisttech/imposter'];
 
         return array_merge($default, $excludes);
     }
