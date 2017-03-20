@@ -22,9 +22,14 @@ final class StringUtil
     {
     }
 
-    public static function addDoubleTrailingBackwardSlash(string $string): string
+    public static function ensureDoubleBackwardSlash(string $string): string
     {
-        return rtrim($string, '/\\') . '\\\\';
+        $parts = explode('\\', $string);
+        $nonEmptyParts = array_filter($parts, function ($part) {
+            return !empty($part);
+        });
+
+        return implode('\\\\', $nonEmptyParts) . '\\\\';
     }
 
     public static function addTrailingSlash(string $string): string

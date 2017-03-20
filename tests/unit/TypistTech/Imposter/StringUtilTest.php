@@ -8,33 +8,33 @@ namespace TypistTech\Imposter;
 class StringUtilTest extends \Codeception\Test\Unit
 {
     /**
-     * @covers \TypistTech\Imposter\StringUtil::addDoubleTrailingBackwardSlash
+     * @covers \TypistTech\Imposter\StringUtil::ensureDoubleBackwardSlash
      */
-    public function testAddDoubleTrailingBackwardSlash()
+    public function testEnsureDoubleBackwardSlash1()
     {
-        $actual = StringUtil::addDoubleTrailingBackwardSlash('my\\foo');
+        $actual = StringUtil::ensureDoubleBackwardSlash('my\\foo');
 
-        $this->assertSame('my\\foo\\\\', $actual);
+        $this->assertSame('my\\\\foo\\\\', $actual);
     }
 
     /**
-     * @covers \TypistTech\Imposter\StringUtil::addDoubleTrailingBackwardSlash
+     * @covers \TypistTech\Imposter\StringUtil::ensureDoubleBackwardSlash
      */
-    public function testAddDoubleTrailingBackwardSlashToBackwardSlashed()
+    public function testEnsureDoubleBackwardSlash2()
     {
-        $actual = StringUtil::addDoubleTrailingBackwardSlash('my\\foo\\');
+        $actual = StringUtil::ensureDoubleBackwardSlash('my\\\\foo\\');
 
-        $this->assertSame('my\\foo\\\\', $actual);
+        $this->assertSame('my\\\\foo\\\\', $actual);
     }
 
     /**
-     * @covers \TypistTech\Imposter\StringUtil::addDoubleTrailingBackwardSlash
+     * @covers \TypistTech\Imposter\StringUtil::ensureDoubleBackwardSlash
      */
-    public function testAddDoubleTrailingBackwardSlashToDoubleBackwardSlashed()
+    public function testEnsureDoubleBackwardSlash3()
     {
-        $actual = StringUtil::addDoubleTrailingBackwardSlash('my\\foo\\');
+        $actual = StringUtil::ensureDoubleBackwardSlash('my\\foo\\\\');
 
-        $this->assertSame('my\\foo\\\\', $actual);
+        $this->assertSame('my\\\\foo\\\\', $actual);
     }
 
     /**

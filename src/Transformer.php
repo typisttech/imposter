@@ -39,7 +39,7 @@ final class Transformer implements TransformerInterface
      */
     public function __construct(string $namespacePrefix, Filesystem $filesystem)
     {
-        $this->namespacePrefix = StringUtil::addDoubleTrailingBackwardSlash($namespacePrefix);
+        $this->namespacePrefix = StringUtil::ensureDoubleBackwardSlash($namespacePrefix);
         $this->filesystem      = $filesystem;
     }
 
