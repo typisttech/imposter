@@ -75,7 +75,11 @@ final class ConfigCollectionFactory
             return (false !== strpos($package, '/'));
         });
 
-        return array_filter($requiredPackages, function (string $package) use ($projectConfig) {
+        $nonComposerPackages = array_filter($requiredPackages, function (string $package) {
+            return (false === strpos($package, 'composer/'));
+        });
+
+        return array_filter($nonComposerPackages, function (string $package) use ($projectConfig) {
             return !in_array($package, $projectConfig->getImposterExcludes(), true);
         });
     }

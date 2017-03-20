@@ -91,7 +91,8 @@ This is the namespace prefix to be added to vendor packages.
 
 *Optional* Array of strings
 
-Vendor packages which exclude from namespace prefixing.
+Vendor packages which needs to be excluded from namespace prefixing.
+All [composer made packages](https://packagist.org/packages/composer/) are excluded by default.
 
 ## Usage
 
@@ -155,7 +156,8 @@ Yes for all. PSR-4 and PSR-0 autoloading, classmap generation and files includes
 
 ### Can I exclude some of the packages from `Imposter`?
 
-Yes, see [`extra.imposter.excludes`](#extraimposterexcludes)
+Yes, see [`extra.imposter.excludes`](#extraimposterexcludes).
+All [composer made packages](https://packagist.org/packages/composer/) are excluded by default.
 
 ### Does Imposter support `exclude-from-classmap`?
 

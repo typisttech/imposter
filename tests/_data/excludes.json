@@ -1,6 +1,7 @@
 {
     "require": {
         "php": "^7.0",
+        "composer/dummy": "*",
         "dummy/dummy": "*",
         "dummy/dummy-psr4": "*",
         "typisttech/imposter": "*"
