@@ -85,6 +85,20 @@ class TransformerTest extends \Codeception\Test\Unit
     /**
      * @covers \TypistTech\Imposter\Transformer
      */
+    public function testTransformExcludesTypistTechImposterNamespace()
+    {
+        $transformer = new Transformer('MyPlugin\Vendor', new Filesystem);
+
+        $transformer->transform($this->dummyFile);
+
+        $this->tester->openFile($this->dummyFile);
+        $this->tester->dontSeeInThisFile('MyPlugin\Vendor\TypistTech\Imposter');
+        $this->tester->seeInThisFile('TypistTech\Imposter');
+    }
+
+    /**
+     * @covers \TypistTech\Imposter\Transformer
+     */
     public function testTransformTwiceHasNoEffects()
     {
         $transformer = new Transformer('MyPlugin\Vendor', new Filesystem);

@@ -89,7 +89,11 @@ final class Transformer implements TransformerInterface
      */
     private function prefix(string $keyword, string $targetFile)
     {
-        $pattern     = sprintf('/%1$s\\s+(?!(%2$s)|(Composer(\\\\|;)))/', $keyword, $this->namespacePrefix);
+        $pattern     = sprintf(
+            '/%1$s\\s+(?!(%2$s)|((Composer|TypistTech\\\\Imposter)(\\\\|;)))/',
+            $keyword,
+            $this->namespacePrefix
+        );
         $replacement = sprintf('%1$s %2$s', $keyword, $this->namespacePrefix);
 
         $this->replace($pattern, $replacement, $targetFile);
