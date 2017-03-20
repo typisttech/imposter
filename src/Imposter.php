@@ -16,17 +16,22 @@ declare(strict_types=1);
 
 namespace TypistTech\Imposter;
 
-class Imposter implements ImposterInterface
+final class Imposter implements ImposterInterface
 {
+    /**
+     * @var string[]
+     */
+    private $autoloads;
+
     /**
      * @var ConfigCollectionInterface
      */
-    protected $configCollection;
+    private $configCollection;
 
     /**
      * @var TransformerInterface
      */
-    protected $transformer;
+    private $transformer;
 
     /**
      * Imposter constructor.
@@ -74,7 +79,11 @@ class Imposter implements ImposterInterface
      */
     public function getAutoloads(): array
     {
-        return $this->configCollection->getAutoloads();
+        if (empty($this->autoloads)) {
+            $this->autoloads = $this->configCollection->getAutoloads();
+        }
+
+        return $this->autoloads;
     }
 
     /**
