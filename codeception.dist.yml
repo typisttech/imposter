@@ -1,0 +1,20 @@
+namespace: TypistTech\Imposter
+actor: Tester
+paths:
+    tests: tests
+    log: tests/_output
+    data: tests/_data
+    support: tests/_support
+    envs: tests/_envs
+settings:
+    bootstrap: _bootstrap.php
+    shuffle: true
+    colors: true
+    memory_limit: 1024M
+coverage:
+  enabled: true
+  include:
+    - src/*
+extensions:
+    enabled:
+        - Codeception\Extension\RunFailed
