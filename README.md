@@ -27,6 +27,7 @@ Wrapping all composer vendor packages inside your own namespace. Intended for Wo
   - [extra.imposter.excludes](#extraimposterexcludes)
 - [Usage](#usage)
 - [Frequently Asked Questions](#frequently-asked-questions)
+  - [How can I integrate Imposter with composer?](#how-can-i-integrate-imposter-with-composer)
   - [Does Imposter support `PSR4`, `PSR0`, `Classmap` and `Files`?](#does-imposter-support-psr4-psr0-classmap-and-files)
   - [Can I exclude some of the packages from `Imposter`?](#can-i-exclude-some-of-the-packages-from-imposter)
   - [Does Imposter support `exclude-from-classmap`?](#does-imposter-support-exclude-from-classmap)
@@ -55,10 +56,13 @@ Because of the lack of dependency management in WordPress, if two plugins bundle
 Monkey patching composer vendor packages, wrapping them inside your own namespace is a less-than-ideal solution to avoid such conflicts. 
 
 See:
-[A Narrative of Using Composer in a WordPress Plugin](https://wptavern.com/a-narrative-of-using-composer-in-a-wordpress-plugin)
-[A Warning About Using Composer With WordPress](https://blog.wppusher.com/a-warning-about-using-composer-with-wordpress/)
+- [A Narrative of Using Composer in a WordPress Plugin](https://wptavern.com/a-narrative-of-using-composer-in-a-wordpress-plugin)
+- [A Warning About Using Composer With WordPress](https://blog.wppusher.com/a-warning-about-using-composer-with-wordpress/)
 
 ## Install
+
+> If you want to hook Imposter into [composer command events](https://getcomposer.org/doc/articles/scripts.md#command-events), install [imposter-plugin](https://www.typist.tech/projects/imposter-plugin) instead.
+> See: [How can I integrate Imposter with composer?](#how-can-i-integrate-imposter-with-composer)
 
 Installation should be done via composer, details of how to install composer can be found at [https://getcomposer.org/](https://getcomposer.org/).
 
@@ -150,6 +154,11 @@ class DummyClass
 ```
 
 ## Frequently Asked Questions
+
+### How can I integrate Imposter with composer?
+
+Use [imposter-plugin](https://www.typist.tech/projects/imposter-plugin) instead.
+It hooks Imposter into [composer command events](https://getcomposer.org/doc/articles/scripts.md#command-events).
 
 ### Does Imposter support `PSR4`, `PSR0`, `Classmap` and `Files`?
 
