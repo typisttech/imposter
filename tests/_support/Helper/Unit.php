@@ -6,16 +6,18 @@ namespace TypistTech\Imposter\Helper;
 // all public methods declared in helper class will be available in $I
 
 use AspectMock\Test;
+use Codeception\Module;
+use Codeception\TestInterface;
 
-class Unit extends \Codeception\Module
+class Unit extends Module
 {
-    public function _after(\Codeception\TestInterface $test)
+    public function _after(TestInterface $test)
     {
         $this->getModule('Filesystem')->deleteDir(codecept_data_dir('tmp-vendor'));
         Test::clean();
     }
 
-    public function _before(\Codeception\TestInterface $test)
+    public function _before(TestInterface $test)
     {
         $this->getModule('Filesystem')->copyDir(codecept_data_dir('fake-vendor'), codecept_data_dir('tmp-vendor'));
     }
