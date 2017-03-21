@@ -38,6 +38,9 @@
         "codeception/base": "^2.2",
         "squizlabs/php_codesniffer": "^2.8"
     },
+    "suggest": {
+        "typisttech/imposter-plugin": "Composer plugin to integrate composer and imposter"
+    },
     "autoload": {
         "psr-4": {
             "TypistTech\\Imposter\\": "src"
