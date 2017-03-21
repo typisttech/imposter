@@ -1,6 +1,3 @@
 linters:
   phpcs:
-    standard: 'PSR2'
-
-files:
-    ignore: ['tests/*']
+    standard: './ruleset.xml'
