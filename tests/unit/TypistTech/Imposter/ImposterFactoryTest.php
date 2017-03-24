@@ -3,7 +3,6 @@
 namespace TypistTech\Imposter;
 
 use AspectMock\Test;
-use Illuminate\Filesystem\Filesystem;
 
 /**
  * @coversDefaultClass \TypistTech\Imposter\ImposterFactory
