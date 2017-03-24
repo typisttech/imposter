@@ -16,8 +16,6 @@ declare(strict_types=1);
 
 namespace TypistTech\Imposter;
 
-use Illuminate\Filesystem\Filesystem;
-
 final class ConfigFactory
 {
     private function __construct()

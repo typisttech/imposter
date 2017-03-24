@@ -2,7 +2,6 @@
 
 namespace TypistTech\Imposter;
 
-use Illuminate\Filesystem\Filesystem;
 use UnexpectedValueException;
 
 /**

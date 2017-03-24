@@ -16,13 +16,12 @@ declare(strict_types=1);
 
 namespace TypistTech\Imposter;
 
-use Illuminate\Filesystem\Filesystem;
 use SplFileInfo;
 
 final class Transformer implements TransformerInterface
 {
     /**
-     * @var \Illuminate\Filesystem\Filesystem
+     * @var FilesystemInterface
      */
     private $filesystem;
 
@@ -37,7 +36,7 @@ final class Transformer implements TransformerInterface
      * @param string     $namespacePrefix
      * @param Filesystem $filesystem
      */
-    public function __construct(string $namespacePrefix, Filesystem $filesystem)
+    public function __construct(string $namespacePrefix, FilesystemInterface $filesystem)
     {
         $this->namespacePrefix = StringUtil::ensureDoubleBackwardSlash($namespacePrefix);
         $this->filesystem      = $filesystem;
@@ -45,6 +44,8 @@ final class Transformer implements TransformerInterface
 
     /**
      * Transform a file or directory recursively.
+     *
+     * @todo Skip non-php files.
      *
      * @param string $target Path to the target file or directory.
      *
