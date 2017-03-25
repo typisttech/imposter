@@ -1,10 +1,18 @@
 # Change Log
 
+## [0.2.2](https://github.com/TypistTech/imposter/tree/0.2.2) (2017-03-25)
+[Full Changelog](https://github.com/TypistTech/imposter/compare/0.2.1...0.2.2)
+
+**Merged pull requests:**
+
+- Fix: Transform single level namespace [\#44](https://github.com/TypistTech/imposter/pull/44) ([TangRufus](https://github.com/TangRufus))
+
 ## [0.2.1](https://github.com/TypistTech/imposter/tree/0.2.1) (2017-03-25)
 [Full Changelog](https://github.com/TypistTech/imposter/compare/0.2.0...0.2.1)
 
 **Merged pull requests:**
 
+- Version bump 0.2.1 [\#43](https://github.com/TypistTech/imposter/pull/43) ([TangRufus](https://github.com/TangRufus))
 - Skip global namespace [\#42](https://github.com/TypistTech/imposter/pull/42) ([TangRufus](https://github.com/TangRufus))
 
 ## [0.2.0](https://github.com/TypistTech/imposter/tree/0.2.0) (2017-03-25)
