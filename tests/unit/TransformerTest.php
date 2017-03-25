@@ -77,6 +77,8 @@ class TransformerTest extends \Codeception\Test\Unit
         $this->tester->openFile($this->dummyFile);
         $this->tester->dontSeeInThisFile('MyPlugin\Vendor\Composer;');
         $this->tester->dontSeeInThisFile('MyPlugin\Vendor\Composer\\');
+
+        $this->assertTransformed($this->dummyFile);
     }
 
     /**
@@ -91,6 +93,24 @@ class TransformerTest extends \Codeception\Test\Unit
         $this->tester->openFile($this->dummyFile);
         $this->tester->dontSeeInThisFile('use MyPlugin\Vendor\RuntimeException;');
         $this->tester->seeInThisFile('use RuntimeException;');
+
+        $this->assertTransformed($this->dummyFile);
+    }
+
+    /**
+     * @covers \TypistTech\Imposter\Transformer
+     */
+    public function testTransformSingleLevelNamespace()
+    {
+        $path        = codecept_data_dir('tmp-vendor/dummy/dummy-excluded/DummyClass.php');
+        $transformer = new Transformer('MyPlugin\Vendor', new Filesystem);
+
+        $transformer->transform($path);
+
+        $this->tester->openFile($path);
+        $this->tester->seeInThisFile('namespace MyPlugin\Vendor\Dummy');
+        $this->tester->dontSeeInThisFile('namespace Dummy;');
+        $this->tester->seeInThisFile('use MyPlugin\Vendor\Dummy\SubOtherDummy;');
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Dummy\Excluded;
+namespace Dummy;
 
 use AnotherDummy\{
     SubAnotherDummy, SubOtherDummy

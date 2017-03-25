@@ -33,8 +33,8 @@ final class Transformer implements TransformerInterface
     /**
      * Transformer constructor.
      *
-     * @param string     $namespacePrefix
-     * @param Filesystem $filesystem
+     * @param string              $namespacePrefix
+     * @param FilesystemInterface $filesystem
      */
     public function __construct(string $namespacePrefix, FilesystemInterface $filesystem)
     {
@@ -50,7 +50,6 @@ final class Transformer implements TransformerInterface
      * @param string $target Path to the target file or directory.
      *
      * @return void
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function transform(string $target)
     {
@@ -71,31 +70,28 @@ final class Transformer implements TransformerInterface
      * @param string $targetFile
      *
      * @return void
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     private function doTransform(string $targetFile)
     {
-        $this->prefix('namespace', $targetFile);
-        $this->prefix('use', $targetFile);
+        $this->prefixNamespace($targetFile);
+        $this->prefixUse($targetFile);
     }
 
     /**
-     * Prefix namespace or use keywords at the given path.
+     * Prefix namespace at the given path.
      *
-     * @param string $keyword Should be one of {namespace, use}
      * @param string $targetFile
      *
      * @return void
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    private function prefix(string $keyword, string $targetFile)
+    private function prefixNamespace(string $targetFile)
     {
         $pattern     = sprintf(
-            '/%1$s\\s+(?!(%2$s)|(Composer(\\\\|;)|(?!.*\\\\.*)))/',
-            $keyword,
+            '/%1$s\\s+(?!(%2$s)|(Composer(\\\\|;)))/',
+            'namespace',
             $this->namespacePrefix
         );
-        $replacement = sprintf('%1$s %2$s', $keyword, $this->namespacePrefix);
+        $replacement = sprintf('%1$s %2$s', 'namespace', $this->namespacePrefix);
 
         $this->replace($pattern, $replacement, $targetFile);
     }
@@ -108,7 +104,6 @@ final class Transformer implements TransformerInterface
      * @param string $targetFile
      *
      * @return void
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     private function replace(string $pattern, string $replacement, string $targetFile)
     {
@@ -120,5 +115,24 @@ final class Transformer implements TransformerInterface
                 $this->filesystem->get($targetFile)
             )
         );
+    }
+
+    /**
+     * Prefix use keywords at the given path.
+     *
+     * @param string $targetFile
+     *
+     * @return void
+     */
+    private function prefixUse(string $targetFile)
+    {
+        $pattern     = sprintf(
+            '/%1$s\\s+(?!(%2$s)|(Composer(\\\\|;)|(?!.*\\\\.*)))/',
+            'use',
+            $this->namespacePrefix
+        );
+        $replacement = sprintf('%1$s %2$s', 'use', $this->namespacePrefix);
+
+        $this->replace($pattern, $replacement, $targetFile);
     }
 }
