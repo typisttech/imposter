@@ -5,6 +5,7 @@
         }
     },
     "require": {
-        "dummy/dummy-common": "*"
+        "dummy/dummy-common": "*",
+        "dummy/dummy-excluded": "*"
     }
 }
