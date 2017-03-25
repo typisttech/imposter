@@ -40,8 +40,6 @@ final class ConfigCollectionFactory
         ConfigInterface $config,
         Filesystem $filesystem
     ): ConfigCollectionInterface {
-        $configCollection->add($config);
-
         $filteredRequires = self::getFilteredPackages($projectConfig, $config);
 
         foreach ($filteredRequires as $package) {
@@ -49,6 +47,8 @@ final class ConfigCollectionFactory
                 $projectConfig->getVendorDir() . $package . '/composer.json',
                 $filesystem
             );
+
+            $configCollection->add($packageConfig);
 
             self::addRequiredPackageConfigsRecursively(
                 $configCollection,

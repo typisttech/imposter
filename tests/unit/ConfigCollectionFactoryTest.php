@@ -24,7 +24,6 @@ class ConfigCollectionFactoryTest extends \Codeception\Test\Unit
         );
 
         $expected = new ConfigCollection;
-        $expected->add($projectConfig);
         $expected->add(
             ConfigFactory::build(
                 codecept_data_dir('tmp-vendor/dummy/dummy/composer.json'),
@@ -70,7 +69,6 @@ class ConfigCollectionFactoryTest extends \Codeception\Test\Unit
         );
 
         $expected = new ConfigCollection;
-        $expected->add($projectConfig);
         $expected->add(
             ConfigFactory::build(
                 codecept_data_dir('tmp-vendor/dummy/dummy/composer.json'),
