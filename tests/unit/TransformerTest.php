@@ -77,7 +77,20 @@ class TransformerTest extends \Codeception\Test\Unit
         $this->tester->openFile($this->dummyFile);
         $this->tester->dontSeeInThisFile('MyPlugin\Vendor\Composer;');
         $this->tester->dontSeeInThisFile('MyPlugin\Vendor\Composer\\');
-        $this->tester->seeInThisFile('MyPlugin\Vendor\ComposerExtra');
+    }
+
+    /**
+     * @covers \TypistTech\Imposter\Transformer
+     */
+    public function testTransformExcludesGlobalNamespace()
+    {
+        $transformer = new Transformer('MyPlugin\Vendor', new Filesystem);
+
+        $transformer->transform($this->dummyFile);
+
+        $this->tester->openFile($this->dummyFile);
+        $this->tester->dontSeeInThisFile('use MyPlugin\Vendor\RuntimeException;');
+        $this->tester->seeInThisFile('use RuntimeException;');
     }
 
     /**
