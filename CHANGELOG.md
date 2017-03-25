@@ -1,6 +1,13 @@
 # Change Log
 
-## [0.1.1](https://github.com/TypistTech/imposter/tree/0.1.1) (2017-03-25)
+## [0.2.0](https://github.com/TypistTech/imposter/tree/0.2.0) (2017-03-25)
+[Full Changelog](https://github.com/TypistTech/imposter/compare/0.1.1...0.2.0)
+
+**Merged pull requests:**
+
+- Exclude project config from collection [\#40](https://github.com/TypistTech/imposter/pull/40) ([TangRufus](https://github.com/TangRufus))
+
+## [0.1.1](https://github.com/TypistTech/imposter/tree/0.1.1) (2017-03-24)
 [Full Changelog](https://github.com/TypistTech/imposter/compare/0.1.0...0.1.1)
 
 **Closed issues:**
@@ -9,6 +16,7 @@
 
 **Merged pull requests:**
 
+- Version bump 0.1.1 [\#39](https://github.com/TypistTech/imposter/pull/39) ([TangRufus](https://github.com/TangRufus))
 - Use custom filesystem instead of illuminate/filesystem [\#38](https://github.com/TypistTech/imposter/pull/38) ([TangRufus](https://github.com/TangRufus))
 - Test against highest and locked composer dependencies [\#37](https://github.com/TypistTech/imposter/pull/37) ([TangRufus](https://github.com/TangRufus))
 - Suggest typisttech/imposter-plugin [\#34](https://github.com/TypistTech/imposter/pull/34) ([TangRufus](https://github.com/TangRufus))
