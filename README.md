@@ -130,6 +130,7 @@ use AnotherDummy\{
 };
 use Dummy\SubOtherDummy;
 use OtherDummy\SubOtherDummy;
+use RuntimeException;
 
 class DummyClass
 {
@@ -147,6 +148,7 @@ use My\App\Vendor\AnotherDummy\{
 };
 use My\App\Vendor\Dummy\SubOtherDummy;
 use My\App\Vendor\OtherDummy\SubOtherDummy;
+use RuntimeException;
 
 class DummyClass
 {
@@ -177,6 +179,10 @@ Pull requests are welcome.
 ### How about `require-dev` packages?
 
 Imposter do nothing on `require-dev` packages because imposter is intended for avoiding production environment., not for development environment. 
+
+### How about PHP built-in classes?
+
+Imposter skips classes that on global namespace, for example: `ArrayObject`, `RuntimeException` 
 
 ### How about packages that don't use namespaces?
 
