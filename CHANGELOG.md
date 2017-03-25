@@ -1,10 +1,18 @@
 # Change Log
 
+## [0.2.1](https://github.com/TypistTech/imposter/tree/0.2.1) (2017-03-25)
+[Full Changelog](https://github.com/TypistTech/imposter/compare/0.2.0...0.2.1)
+
+**Merged pull requests:**
+
+- Skip global namespace [\#42](https://github.com/TypistTech/imposter/pull/42) ([TangRufus](https://github.com/TangRufus))
+
 ## [0.2.0](https://github.com/TypistTech/imposter/tree/0.2.0) (2017-03-25)
 [Full Changelog](https://github.com/TypistTech/imposter/compare/0.1.1...0.2.0)
 
 **Merged pull requests:**
 
+- Version bump 0.2.0 [\#41](https://github.com/TypistTech/imposter/pull/41) ([TangRufus](https://github.com/TangRufus))
 - Exclude project config from collection [\#40](https://github.com/TypistTech/imposter/pull/40) ([TangRufus](https://github.com/TangRufus))
 
 ## [0.1.1](https://github.com/TypistTech/imposter/tree/0.1.1) (2017-03-24)

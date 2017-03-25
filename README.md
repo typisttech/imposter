@@ -32,6 +32,7 @@ Wrapping all composer vendor packages inside your own namespace. Intended for Wo
   - [Can I exclude some of the packages from `Imposter`?](#can-i-exclude-some-of-the-packages-from-imposter)
   - [Does Imposter support `exclude-from-classmap`?](#does-imposter-support-exclude-from-classmap)
   - [How about `require-dev` packages?](#how-about-require-dev-packages)
+  - [How about PHP built-in classes?](#how-about-php-built-in-classes)
   - [How about packages that don't use namespaces?](#how-about-packages-that-dont-use-namespaces)
   - [How about packages that use fully qualified name?](#how-about-packages-that-use-fully-qualified-name)
 - [Support!](#support)
