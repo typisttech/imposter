@@ -35,6 +35,8 @@
     "require-dev": {
         "codeception/aspect-mock": "^2.0",
         "codeception/base": "^2.2",
+        "doctrine/annotations": "~1.4.0",
+        "doctrine/instantiator": "~1.0.0",
         "squizlabs/php_codesniffer": "^3.0"
     },
     "suggest": {
