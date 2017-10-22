@@ -1,10 +1,27 @@
 # Change Log
 
+## [0.2.3](https://github.com/TypistTech/imposter/tree/0.2.3) (2017-10-22)
+[Full Changelog](https://github.com/TypistTech/imposter/compare/0.2.2...0.2.3)
+
+**Closed issues:**
+
+- Disable codecov.io pull request commenting [\#46](https://github.com/TypistTech/imposter/issues/46)
+
+**Merged pull requests:**
+
+- TravisCI: Run tests against lowest and highest dependencies [\#53](https://github.com/TypistTech/imposter/pull/53) ([TangRufus](https://github.com/TangRufus))
+- Scrutinizer: Remove `align\_assignments` [\#52](https://github.com/TypistTech/imposter/pull/52) ([TangRufus](https://github.com/TangRufus))
+- Fix broken link [\#51](https://github.com/TypistTech/imposter/pull/51) ([TangRufus](https://github.com/TangRufus))
+- composer update [\#50](https://github.com/TypistTech/imposter/pull/50) ([TangRufus](https://github.com/TangRufus))
+- Rename: CONDUCT.md --\> CODE\_OF\_CONDUCT.md [\#49](https://github.com/TypistTech/imposter/pull/49) ([TangRufus](https://github.com/TangRufus))
+- Disable codecov.io pull request commenting [\#47](https://github.com/TypistTech/imposter/pull/47) ([TangRufus](https://github.com/TangRufus))
+
 ## [0.2.2](https://github.com/TypistTech/imposter/tree/0.2.2) (2017-03-25)
 [Full Changelog](https://github.com/TypistTech/imposter/compare/0.2.1...0.2.2)
 
 **Merged pull requests:**
 
+- Version bump 0.2.2 [\#45](https://github.com/TypistTech/imposter/pull/45) ([TangRufus](https://github.com/TangRufus))
 - Fix: Transform single level namespace [\#44](https://github.com/TypistTech/imposter/pull/44) ([TangRufus](https://github.com/TangRufus))
 
 ## [0.2.1](https://github.com/TypistTech/imposter/tree/0.2.1) (2017-03-25)
