@@ -21,14 +21,12 @@ notifications:
 php:
   - 7.0
   - 7.1
+  - 7.2
   - nightly
 
 env:
   global:
     - COMPOSER_NO_INTERACTION=1
-  matrix:
-    - COMPOSER_DEPENDENCIES="--prefer-lowest"
-    - COMPOSER_DEPENDENCIES=""
 
 matrix:
   allow_failures:
@@ -36,17 +34,18 @@ matrix:
   fast_finish: true
 
 before_install:
-  - if [[ "$COMPOSER_DEPENDENCIES" == "" && $(phpenv version-name) != "nightly" ]]; then WITH_COVERAGE=true; fi
+  # Set environment variables
+  - if [[ $(phpenv version-name) == "nightly" ]]; then export WITH_COVERAGE=false; fi
 
   # Disable xDebug to speed up the build unless test coverage is needed
   - if [[ "$WITH_COVERAGE" != "true" && $(phpenv version-name) != "nightly" ]]; then phpenv config-rm xdebug.ini; fi
 
 install:
-  - travis_retry composer update --prefer-dist $COMPOSER_DEPENDENCIES
+  - travis_retry composer install --prefer-dist --no-suggest
 
 script:
+  - if [[ "$WITH_COVERAGE" == "true" ]]; then composer test:coverage; fi
   - if [[ "$WITH_COVERAGE" != "true" ]]; then composer test; fi
-  - if [[ "$WITH_COVERAGE" == "true" ]]; then composer test-with-coverage; fi
 
 after_script:
   # Install helper scripts

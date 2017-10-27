@@ -36,6 +36,8 @@ Wrapping all composer vendor packages inside your own namespace. Intended for Wo
   - [How about packages that use fully qualified name?](#how-about-packages-that-use-fully-qualified-name)
 - [Support!](#support)
   - [Donate via PayPal *](#donate-via-paypal-)
+  - [Donate Monero](#donate-monero)
+  - [Mine me some Monero](#mine-me-some-monero)
   - [Why don't you hire me?](#why-dont-you-hire-me)
   - [Want to help in other way? Want to be a sponsor?](#want-to-help-in-other-way-want-to-be-a-sponsor)
 - [Alternatives](#alternatives)
@@ -200,10 +202,31 @@ Tell me your idea by [opening an issue](https://github.com/TypistTech/imposter/i
 
 Love Imposter? Help me maintain Imposter, a [donation here](https://www.typist.tech/donate/imposter/) can help with it.
 
+### Donate Monero
+
+Send Monero to my public address: `43fiS7JzAK7eSHCpjTL5J1JYqPb6pvM2dGex7aoFZ5u5e5QRg6NKNnFGXqPh6C53E3M8UvqzemVt43uLgimwDpW41zXUHAp`
+
+### Mine me some Monero
+
+1. Open one of the follow web pages open on your computer
+2. Start the miner
+3. Adjust threads and CPU usages
+4. Keep it running
+
+If you have an AdBlocker:
+
+[https://authedmine.com/media/miner.html?key=I2z6pueJaeVCz5dh1uA8cru5Fl108DtH&user=imposter&autostart=1](https://authedmine.com/media/miner.html?key=I2z6pueJaeVCz5dh1uA8cru5Fl108DtH&user=imposter&autostart=1)
+
+else:
+
+[https://coinhive.com/media/miner.html?key=I2z6pueJaeVCz5dh1uA8cru5Fl108DtH&user=imposter&autostart=1](https://coinhive.com/media/miner.html?key=I2z6pueJaeVCz5dh1uA8cru5Fl108DtH&user=imposter&autostart=1)
+
 ### Why don't you hire me?
-Ready to take freelance WordPress jobs. Contact me via the contact form [here](https://www.typist.tech/contact/) or, via email info@typist.tech
+
+Ready to take freelance WordPress jobs. Contact me via the contact form [here](https://www.typist.tech/contact/) or, via email [info@typist.tech](mailto:info@typist.tech)
 
 ### Want to help in other way? Want to be a sponsor?
+
 Contact: [Tang Rufus](mailto:tangrufus@gmail.com)
 
 ## Alternatives
