@@ -127,7 +127,7 @@ final class Transformer implements TransformerInterface
     private function prefixUse(string $targetFile)
     {
         $pattern     = sprintf(
-            '/%1$s\\s+(?!(%2$s)|(Composer(\\\\|;)|(?!.*\\\\.*)))/',
+            '/%1$s\\s+(?!(%2$s)|(\\\\(?!.*\\\\.*))|(Composer(\\\\|;)|(?!.*\\\\.*)))/',
             'use',
             $this->namespacePrefix
         );

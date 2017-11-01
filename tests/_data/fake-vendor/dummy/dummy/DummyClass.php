@@ -11,6 +11,7 @@ use Dummy\SubOtherDummy;
 use OtherDummy\SubOtherDummy;
 use TypistTech\Imposter\Plugin;
 use RuntimeException;
+use \UnexpectedValueException;
 
 class DummyClass
 {

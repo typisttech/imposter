@@ -100,6 +100,25 @@ class TransformerTest extends \Codeception\Test\Unit
     /**
      * @covers \TypistTech\Imposter\Transformer
      */
+    public function testTransformExcludesGlobalNamespaceWithLeadingSlash()
+    {
+        $transformer = new Transformer('MyPlugin\Vendor', new Filesystem);
+
+        $transformer->transform($this->dummyFile);
+
+        $this->tester->openFile($this->dummyFile);
+        $this->tester->dontSeeInThisFile('use MyPlugin\Vendor\UnexpectedValueException;');
+        $this->tester->dontSeeInThisFile('use MyPlugin\Vendor\\\\UnexpectedValueException;');
+        $this->tester->dontSeeInThisFile('use \MyPlugin\Vendor\\\\UnexpectedValueException;');
+        $this->tester->dontSeeInThisFile('use \MyPlugin\Vendor\UnexpectedValueException;');
+        $this->tester->seeInThisFile('use \UnexpectedValueException;');
+
+        $this->assertTransformed($this->dummyFile);
+    }
+
+    /**
+     * @covers \TypistTech\Imposter\Transformer
+     */
     public function testTransformSingleLevelNamespace()
     {
         $path        = codecept_data_dir('tmp-vendor/dummy/dummy-excluded/DummyClass.php');
