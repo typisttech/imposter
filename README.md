@@ -9,8 +9,8 @@
 [![StyleCI](https://styleci.io/repos/84912533/shield?branch=master)](https://styleci.io/repos/84912533)
 [![Dependency Status](https://gemnasium.com/badges/github.com/TypistTech/imposter.svg)](https://gemnasium.com/github.com/TypistTech/imposter)
 [![License](https://poser.pugx.org/typisttech/imposter/license)](https://packagist.org/packages/typisttech/imposter)
-[![Donate via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.typist.tech/donate/imposter/)
-[![Hire Typist Tech](https://img.shields.io/badge/Hire-Typist%20Tech-ff69b4.svg)](https://www.typist.tech/contact/)
+[![Donate via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://typist.tech/donate/imposter/)
+[![Hire Typist Tech](https://img.shields.io/badge/Hire-Typist%20Tech-ff69b4.svg)](https://typist.tech/contact/)
 
 Wrapping all composer vendor packages inside your own namespace. Intended for WordPress plugins.
 
@@ -63,7 +63,7 @@ See:
 
 ## Install
 
-> If you want to hook Imposter into [composer command events](https://getcomposer.org/doc/articles/scripts.md#command-events), install [imposter-plugin](https://www.typist.tech/projects/imposter-plugin) instead.
+> If you want to hook Imposter into [composer command events](https://getcomposer.org/doc/articles/scripts.md#command-events), install [imposter-plugin](https://typist.tech/projects/imposter-plugin) instead.
 > See: [How can I integrate Imposter with composer?](#how-can-i-integrate-imposter-with-composer)
 
 Installation should be done via composer, details of how to install composer can be found at [https://getcomposer.org/](https://getcomposer.org/).
@@ -163,7 +163,7 @@ class DummyClass
 
 ### How can I integrate Imposter with composer?
 
-Use [imposter-plugin](https://www.typist.tech/projects/imposter-plugin) instead.
+Use [imposter-plugin](https://typist.tech/projects/imposter-plugin) instead.
 It hooks Imposter into [composer command events](https://getcomposer.org/doc/articles/scripts.md#command-events).
 
 ### Does Imposter support `PSR4`, `PSR0`, `Classmap` and `Files`?
@@ -200,32 +200,13 @@ Tell me your idea by [opening an issue](https://github.com/TypistTech/imposter/i
 
 ## Support!
 
-### Donate via PayPal [![Donate via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.typist.tech/donate/imposter/)
+### Donate
 
-Love Imposter? Help me maintain Imposter, a [donation here](https://www.typist.tech/donate/imposter/) can help with it.
-
-### Donate Monero
-
-Send Monero to my public address: `43fiS7JzAK7eSHCpjTL5J1JYqPb6pvM2dGex7aoFZ5u5e5QRg6NKNnFGXqPh6C53E3M8UvqzemVt43uLgimwDpW41zXUHAp`
-
-### Mine me some Monero
-
-1. Open one of the follow web pages open on your computer
-2. Start the miner
-3. Adjust threads and CPU usages
-4. Keep it running
-
-If you have an AdBlocker:
-
-[https://authedmine.com/media/miner.html?key=I2z6pueJaeVCz5dh1uA8cru5Fl108DtH&user=imposter&autostart=1](https://authedmine.com/media/miner.html?key=I2z6pueJaeVCz5dh1uA8cru5Fl108DtH&user=imposter&autostart=1)
-
-else:
-
-[https://coinhive.com/media/miner.html?key=I2z6pueJaeVCz5dh1uA8cru5Fl108DtH&user=imposter&autostart=1](https://coinhive.com/media/miner.html?key=I2z6pueJaeVCz5dh1uA8cru5Fl108DtH&user=imposter&autostart=1)
+Love Imposter? Help me maintain it, a [donation here](https://typist.tech/donation/) can help with it.
 
 ### Why don't you hire me?
 
-Ready to take freelance WordPress jobs. Contact me via the contact form [here](https://www.typist.tech/contact/) or, via email [info@typist.tech](mailto:info@typist.tech)
+Ready to take freelance WordPress jobs. Contact me via the contact form [here](https://typist.tech/contact/) or, via email [info@typist.tech](mailto:info@typist.tech)
 
 ### Want to help in other way? Want to be a sponsor?
 
@@ -288,7 +269,7 @@ Please see [CONTRIBUTING](.github/CONTRIBUTING.md) and [CODE_OF_CONDUCT](./CODE_
 
 ## Credits
 
-[Imposter](https://github.com/TypistTech/imposter) is a [Typist Tech](https://www.typist.tech) project and maintained by [Tang Rufus](https://twitter.com/Tangrufus), freelance developer for [hire](https://www.typist.tech/contact/).
+[Imposter](https://github.com/TypistTech/imposter) is a [Typist Tech](https://typist.tech) project and maintained by [Tang Rufus](https://twitter.com/Tangrufus), freelance developer for [hire](https://typist.tech/contact/).
 
 Full list of contributors can be found [here](https://github.com/TypistTech/imposter/graphs/contributors).
 
