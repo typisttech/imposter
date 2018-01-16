@@ -1,5 +1,19 @@
 # Change Log
 
+## [0.3.0](https://github.com/TypistTech/imposter/tree/0.3.0) (2018-01-16)
+[Full Changelog](https://github.com/TypistTech/imposter/compare/0.2.3...0.3.0)
+
+**Fixed bugs:**
+
+- Double backslashes being added [\#58](https://github.com/TypistTech/imposter/issues/58)
+
+**Merged pull requests:**
+
+- composer update [\#60](https://github.com/TypistTech/imposter/pull/60) ([TangRufus](https://github.com/TangRufus))
+- Handle `use` keywords with leading backslashes [\#59](https://github.com/TypistTech/imposter/pull/59) ([TangRufus](https://github.com/TangRufus))
+- Misc: Add tests/\_output/.gitignore [\#56](https://github.com/TypistTech/imposter/pull/56) ([TangRufus](https://github.com/TangRufus))
+- Misc: Typist Tech code style [\#55](https://github.com/TypistTech/imposter/pull/55) ([TangRufus](https://github.com/TangRufus))
+
 ## [0.2.3](https://github.com/TypistTech/imposter/tree/0.2.3) (2017-10-22)
 [Full Changelog](https://github.com/TypistTech/imposter/compare/0.2.2...0.2.3)
 
@@ -9,6 +23,7 @@
 
 **Merged pull requests:**
 
+- Version bump 0.2.3 [\#54](https://github.com/TypistTech/imposter/pull/54) ([TangRufus](https://github.com/TangRufus))
 - TravisCI: Run tests against lowest and highest dependencies [\#53](https://github.com/TypistTech/imposter/pull/53) ([TangRufus](https://github.com/TangRufus))
 - Scrutinizer: Remove `align\_assignments` [\#52](https://github.com/TypistTech/imposter/pull/52) ([TangRufus](https://github.com/TangRufus))
 - Fix broken link [\#51](https://github.com/TypistTech/imposter/pull/51) ([TangRufus](https://github.com/TangRufus))
