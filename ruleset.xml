@@ -7,9 +7,9 @@
   ~
   ~ @package TypistTech\Imposter
   ~ @author Typist Tech <imposter@typist.tech>
-  ~ @copyright 2017 Typist Tech
+  ~ @copyright 2017-2018 Typist Tech
   ~ @license MIT
-  ~ @see https://www.typist.tech/projects/imposter
+  ~ @see https://typist.tech/projects/imposter
   -->
 
 <ruleset name="PSR 2">
