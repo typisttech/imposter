@@ -1,9 +1,5 @@
 language: php
 
-dist: trusty
-
-sudo: false
-
 branches:
   only:
     - master
@@ -20,25 +16,25 @@ notifications:
 
 php:
   - 7.0
-  - 7.1
   - 7.2
   - nightly
 
 env:
   global:
     - COMPOSER_NO_INTERACTION=1
+    - TMPDIR=/tmp/
 
 matrix:
+  include:
+    - php: '7.1'
+      env: WITH_COVERAGE=true
   allow_failures:
     - php: nightly
   fast_finish: true
 
 before_install:
-  # Set environment variables
-  - if [[ $(phpenv version-name) == "nightly" ]]; then export WITH_COVERAGE=false; fi
-
-  # Disable xDebug to speed up the build unless test coverage is needed
-  - if [[ "$WITH_COVERAGE" != "true" && $(phpenv version-name) != "nightly" ]]; then phpenv config-rm xdebug.ini; fi
+  - $WITH_COVERAGE || phpenv config-rm xdebug.ini || true
+  - mkdir -p $TMPDIR/AspectMock/imposter
 
 install:
   - travis_retry composer install --prefer-dist --no-suggest

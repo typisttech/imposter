@@ -7,7 +7,6 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/TypistTech/imposter/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/TypistTech/imposter/?branch=master)
 [![PHP Versions Tested](http://php-eye.com/badge/typisttech/imposter/tested.svg)](https://travis-ci.org/TypistTech/imposter)
 [![StyleCI](https://styleci.io/repos/84912533/shield?branch=master)](https://styleci.io/repos/84912533)
-[![Dependency Status](https://gemnasium.com/badges/github.com/TypistTech/imposter.svg)](https://gemnasium.com/github.com/TypistTech/imposter)
 [![License](https://poser.pugx.org/typisttech/imposter/license)](https://packagist.org/packages/typisttech/imposter)
 [![Donate via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://typist.tech/donate/imposter/)
 [![Hire Typist Tech](https://img.shields.io/badge/Hire-Typist%20Tech-ff69b4.svg)](https://typist.tech/contact/)
@@ -247,7 +246,7 @@ $ composer test-with-coverage
 
 We also test all PHP files against [PSR-2: Coding Style Guide](http://www.php-fig.org/psr/psr-2/).
 
-Check the code style with ``$ composer check-style`` and fix it with ``$ composer fix-style``.
+Check the code style with ``$ composer check-style``.
 
 ## Feedback
 

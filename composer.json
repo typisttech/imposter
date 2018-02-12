@@ -9,18 +9,18 @@
         "namespace",
         "wordpress"
     ],
-    "homepage": "https://www.typist.tech/projects/imposter",
+    "homepage": "https://typist.tech/projects/imposter",
     "license": "MIT",
     "authors": [
         {
             "name": "Typist Tech",
             "email": "imposter@typist.tech",
-            "homepage": "https://www.typist.tech"
+            "homepage": "https://typist.tech"
         },
         {
             "name": "Tang Rufus",
             "email": "tangrufus@gmail.com",
-            "homepage": "https://www.typist.tech",
+            "homepage": "https://typist.tech",
             "role": "Developer"
         }
     ],
@@ -47,7 +47,6 @@
     },
     "scripts": {
         "check-style": "phpcs --standard=ruleset.xml --colors -p -s .",
-        "fix-style": "phpcbf -p --standard=ruleset.xml --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 .",
         "pre-tag": [
             "doctoc README.md",
             "github_changelog_generator --no-verbose"
