@@ -1,21 +1,24 @@
 <?php
+declare(strict_types=1);
 
 namespace TypistTech\Imposter;
+
+use Codeception\Test\Unit;
 
 /**
  * @coversDefaultClass \TypistTech\Imposter\ConfigFactory
  */
-class ConfigFactoryTest extends \Codeception\Test\Unit
+class ConfigFactoryTest extends Unit
 {
     /**
      * @covers \TypistTech\Imposter\ConfigFactory
      */
     public function testBuild()
     {
-        $json       = codecept_data_dir('composer.json');
+        $json = codecept_data_dir('composer.json');
         $filesystem = new Filesystem;
 
-        $actual   = ConfigFactory::build($json, new Filesystem);
+        $actual = ConfigFactory::build($json, new Filesystem);
         $expected = new Config(
             codecept_data_dir(),
             json_decode(
@@ -32,10 +35,10 @@ class ConfigFactoryTest extends \Codeception\Test\Unit
      */
     public function testBuildProjectConfig()
     {
-        $json       = codecept_data_dir('composer.json');
+        $json = codecept_data_dir('composer.json');
         $filesystem = new Filesystem;
 
-        $actual   = ConfigFactory::buildProjectConfig($json, new Filesystem);
+        $actual = ConfigFactory::buildProjectConfig($json, new Filesystem);
         $expected = new ProjectConfig(
             codecept_data_dir(),
             json_decode(

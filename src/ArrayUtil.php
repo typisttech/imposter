@@ -1,27 +1,10 @@
 <?php
-/**
- * Imposter
- *
- * Wrapping all composer vendor packages inside your own namespace.
- * Intended for WordPress plugins.
- *
- * @package   TypistTech\Imposter
- * @author    Typist Tech <imposter@typist.tech>
- * @copyright 2017-2018 Typist Tech
- * @license   MIT
- * @see       https://typist.tech/projects/imposter
- */
-
 declare(strict_types=1);
 
 namespace TypistTech\Imposter;
 
 class ArrayUtil
 {
-    private function __construct()
-    {
-    }
-
     public static function flattenMap(callable $callable, array $array): array
     {
         $map = array_map($callable, $array);

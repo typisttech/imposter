@@ -1,11 +1,11 @@
 {
-    "autoload": {
-        "psr-4": {
-            "Monolog\\": "src/"
-        }
-    },
-    "require": {
-        "dummy/dummy-common": "*",
-        "dummy/dummy-excluded": "*"
+  "autoload": {
+    "psr-4": {
+      "Monolog\\": "src/"
     }
+  },
+  "require": {
+    "dummy/dummy-common": "*",
+    "dummy/dummy-excluded": "*"
+  }
 }

@@ -1,17 +1,4 @@
 <?php
-/**
- * Imposter
- *
- * Wrapping all composer vendor packages inside your own namespace.
- * Intended for WordPress plugins.
- *
- * @package   TypistTech\Imposter
- * @author    Typist Tech <imposter@typist.tech>
- * @copyright 2017-2018 Typist Tech
- * @license   MIT
- * @see       https://typist.tech/projects/imposter
- */
-
 declare(strict_types=1);
 
 namespace TypistTech\Imposter;
@@ -35,7 +22,7 @@ class ProjectConfig extends Config implements ProjectConfigInterface
      */
     public function getExcludes(): array
     {
-        $extra    = $this->get('extra');
+        $extra = $this->get('extra');
         $excludes = $extra['imposter']['excludes'] ?? [];
 
         return array_merge(self::DEFAULT_EXCLUDES, $excludes, $this->extraExcludes);
@@ -54,7 +41,7 @@ class ProjectConfig extends Config implements ProjectConfigInterface
 
     public function getVendorDir(): string
     {
-        $config    = $this->get('config');
+        $config = $this->get('config');
         $vendorDir = $config['vendor-dir'] ?? 'vendor';
 
         return StringUtil::addTrailingSlash($this->packageDir . $vendorDir);

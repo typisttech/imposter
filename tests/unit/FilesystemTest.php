@@ -1,14 +1,16 @@
 <?php
+declare(strict_types=1);
 
 namespace TypistTech\Imposter;
 
+use Codeception\Test\Unit;
 use RuntimeException;
 use SplFileInfo;
 
 /**
  * @coversDefaultClass \TypistTech\Imposter\Filesystem
  */
-class FilesystemTest extends \Codeception\Test\Unit
+class FilesystemTest extends Unit
 {
     /**
      * @var \TypistTech\Imposter\UnitTester
@@ -23,7 +25,7 @@ class FilesystemTest extends \Codeception\Test\Unit
     public function testDirname()
     {
         $expected = codecept_data_dir('tmp-vendor/dummy/dummy');
-        $path     = $expected . '/composer.json';
+        $path = $expected . '/composer.json';
 
         $actual = $this->filesystem->dirname($path);
 
@@ -92,7 +94,7 @@ class FilesystemTest extends \Codeception\Test\Unit
      */
     public function testPut()
     {
-        $path    = codecept_data_dir('tmp-vendor/composer.json');
+        $path = codecept_data_dir('tmp-vendor/composer.json');
         $content = 'some content';
 
         $this->filesystem->put($path, $content);

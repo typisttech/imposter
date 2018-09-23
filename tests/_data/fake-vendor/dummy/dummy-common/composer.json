@@ -1,10 +1,10 @@
 {
-    "autoload": {
-        "files": [
-            "DummyClass.php"
-        ]
-    },
-    "require": {
-        "dummy/dummy-dependency": "*"
-    }
+  "autoload": {
+    "files": [
+      "DummyClass.php"
+    ]
+  },
+  "require": {
+    "dummy/dummy-dependency": "*"
+  }
 }

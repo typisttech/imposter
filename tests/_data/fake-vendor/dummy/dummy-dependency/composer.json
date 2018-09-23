@@ -1,14 +1,14 @@
 {
-    "autoload": {
-        "classmap": [
-            "src/",
-            "lib/"
-        ],
-        "psr-4": {
-            "Monolog\\": "src/"
-        },
-        "psr-0": {
-            "": "src/"
-        }
+  "autoload": {
+    "classmap": [
+      "src/",
+      "lib/"
+    ],
+    "psr-4": {
+      "Monolog\\": "src/"
+    },
+    "psr-0": {
+      "": "src/"
     }
+  }
 }

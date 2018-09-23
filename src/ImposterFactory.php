@@ -1,27 +1,10 @@
 <?php
-/**
- * Imposter
- *
- * Wrapping all composer vendor packages inside your own namespace.
- * Intended for WordPress plugins.
- *
- * @package   TypistTech\Imposter
- * @author    Typist Tech <imposter@typist.tech>
- * @copyright 2017-2018 Typist Tech
- * @license   MIT
- * @see       https://typist.tech/projects/imposter
- */
-
 declare(strict_types=1);
 
 namespace TypistTech\Imposter;
 
 class ImposterFactory
 {
-    private function __construct()
-    {
-    }
-
     /**
      * @param string   $projectPath
      * @param string[] $extraExcludes
@@ -35,7 +18,7 @@ class ImposterFactory
         $projectConfig = ConfigFactory::buildProjectConfig($projectPath . '/composer.json', $filesystem);
         $projectConfig->setExtraExcludes($extraExcludes);
 
-        $transformer      = new Transformer($projectConfig->getImposterNamespace(), $filesystem);
+        $transformer = new Transformer($projectConfig->getImposterNamespace(), $filesystem);
         $configCollection = ConfigCollectionFactory::forProject(
             $projectConfig,
             $filesystem

@@ -1,11 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace TypistTech\Imposter;
+
+use Codeception\Test\Unit;
 
 /**
  * @coversDefaultClass \TypistTech\Imposter\ConfigCollection
  */
-class ConfigCollectionTest extends \Codeception\Test\Unit
+class ConfigCollectionTest extends Unit
 {
     /**
      * @var Config
@@ -30,7 +33,7 @@ class ConfigCollectionTest extends \Codeception\Test\Unit
         $this->configCollection->add($this->config1);
         $this->configCollection->add($this->config1);
 
-        $actual   = $this->configCollection->all();
+        $actual = $this->configCollection->all();
         $expected = [
             $this->config1->getPackageDir() => $this->config1,
         ];
@@ -46,7 +49,7 @@ class ConfigCollectionTest extends \Codeception\Test\Unit
         $this->configCollection->add($this->config1);
         $this->configCollection->add($this->config2);
 
-        $actual   = $this->configCollection->all();
+        $actual = $this->configCollection->all();
         $expected = [
             $this->config1->getPackageDir() => $this->config1,
             $this->config2->getPackageDir() => $this->config2,
@@ -62,7 +65,7 @@ class ConfigCollectionTest extends \Codeception\Test\Unit
     {
         $this->configCollection->add($this->config1);
 
-        $actual   = $this->configCollection->all();
+        $actual = $this->configCollection->all();
         $expected = [
             $this->config1->getPackageDir() => $this->config1,
         ];
@@ -132,9 +135,9 @@ class ConfigCollectionTest extends \Codeception\Test\Unit
 
     protected function _before()
     {
-        $filesystem    = new Filesystem;
-        $json1         = codecept_data_dir('composer.json');
-        $json2         = codecept_data_dir('tmp-vendor/dummy/dummy-psr4/composer.json');
+        $filesystem = new Filesystem;
+        $json1 = codecept_data_dir('composer.json');
+        $json2 = codecept_data_dir('tmp-vendor/dummy/dummy-psr4/composer.json');
         $this->config1 = ConfigFactory::build($json1, $filesystem);
         $this->config2 = ConfigFactory::build($json2, $filesystem);
 

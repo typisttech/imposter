@@ -14,9 +14,9 @@ class ImposterFactoryTest extends Unit
     {
         $filesystem = new Filesystem;
 
-        $projectConfig    = ConfigFactory::buildProjectConfig(codecept_data_dir('composer.json'), $filesystem);
+        $projectConfig = ConfigFactory::buildProjectConfig(codecept_data_dir('composer.json'), $filesystem);
         $configCollection = ConfigCollectionFactory::forProject($projectConfig, $filesystem);
-        $transformer      = new Transformer('TypistTech\Imposter\Vendor', $filesystem);
+        $transformer = new Transformer('TypistTech\Imposter\Vendor', $filesystem);
 
         $actual = ImposterFactory::forProject(codecept_data_dir());
 

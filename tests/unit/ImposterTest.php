@@ -22,7 +22,7 @@ class ImposterTest extends Unit
 
     public function testConfigCollectionGetter()
     {
-        $actual   = $this->imposter->getConfigCollection();
+        $actual = $this->imposter->getConfigCollection();
         $expected = $this->configCollection;
 
         $this->assertSame($expected, $actual);
@@ -30,7 +30,7 @@ class ImposterTest extends Unit
 
     public function testGetAutoloads()
     {
-        $actual   = $this->imposter->getAutoloads();
+        $actual = $this->imposter->getAutoloads();
         $expected = $this->configCollection->getAutoloads();
 
         $this->assertSame($expected, $actual);
@@ -58,7 +58,7 @@ class ImposterTest extends Unit
 
     public function testTransformerGetter()
     {
-        $actual   = $this->imposter->getTransformer();
+        $actual = $this->imposter->getTransformer();
         $expected = $this->transformer;
 
         $this->assertSame($expected, $actual);
@@ -68,16 +68,16 @@ class ImposterTest extends Unit
     {
         $this->configCollection = Mockery::spy(ConfigCollection::class);
         $this->configCollection->allows('getAutoloads')
-            ->withNoArgs()
-            ->andReturn([
-                'path/to/dir',
-                'path/to/file.php',
-            ]);
+                               ->withNoArgs()
+                               ->andReturn([
+                                   'path/to/dir',
+                                   'path/to/file.php',
+                               ]);
 
         $this->transformer = Mockery::spy(Transformer::class);
         $this->transformer->allows('transform')
-            ->withNoArgs()
-            ->andReturnNull();
+                          ->withNoArgs()
+                          ->andReturnNull();
 
         $this->imposter = new Imposter($this->configCollection, $this->transformer);
     }

@@ -1,5 +1,5 @@
 {
-    "require": {
-        "dummy/dummy-common": "*"
-    }
+  "require": {
+    "dummy/dummy-common": "*"
+  }
 }
