@@ -16,7 +16,7 @@ declare(strict_types=1);
 
 namespace TypistTech\Imposter;
 
-final class ConfigCollection implements ConfigCollectionInterface
+class ConfigCollection implements ConfigCollectionInterface
 {
     /**
      * @var ConfigInterface[]

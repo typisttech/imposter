@@ -1,13 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace TypistTech\Imposter;
 
-use AspectMock\Test;
+use Codeception\Test\Unit;
 
 /**
  * @coversDefaultClass \TypistTech\Imposter\ImposterFactory
  */
-class ImposterFactoryTest extends \Codeception\Test\Unit
+class ImposterFactoryTest extends Unit
 {
     public function testForProject()
     {
@@ -22,21 +23,5 @@ class ImposterFactoryTest extends \Codeception\Test\Unit
         $expected = new Imposter($configCollection, $transformer);
 
         $this->assertEquals($expected, $actual);
-    }
-
-    public function testSetProjectConfigExtraExcludes()
-    {
-        $projectConfig = Test::double(
-            ConfigFactory::buildProjectConfig(codecept_data_dir('composer.json'), new Filesystem),
-            ['setExtraExcludes' => null]
-        );
-        Test::double(
-            ConfigFactory::class,
-            ['buildProjectConfig' => $projectConfig->getObject()]
-        );
-
-        ImposterFactory::forProject(codecept_data_dir(), ['my/exclude']);
-
-        $projectConfig->verifyInvokedOnce('setExtraExcludes', [['my/exclude']]);
     }
 }

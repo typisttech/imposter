@@ -16,7 +16,7 @@ declare(strict_types=1);
 
 namespace TypistTech\Imposter;
 
-final class Imposter implements ImposterInterface
+class Imposter implements ImposterInterface
 {
     /**
      * @var string[]

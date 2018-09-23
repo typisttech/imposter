@@ -21,7 +21,7 @@ use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use RuntimeException;
 
-final class Filesystem implements FilesystemInterface
+class Filesystem implements FilesystemInterface
 {
     /**
      * @param string $path

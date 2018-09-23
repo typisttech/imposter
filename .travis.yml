@@ -1,52 +1,49 @@
 language: php
 
+sudo: false
+
 branches:
   only:
     - master
     - /^(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)$/
 
+## Cache composer
 cache:
   directories:
-    - $HOME/.composer/cache/files
+    - $HOME/.composer/cache
 
 notifications:
   email:
     on_success: never
     on_failure: change
 
-php:
-  - 7.2
-  - nightly
-
 env:
   global:
     - COMPOSER_NO_INTERACTION=1
-    - TMPDIR=/tmp/
+    - PATH="$TRAVIS_BUILD_DIR/vendor/bin:$PATH"
 
 matrix:
-  include:
-    - php: '7.1'
-      env: WITH_COVERAGE=true
   allow_failures:
     - php: nightly
   fast_finish: true
 
 before_install:
-  - $WITH_COVERAGE || phpenv config-rm xdebug.ini || true
-  - mkdir -p $TMPDIR/AspectMock/imposter
+  - phpenv config-rm xdebug.ini || true
 
 install:
-  - travis_retry composer install --prefer-dist --no-suggest
+  - travis_retry composer install --no-progress --no-suggest
 
 script:
-  - if [[ "$WITH_COVERAGE" == "true" ]]; then composer test:coverage; fi
-  - if [[ "$WITH_COVERAGE" != "true" ]]; then composer test; fi
+  - composer test
 
-after_script:
-  # Install helper scripts
-  - if [[ "$WITH_COVERAGE" == "true" ]]; then travis_retry composer global require --prefer-dist --no-suggest typisttech/travis-nginx-wordpress; fi
-  - if [[ "$WITH_COVERAGE" == "true" ]]; then export PATH=$HOME/.composer/vendor/bin:$PATH; fi
-
-  # Upload coverage report
-  - if [[ "$WITH_COVERAGE" == "true" ]]; then travis_retry tnw-upload-coverage-to-scrutinizer; fi
-  - if [[ "$WITH_COVERAGE" == "true" ]]; then travis_retry tnw-upload-coverage-to-codecov; fi
+jobs:
+  include:
+    - stage: test
+      php: 7.2
+      before_install: skip
+      script: composer test:coverage
+      after_success: bash <(curl -s https://codecov.io/bash) -s "$TRAVIS_BUILD_DIR/tests/_output/"
+    - stage: test
+      php: 7.1
+    - stage: test
+      php: nightly

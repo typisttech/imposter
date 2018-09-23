@@ -16,7 +16,7 @@ declare(strict_types=1);
 
 namespace TypistTech\Imposter;
 
-final class ConfigFactory
+class ConfigFactory
 {
     private function __construct()
     {

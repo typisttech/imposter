@@ -18,7 +18,7 @@ namespace TypistTech\Imposter;
 
 use SplFileInfo;
 
-final class Transformer implements TransformerInterface
+class Transformer implements TransformerInterface
 {
     /**
      * @var FilesystemInterface
