@@ -1,11 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace TypistTech\Imposter;
+
+use Codeception\Test\Unit;
 
 /**
  * @coversDefaultClass \TypistTech\Imposter\ArrayUtil
  */
-class ArrayUtilTest extends \Codeception\Test\Unit
+class ArrayUtilTest extends Unit
 {
     /**
      * @covers \TypistTech\Imposter\ArrayUtil

@@ -1,6 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace TypistTech\Imposter;
+
+use Codeception\Actor;
 
 /**
  * Inherited Methods
@@ -17,7 +20,7 @@ namespace TypistTech\Imposter;
  *
  * @SuppressWarnings(PHPMD)
  */
-class UnitTester extends \Codeception\Actor
+class UnitTester extends Actor
 {
     use _generated\UnitTesterActions;
     /**

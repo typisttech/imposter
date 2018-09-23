@@ -1,11 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace TypistTech\Imposter;
+
+use Codeception\Test\Unit;
 
 /**
  * @coversDefaultClass \TypistTech\Imposter\StringUtil
  */
-class StringUtilTest extends \Codeception\Test\Unit
+class StringUtilTest extends Unit
 {
     /**
      * @covers \TypistTech\Imposter\StringUtil::addTrailingSlash

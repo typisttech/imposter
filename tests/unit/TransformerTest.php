@@ -1,11 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace TypistTech\Imposter;
+
+use Codeception\Test\Unit;
 
 /**
  * @coversDefaultClass \TypistTech\Imposter\Transformer
  */
-class TransformerTest extends \Codeception\Test\Unit
+class TransformerTest extends Unit
 {
     /**
      * @var \UnitTester
@@ -121,7 +124,7 @@ class TransformerTest extends \Codeception\Test\Unit
      */
     public function testTransformSingleLevelNamespace()
     {
-        $path        = codecept_data_dir('tmp-vendor/dummy/dummy-excluded/DummyClass.php');
+        $path = codecept_data_dir('tmp-vendor/dummy/dummy-excluded/DummyClass.php');
         $transformer = new Transformer('MyPlugin\Vendor', new Filesystem);
 
         $transformer->transform($path);

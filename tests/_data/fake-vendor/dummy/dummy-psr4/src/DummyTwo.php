@@ -2,9 +2,7 @@
 
 namespace Dummy\Psr4;
 
-use AnotherDummy\{
-    SubAnotherDummy, SubOtherDummy
-};
+use AnotherDummy\{SubAnotherDummy, SubOtherDummy};
 use Dummy\SubOtherDummy;
 use OtherDummy\SubOtherDummy;
 

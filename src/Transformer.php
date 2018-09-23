@@ -1,17 +1,4 @@
 <?php
-/**
- * Imposter
- *
- * Wrapping all composer vendor packages inside your own namespace.
- * Intended for WordPress plugins.
- *
- * @package   TypistTech\Imposter
- * @author    Typist Tech <imposter@typist.tech>
- * @copyright 2017-2018 Typist Tech
- * @license   MIT
- * @see       https://typist.tech/projects/imposter
- */
-
 declare(strict_types=1);
 
 namespace TypistTech\Imposter;
@@ -39,7 +26,7 @@ class Transformer implements TransformerInterface
     public function __construct(string $namespacePrefix, FilesystemInterface $filesystem)
     {
         $this->namespacePrefix = StringUtil::ensureDoubleBackwardSlash($namespacePrefix);
-        $this->filesystem      = $filesystem;
+        $this->filesystem = $filesystem;
     }
 
     /**
@@ -86,7 +73,7 @@ class Transformer implements TransformerInterface
      */
     private function prefixNamespace(string $targetFile)
     {
-        $pattern     = sprintf(
+        $pattern = sprintf(
             '/%1$s\\s+(?!(%2$s)|(Composer(\\\\|;)))/',
             'namespace',
             $this->namespacePrefix
@@ -126,7 +113,7 @@ class Transformer implements TransformerInterface
      */
     private function prefixUse(string $targetFile)
     {
-        $pattern     = sprintf(
+        $pattern = sprintf(
             '/%1$s\\s+(?!(%2$s)|(\\\\(?!.*\\\\.*))|(Composer(\\\\|;)|(?!.*\\\\.*)))/',
             'use',
             $this->namespacePrefix

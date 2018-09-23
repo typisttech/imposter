@@ -1,7 +1,7 @@
 {
-    "autoload": {
-        "files": [
-            "DummyClass.php"
-        ]
-    }
+  "autoload": {
+    "files": [
+      "DummyClass.php"
+    ]
+  }
 }

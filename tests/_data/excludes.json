@@ -1,20 +1,20 @@
 {
-    "require": {
-        "php": "^7.0",
-        "composer/dummy": "*",
-        "dummy/dummy": "*",
-        "dummy/dummy-psr4": "*",
-        "typisttech/imposter": "*"
-    },
-    "config": {
-        "vendor-dir": "tmp-vendor"
-    },
-    "extra": {
-        "imposter": {
-            "namespace": "TypistTech\\Imposter\\Vendor",
-            "excludes": [
-                "dummy/dummy-psr4"
-            ]
-        }
+  "require": {
+    "php": "^7.0",
+    "composer/dummy": "*",
+    "dummy/dummy": "*",
+    "dummy/dummy-psr4": "*",
+    "typisttech/imposter": "*"
+  },
+  "config": {
+    "vendor-dir": "tmp-vendor"
+  },
+  "extra": {
+    "imposter": {
+      "namespace": "TypistTech\\Imposter\\Vendor",
+      "excludes": [
+        "dummy/dummy-psr4"
+      ]
     }
+  }
 }
