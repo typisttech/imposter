@@ -1,13 +1,15 @@
 <?php
+declare(strict_types=1);
 
 namespace TypistTech\Imposter;
 
-use AspectMock\Test;
+use Codeception\Test\Unit;
+use Mockery;
 
 /**
  * @coversDefaultClass \TypistTech\Imposter\Imposter
  */
-class ImposterTest extends \Codeception\Test\Unit
+class ImposterTest extends Unit
 {
     private $configCollection;
 
@@ -21,7 +23,7 @@ class ImposterTest extends \Codeception\Test\Unit
     public function testConfigCollectionGetter()
     {
         $actual   = $this->imposter->getConfigCollection();
-        $expected = $this->configCollection->getObject();
+        $expected = $this->configCollection;
 
         $this->assertSame($expected, $actual);
     }
@@ -57,28 +59,26 @@ class ImposterTest extends \Codeception\Test\Unit
     public function testTransformerGetter()
     {
         $actual   = $this->imposter->getTransformer();
-        $expected = $this->transformer->getObject();
+        $expected = $this->transformer;
 
         $this->assertSame($expected, $actual);
     }
 
     protected function _before()
     {
-        $this->configCollection = Test::double(
-            new ConfigCollection,
-            [
-                'getAutoloads' => [
-                    'path/to/dir',
-                    'path/to/file.php',
-                ],
-            ]
-        );
+        $this->configCollection = Mockery::spy(ConfigCollection::class);
+        $this->configCollection->allows('getAutoloads')
+            ->withNoArgs()
+            ->andReturn([
+                'path/to/dir',
+                'path/to/file.php',
+            ]);
 
-        $this->transformer = Test::double(
-            Test::double(Transformer::class)->make(),
-            ['transform' => null]
-        );
+        $this->transformer = Mockery::spy(Transformer::class);
+        $this->transformer->allows('transform')
+            ->withNoArgs()
+            ->andReturnNull();
 
-        $this->imposter = new Imposter($this->configCollection->getObject(), $this->transformer->getObject());
+        $this->imposter = new Imposter($this->configCollection, $this->transformer);
     }
 }
