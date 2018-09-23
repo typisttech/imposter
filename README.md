@@ -33,10 +33,9 @@ Wrapping all composer vendor packages inside your own namespace. Intended for Wo
   - [How about PHP built-in classes?](#how-about-php-built-in-classes)
   - [How about packages that don't use namespaces?](#how-about-packages-that-dont-use-namespaces)
   - [How about packages that use fully qualified name?](#how-about-packages-that-use-fully-qualified-name)
+  - [Will you add support for older PHP versions?](#will-you-add-support-for-older-php-versions)
 - [Support!](#support)
-  - [Donate via PayPal *](#donate-via-paypal-)
-  - [Donate Monero](#donate-monero)
-  - [Mine me some Monero](#mine-me-some-monero)
+  - [Donate](#donate)
   - [Why don't you hire me?](#why-dont-you-hire-me)
   - [Want to help in other way? Want to be a sponsor?](#want-to-help-in-other-way-want-to-be-a-sponsor)
 - [Alternatives](#alternatives)
@@ -196,6 +195,11 @@ Tell me your idea by [opening an issue](https://github.com/TypistTech/imposter/i
 
 Not for now. We need a better regex in the [Transformer](src/Transformer.php) class.
 Tell me your idea by [opening an issue](https://github.com/TypistTech/imposter/issues/new)
+
+### Will you add support for older PHP versions?
+
+Never! This package will only works on [actively supported PHP versions](https://secure.php.net/supported-versions.php).
+Don't use it on **end of life** or **security fixes only** PHP versions.
 
 ## Support!
 
