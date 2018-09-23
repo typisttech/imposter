@@ -4,9 +4,6 @@
 [![Total Downloads](https://poser.pugx.org/typisttech/imposter/downloads)](https://packagist.org/packages/typisttech/imposter)
 [![Build Status](https://travis-ci.org/TypistTech/imposter.svg?branch=master)](https://travis-ci.org/TypistTech/imposter)
 [![codecov](https://codecov.io/gh/TypistTech/imposter/branch/master/graph/badge.svg)](https://codecov.io/gh/TypistTech/imposter)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/TypistTech/imposter/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/TypistTech/imposter/?branch=master)
-[![PHP Versions Tested](http://php-eye.com/badge/typisttech/imposter/tested.svg)](https://travis-ci.org/TypistTech/imposter)
-[![StyleCI](https://styleci.io/repos/84912533/shield?branch=master)](https://styleci.io/repos/84912533)
 [![License](https://poser.pugx.org/typisttech/imposter/license)](https://packagist.org/packages/typisttech/imposter)
 [![Donate via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://typist.tech/donate/imposter/)
 [![Hire Typist Tech](https://img.shields.io/badge/Hire-Typist%20Tech-ff69b4.svg)](https://typist.tech/contact/)
@@ -34,17 +31,16 @@ Wrapping all composer vendor packages inside your own namespace. Intended for Wo
   - [How about packages that don't use namespaces?](#how-about-packages-that-dont-use-namespaces)
   - [How about packages that use fully qualified name?](#how-about-packages-that-use-fully-qualified-name)
   - [Will you add support for older PHP versions?](#will-you-add-support-for-older-php-versions)
-- [Support!](#support)
-  - [Donate](#donate)
+  - [It looks awesome. Where can I find some more goodies like this?](#it-looks-awesome-where-can-i-find-some-more-goodies-like-this)
+  - [This package isn't on wp.org. Where can I give a :star::star::star::star::star: review?](#this-package-isnt-on-wporg-where-can-i-give-a-starstarstarstarstar-review)
+- [Alternatives](#alternatives)
+- [Support](#support)
   - [Why don't you hire me?](#why-dont-you-hire-me)
   - [Want to help in other way? Want to be a sponsor?](#want-to-help-in-other-way-want-to-be-a-sponsor)
-- [Alternatives](#alternatives)
-- [Developing](#developing)
 - [Running the Tests](#running-the-tests)
 - [Feedback](#feedback)
 - [Change log](#change-log)
 - [Security](#security)
-- [Contributing](#contributing)
 - [Credits](#credits)
 - [License](#license)
 
@@ -201,19 +197,20 @@ Tell me your idea by [opening an issue](https://github.com/TypistTech/imposter/i
 Never! This package will only works on [actively supported PHP versions](https://secure.php.net/supported-versions.php).
 Don't use it on **end of life** or **security fixes only** PHP versions.
 
-## Support!
+### It looks awesome. Where can I find some more goodies like this?
 
-### Donate
+* Articles on Typist Tech's [blog](https://typist.tech)
+* [Tang Rufus' WordPress plugins](https://profiles.wordpress.org/tangrufus#content-plugins) on wp.org
+* More projects on [Typist Tech's GitHub profile](https://github.com/TypistTech)
+* Stay tuned on [Typist Tech's newsletter](https://typist.tech/go/newsletter)
+* Follow [Tang Rufus' Twitter account](https://twitter.com/TangRufus)
+* Hire [Tang Rufus](https://typist.tech/contact) to build your next awesome site
 
-Love Imposter? Help me maintain it, a [donation here](https://typist.tech/donation/) can help with it.
+### This package isn't on wp.org. Where can I give a :star::star::star::star::star: review?
 
-### Why don't you hire me?
+Thanks!
 
-Ready to take freelance WordPress jobs. Contact me via the contact form [here](https://typist.tech/contact/) or, via email [info@typist.tech](mailto:info@typist.tech)
-
-### Want to help in other way? Want to be a sponsor?
-
-Contact: [Tang Rufus](mailto:tangrufus@gmail.com)
+Consider writing a blog post, submitting pull requests, [donating](https://typist.tech/donation/) or [hiring me](https://typist.tech/contact/) instead.
 
 ## Alternatives
 
@@ -225,32 +222,26 @@ Here is a list of alternatives that I found. But none satisfied my requirements.
     - Works with PSR0 and PSR4
     - Dependency packages store in a different directory
 
-## Developing
+## Support
 
-To setup a developer workable version you should run these commands:
+Love `imposter`? Help me maintain it, a [donation here](https://typist.tech/donation/) can help with it.
 
-```bash
-$ composer create-project --keep-vcs --no-install typisttech/imposter:dev-master
-$ cd imposter
-$ composer install
-```
+### Why don't you hire me?
+
+Ready to take freelance WordPress jobs. Contact me via the contact form [here](https://typist.tech/contact/) or, via email [info@typist.tech](mailto:info@typist.tech)
+
+### Want to help in other way? Want to be a sponsor?
+
+Contact: [Tang Rufus](mailto:tangrufus@gmail.com)
 
 ## Running the Tests
-
-[Imposter](https://github.com/TypistTech/imposter) run tests on [Codeception](http://codeception.com/).
 
 Run the tests:
 
 ``` bash
 $ composer test
-
-// Or, run with coverage support
-$ composer test-with-coverage
+$ composer check-style
 ```
-
-We also test all PHP files against [PSR-2: Coding Style Guide](http://www.php-fig.org/psr/psr-2/).
-
-Check the code style with ``$ composer check-style``.
 
 ## Feedback
 
@@ -260,22 +251,18 @@ Please submit an [issue](https://github.com/TypistTech/imposter/issues/new) and 
 
 ## Change log
 
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+Please see [CHANGELOG](./CHANGELOG.md) for more information on what has changed recently.
 
 ## Security
 
 If you discover any security related issues, please email imposter@typist.tech instead of using the issue tracker.
 
-## Contributing
-
-Please see [CONTRIBUTING](.github/CONTRIBUTING.md) and [CODE_OF_CONDUCT](./CODE_OF_CONDUCT.md) for details.
-
 ## Credits
 
-[Imposter](https://github.com/TypistTech/imposter) is a [Typist Tech](https://typist.tech) project and maintained by [Tang Rufus](https://twitter.com/Tangrufus), freelance developer for [hire](https://typist.tech/contact/).
+[`imposter`](https://github.com/TypistTech/imposter) is a [Typist Tech](https://typist.tech) project and maintained by [Tang Rufus](https://twitter.com/TangRufus), freelance developer for [hire](https://www.typist.tech/contact/).
 
 Full list of contributors can be found [here](https://github.com/TypistTech/imposter/graphs/contributors).
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE) for more information.
+The MIT License (MIT). Please see [License File](./LICENSE.md) for more information.
