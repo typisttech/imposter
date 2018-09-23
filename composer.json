@@ -1,6 +1,5 @@
 {
     "name": "typisttech/imposter",
-    "type": "library",
     "description": "Wrapping all composer vendor packages inside your own namespace. Intended for WordPress plugins",
     "keywords": [
         "composer",
@@ -24,11 +23,6 @@
             "role": "Developer"
         }
     ],
-    "support": {
-        "email": "imposter@typist.tech",
-        "issues": "https://github.com/TypistTech/imposter/issues",
-        "source": "https://github.com/TypistTech/imposter"
-    },
     "require": {
         "php": "^7.1"
     },
@@ -40,6 +34,14 @@
     "suggest": {
         "typisttech/imposter-plugin": "Composer plugin to integrate composer and imposter"
     },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.3.x-dev"
+        }
+    },
     "autoload": {
         "psr-4": {
             "TypistTech\\Imposter\\": "src"
@@ -47,15 +49,20 @@
     },
     "scripts": {
         "check-style": "phpcs --standard=ruleset.xml --colors -p -s .",
-        "pre-tag": [
+        "pretag": [
+            "composer update",
+            "@test",
+            "@check-style",
+            "composer normalize",
             "doctoc README.md",
             "github_changelog_generator --no-verbose"
         ],
         "test": "codecept run",
-        "test:coverage": "codecept run --coverage --coverage-xml --coverage-html",
-        "test:unit": "codecept unit"
+        "test:coverage": "codecept run --coverage --coverage-html --coverage-xml"
     },
-    "config": {
-        "sort-packages": true
+    "support": {
+        "email": "imposter@typist.tech",
+        "issues": "https://github.com/TypistTech/imposter/issues",
+        "source": "https://github.com/TypistTech/imposter"
     }
 }
