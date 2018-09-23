@@ -16,7 +16,7 @@ declare(strict_types=1);
 
 namespace TypistTech\Imposter;
 
-final class ArrayUtil
+class ArrayUtil
 {
     private function __construct()
     {
