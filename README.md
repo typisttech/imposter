@@ -222,6 +222,9 @@ Here is a list of alternatives that I found. But none satisfied my requirements.
     - Works with PSR0 and PSR4
     - Dependency packages store in a different directory
 
+* [PHP Scoper](https://github.com/humbug/php-scoper)
+    - Prefixes all PHP namespaces in a file/directory to isolate the code bundled in PHARs
+
 ## Support
 
 Love `imposter`? Help me maintain it, a [donation here](https://typist.tech/donation/) can help with it.
