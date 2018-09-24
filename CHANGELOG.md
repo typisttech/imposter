@@ -1,5 +1,23 @@
 # Change Log
 
+## [0.3.1](https://github.com/TypistTech/imposter/tree/0.3.1) (2018-09-25)
+[Full Changelog](https://github.com/TypistTech/imposter/compare/0.3.0...0.3.1)
+
+**Closed issues:**
+
+- Bug: Wrong transformation of `use function` keywords [\#65](https://github.com/TypistTech/imposter/issues/65)
+
+**Merged pull requests:**
+
+- Transformer: Test closures with `use` keywords [\#71](https://github.com/TypistTech/imposter/pull/71) ([TangRufus](https://github.com/TangRufus))
+- Better testing dummies [\#70](https://github.com/TypistTech/imposter/pull/70) ([TangRufus](https://github.com/TangRufus))
+- Transform `use const` and `use function` keywords [\#69](https://github.com/TypistTech/imposter/pull/69) ([TangRufus](https://github.com/TangRufus))
+- Apply code style [\#68](https://github.com/TypistTech/imposter/pull/68) ([TangRufus](https://github.com/TangRufus))
+- Do not use `final`; Use Mockery instead of AspectMock [\#67](https://github.com/TypistTech/imposter/pull/67) ([TangRufus](https://github.com/TangRufus))
+- Bump PHP requirement to `^7.1`; Normalize as other Typist Tech projects [\#66](https://github.com/TypistTech/imposter/pull/66) ([TangRufus](https://github.com/TangRufus))
+- Misc: Update TravisCI & readme & info [\#63](https://github.com/TypistTech/imposter/pull/63) ([TangRufus](https://github.com/TangRufus))
+- Readme: Update links and info [\#62](https://github.com/TypistTech/imposter/pull/62) ([TangRufus](https://github.com/TangRufus))
+
 ## [0.3.0](https://github.com/TypistTech/imposter/tree/0.3.0) (2018-01-16)
 [Full Changelog](https://github.com/TypistTech/imposter/compare/0.2.3...0.3.0)
 
@@ -9,6 +27,7 @@
 
 **Merged pull requests:**
 
+- Version bump 0.3.0 [\#61](https://github.com/TypistTech/imposter/pull/61) ([TangRufus](https://github.com/TangRufus))
 - composer update [\#60](https://github.com/TypistTech/imposter/pull/60) ([TangRufus](https://github.com/TangRufus))
 - Handle `use` keywords with leading backslashes [\#59](https://github.com/TypistTech/imposter/pull/59) ([TangRufus](https://github.com/TangRufus))
 - Misc: Add tests/\_output/.gitignore [\#56](https://github.com/TypistTech/imposter/pull/56) ([TangRufus](https://github.com/TangRufus))
