@@ -22,10 +22,10 @@ Wrapping all composer vendor packages inside your own namespace. Intended for Wo
   - [extra.imposter.excludes](#extraimposterexcludes)
 - [Usage](#usage)
 - [Frequently Asked Questions](#frequently-asked-questions)
-  - [How can I integrate Imposter with composer?](#how-can-i-integrate-imposter-with-composer)
-  - [Does Imposter support `PSR4`, `PSR0`, `Classmap` and `Files`?](#does-imposter-support-psr4-psr0-classmap-and-files)
-  - [Can I exclude some of the packages from `Imposter`?](#can-i-exclude-some-of-the-packages-from-imposter)
-  - [Does Imposter support `exclude-from-classmap`?](#does-imposter-support-exclude-from-classmap)
+  - [How can I integrate imposter with composer?](#how-can-i-integrate-imposter-with-composer)
+  - [Does imposter support `PSR4`, `PSR0`, `Classmap` and `Files`?](#does-imposter-support-psr4-psr0-classmap-and-files)
+  - [Can I exclude some of the packages from imposter?](#can-i-exclude-some-of-the-packages-from-imposter)
+  - [Does imposter support `exclude-from-classmap`?](#does-imposter-support-exclude-from-classmap)
   - [How about `require-dev` packages?](#how-about-require-dev-packages)
   - [How about PHP built-in classes?](#how-about-php-built-in-classes)
   - [How about packages that don't use namespaces?](#how-about-packages-that-dont-use-namespaces)
@@ -92,7 +92,7 @@ This is the namespace prefix to be added to vendor packages.
 *Optional* Array of strings
 
 Vendor packages which needs to be excluded from namespace prefixing.
-All [composer made packages](https://packagist.org/packages/composer/) are excluded by default.
+All [composer-made packages](https://packagist.org/packages/composer/) are excluded by default.
 Besides, anything under the `Composer` namespace will be excluded.
 
 ## Usage
@@ -124,10 +124,14 @@ namespace Dummy\File;
 use AnotherDummy\{
     SubAnotherDummy, SubOtherDummy
 };
+use Composer;
+use Composer\Plugin\PluginInterface;
 use Dummy\SubOtherDummy;
 use OtherDummy\SubOtherDummy;
 use RuntimeException;
 use \UnexpectedValueException;
+use function OtherVendor\myFunc;
+use const OtherVendor\MY_MAGIC_NUMBER;
 
 class DummyClass
 {
@@ -138,15 +142,19 @@ After:
 ```php
 <?php
 
-namespace My\App\Vendor\Dummy\File;
+namespace MyPlugin\Vendor\Dummy\File;
 
-use My\App\Vendor\AnotherDummy\{
+use MyPlugin\Vendor\AnotherDummy\{
     SubAnotherDummy, SubOtherDummy
 };
-use My\App\Vendor\Dummy\SubOtherDummy;
-use My\App\Vendor\OtherDummy\SubOtherDummy;
+use Composer;
+use Composer\Plugin\PluginInterface;
+use MyPlugin\Vendor\Dummy\SubOtherDummy;
+use MyPlugin\Vendor\OtherDummy\SubOtherDummy;
 use RuntimeException;
 use \UnexpectedValueException;
+use function MyPlugin\Vendor\OtherVendor\myFunc;
+use const MyPlugin\Vendor\OtherVendor\MY_MAGIC_NUMBER;
 
 class DummyClass
 {
@@ -155,21 +163,21 @@ class DummyClass
 
 ## Frequently Asked Questions
 
-### How can I integrate Imposter with composer?
+### How can I integrate imposter with composer?
 
 Use [imposter-plugin](https://typist.tech/projects/imposter-plugin) instead.
-It hooks Imposter into [composer command events](https://getcomposer.org/doc/articles/scripts.md#command-events).
+It hooks imposter into [composer command events](https://getcomposer.org/doc/articles/scripts.md#command-events).
 
-### Does Imposter support `PSR4`, `PSR0`, `Classmap` and `Files`?
+### Does imposter support `PSR4`, `PSR0`, `Classmap` and `Files`?
 
 Yes for all. PSR-4 and PSR-0 autoloading, classmap generation and files includes are supported.
 
-### Can I exclude some of the packages from `Imposter`?
+### Can I exclude some of the packages from imposter?
 
 Yes, see [`extra.imposter.excludes`](#extraimposterexcludes).
 All [composer made packages](https://packagist.org/packages/composer/) are excluded by default.
 
-### Does Imposter support `exclude-from-classmap`?
+### Does imposter support `exclude-from-classmap`?
 
 Not for now.
 Pull requests are welcome.
@@ -180,7 +188,7 @@ Imposter do nothing on `require-dev` packages because imposter is intended for a
 
 ### How about PHP built-in classes?
 
-Imposter skips classes that on global namespace, for example: `ArrayObject`, `RuntimeException`
+Imposter skips classes that on global namespace, for example: `\ArrayObject`, `\RuntimeException`
 
 ### How about packages that don't use namespaces?
 
@@ -189,7 +197,7 @@ Tell me your idea by [opening an issue](https://github.com/TypistTech/imposter/i
 
 ### How about packages that use fully qualified name?
 
-Not for now. We need a better regex in the [Transformer](src/Transformer.php) class.
+Not for now. We need a better regex(or something better than regex) in the [Transformer](src/Transformer.php) class.
 Tell me your idea by [opening an issue](https://github.com/TypistTech/imposter/issues/new)
 
 ### Will you add support for older PHP versions?
