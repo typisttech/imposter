@@ -9,7 +9,6 @@ use Composer;
 use Composer\Plugin\PluginInterface;
 use MyPlugin\Vendor\Dummy\SubOtherDummy;
 use MyPlugin\Vendor\OtherDummy\SubOtherDummy;
-use MyPlugin\Vendor\TypistTech\Imposter\Plugin;
 use RuntimeException;
 use \UnexpectedValueException;
 use function MyPlugin\Vendor\OtherVendor\myFunc;
