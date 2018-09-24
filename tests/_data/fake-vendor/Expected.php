@@ -14,6 +14,16 @@ use \UnexpectedValueException;
 use function MyPlugin\Vendor\OtherVendor\myFunc;
 use const MyPlugin\Vendor\OtherVendor\MY_MAGIC_NUMBER;
 
+$closure = function () use ($aaa) {
+    // Just testing.
+};
+
 class DummyClass
 {
+    public function useClosure()
+    {
+        array_map(function () use ($xxx) {
+            // Just testing.
+        }, []);
+    }
 }
