@@ -8,6 +8,10 @@ paths:
 actor_suffix: Tester
 settings:
   shuffle: true
+coverage:
+  enabled: true
+  include:
+    - src/*
 extensions:
   enabled:
     - Codeception\Extension\RunFailed
