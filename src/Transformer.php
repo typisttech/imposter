@@ -61,6 +61,8 @@ class Transformer implements TransformerInterface
     private function doTransform(string $targetFile)
     {
         $this->prefixNamespace($targetFile);
+        $this->prefixUseConst($targetFile);
+        $this->prefixUseFunction($targetFile);
         $this->prefixUse($targetFile);
     }
 
@@ -105,7 +107,45 @@ class Transformer implements TransformerInterface
     }
 
     /**
-     * Prefix use keywords at the given path.
+     * Prefix `use const` keywords at the given path.
+     *
+     * @param string $targetFile
+     *
+     * @return void
+     */
+    private function prefixUseConst(string $targetFile)
+    {
+        $pattern = sprintf(
+            '/%1$s\\s+(?!(%2$s)|(\\\\(?!.*\\\\.*))|(Composer(\\\\|;)|(?!.*\\\\.*)))/',
+            'use const',
+            $this->namespacePrefix
+        );
+        $replacement = sprintf('%1$s %2$s', 'use const', $this->namespacePrefix);
+
+        $this->replace($pattern, $replacement, $targetFile);
+    }
+
+    /**
+     * Prefix `use function` keywords at the given path.
+     *
+     * @param string $targetFile
+     *
+     * @return void
+     */
+    private function prefixUseFunction(string $targetFile)
+    {
+        $pattern = sprintf(
+            '/%1$s\\s+(?!(%2$s)|(\\\\(?!.*\\\\.*))|(Composer(\\\\|;)|(?!.*\\\\.*)))/',
+            'use function',
+            $this->namespacePrefix
+        );
+        $replacement = sprintf('%1$s %2$s', 'use function', $this->namespacePrefix);
+
+        $this->replace($pattern, $replacement, $targetFile);
+    }
+
+    /**
+     * Prefix `use` keywords at the given path.
      *
      * @param string $targetFile
      *
@@ -114,7 +154,7 @@ class Transformer implements TransformerInterface
     private function prefixUse(string $targetFile)
     {
         $pattern = sprintf(
-            '/%1$s\\s+(?!(%2$s)|(\\\\(?!.*\\\\.*))|(Composer(\\\\|;)|(?!.*\\\\.*)))/',
+            '/%1$s\\s+(?!(const)|(function)|(%2$s)|(\\\\(?!.*\\\\.*))|(Composer(\\\\|;)|(?!.*\\\\.*)))/',
             'use',
             $this->namespacePrefix
         );

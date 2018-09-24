@@ -12,6 +12,8 @@ use OtherDummy\SubOtherDummy;
 use TypistTech\Imposter\Plugin;
 use RuntimeException;
 use \UnexpectedValueException;
+use function OtherVendor\myFunc;
+use const OtherVendor\MY_MAGIC_NUMBER;
 
 class DummyClass
 {
