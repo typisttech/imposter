@@ -1,6 +1,7 @@
 # Imposter
 
 [![Latest Stable Version](https://poser.pugx.org/typisttech/imposter/v/stable)](https://packagist.org/packages/typisttech/imposter)
+[![PHP from Packagist](https://img.shields.io/packagist/php-v/typisttech/imposter.svg)](https://packagist.org/packages/typisttech/imposter)
 [![Total Downloads](https://poser.pugx.org/typisttech/imposter/downloads)](https://packagist.org/packages/typisttech/imposter)
 [![Build Status](https://travis-ci.org/TypistTech/imposter.svg?branch=master)](https://travis-ci.org/TypistTech/imposter)
 [![codecov](https://codecov.io/gh/TypistTech/imposter/branch/master/graph/badge.svg)](https://codecov.io/gh/TypistTech/imposter)
