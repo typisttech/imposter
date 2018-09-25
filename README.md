@@ -276,4 +276,4 @@ Full list of contributors can be found [here](https://github.com/TypistTech/impo
 
 ## License
 
-The MIT License (MIT). Please see [License File](./LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File](./LICENSE) for more information.
