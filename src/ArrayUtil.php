@@ -21,6 +21,12 @@ class ArrayUtil
      */
     public static function flatten(array $array): array
     {
+        if ($array === null) {
+            return $array;
+        }
+        if (count($array) == 0) {
+            return $array;
+        }
         return call_user_func_array('array_merge', $array);
     }
 }
