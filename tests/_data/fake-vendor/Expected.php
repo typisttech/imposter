@@ -1,5 +1,4 @@
 <?php
-
 namespace MyPlugin\Vendor\Dummy\File;
 
 use MyPlugin\Vendor\AnotherDummy\{
