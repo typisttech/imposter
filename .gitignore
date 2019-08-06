@@ -16,3 +16,7 @@
 
 ### PhpStorm ###
 /.idea/
+
+.env
+Makefile
+docker-compose.yml
