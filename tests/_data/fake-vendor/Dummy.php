@@ -28,16 +28,17 @@ class DummyClass
     }
 }
 
-function dummyFunction(string $namespace = null, string $use = null) : array {
-	if (!is_null($namespace) && $namespace === 'dummy string' && $use === 'dummy string') {
-		// Just testing.
-	}
+function dummyFunction(string $namespace = null, string $use = null): array
+{
+    if (! is_null($namespace) && $namespace === 'dummy string' && $use === 'dummy string') {
+        // Just testing.
+    }
 
-	return [];
+    return [];
 }
 
-foreach ( [] as $namespace => $prefix ) {
-	$aaaa = '{' . $namespace . '}' . $prefix;
+foreach ([] as $namespace => $prefix) {
+    $aaaa = '{' . $namespace . '}' . $prefix;
 }
 
 /** Just a comment for testing $namespace transformation */
