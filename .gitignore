@@ -1,18 +1,7 @@
-### Build ###
-/build/
-/release/
-
 ### Codeception ###
 /tests/_data/tmp-vendor/
 /tests/_output/
 /tests/_support/_generated/
 
 ### Composer ###
-/composer.lock
 /vendor/
-
-### npm ###
-/node_modules/
-
-### PhpStorm ###
-/.idea/
