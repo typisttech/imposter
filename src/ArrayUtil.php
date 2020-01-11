@@ -14,7 +14,7 @@ class ArrayUtil
     }
 
     /**
-     * Flatten array by one level.
+     * Flatten a multi-dimensional array into a single level.
      *
      * @param array $array
      *
@@ -22,6 +22,18 @@ class ArrayUtil
      */
     public static function flatten(array $array): array
     {
-        return call_user_func_array('array_merge', $array);
+        if (! is_array($array)) {
+            $array = (array) $array;
+        }
+
+        $result = [];
+        foreach ($array as $item) {
+            if (is_array($item)) {
+                $result = array_merge($result, array_values($item));
+            } else {
+                $result[] = $item;
+            }
+        }
+        return $result;
     }
 }

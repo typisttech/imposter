@@ -40,6 +40,16 @@ class ArrayUtilTest extends Unit
     /**
      * @covers \TypistTech\Imposter\ArrayUtil
      */
+    public function testFlattenEmptyArray()
+    {
+        $actual = ArrayUtil::flatten([]);
+
+        $this->assertSame([], $actual);
+    }
+
+    /**
+     * @covers \TypistTech\Imposter\ArrayUtil
+     */
     public function testFlattenMap()
     {
         $array = [
