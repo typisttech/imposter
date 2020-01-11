@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.4.1](https://github.com/typisttech/imposter/tree/0.4.1) (2020-01-11)
+
+[Full Changelog](https://github.com/typisttech/imposter/compare/0.4.0...0.4.1)
+
+**Merged pull requests:**
+
+- `ArrayUtil`: Remove dead code [\#89](https://github.com/TypistTech/imposter/pull/89) ([TangRufus](https://github.com/TangRufus))
+- Export `composer.lock` [\#88](https://github.com/TypistTech/imposter/pull/88) ([TangRufus](https://github.com/TangRufus))
+
 ## [0.4.0](https://github.com/typisttech/imposter/tree/0.4.0) (2020-01-11)
 
 [Full Changelog](https://github.com/typisttech/imposter/compare/0.3.1...0.4.0)
@@ -15,6 +24,7 @@
 
 **Merged pull requests:**
 
+- Version bump 0.4.0 [\#87](https://github.com/TypistTech/imposter/pull/87) ([TangRufus](https://github.com/TangRufus))
 - Bikeshedding [\#86](https://github.com/TypistTech/imposter/pull/86) ([TangRufus](https://github.com/TangRufus))
 - Fix `array\_merge` exception when `autoload`is not defined in package `composer.json` [\#85](https://github.com/TypistTech/imposter/pull/85) ([TangRufus](https://github.com/TangRufus))
 - Bump PHP requirement to ^7.2; Update dependencies; Apply code style [\#84](https://github.com/TypistTech/imposter/pull/84) ([TangRufus](https://github.com/TangRufus))
@@ -42,7 +52,6 @@
 - Bump PHP requirement to `^7.1`; Normalize as other Typist Tech projects [\#66](https://github.com/TypistTech/imposter/pull/66) ([TangRufus](https://github.com/TangRufus))
 - Misc: Update TravisCI & readme & info [\#63](https://github.com/TypistTech/imposter/pull/63) ([TangRufus](https://github.com/TangRufus))
 - Readme: Update links and info [\#62](https://github.com/TypistTech/imposter/pull/62) ([TangRufus](https://github.com/TangRufus))
-- Handle `use` keywords with leading backslashes [\#59](https://github.com/TypistTech/imposter/pull/59) ([TangRufus](https://github.com/TangRufus))
 
 ## [0.3.0](https://github.com/typisttech/imposter/tree/0.3.0) (2018-01-16)
 
@@ -56,6 +65,7 @@
 
 - Version bump 0.3.0 [\#61](https://github.com/TypistTech/imposter/pull/61) ([TangRufus](https://github.com/TangRufus))
 - composer update [\#60](https://github.com/TypistTech/imposter/pull/60) ([TangRufus](https://github.com/TangRufus))
+- Handle `use` keywords with leading backslashes [\#59](https://github.com/TypistTech/imposter/pull/59) ([TangRufus](https://github.com/TangRufus))
 - Misc: Add tests/\_output/.gitignore [\#56](https://github.com/TypistTech/imposter/pull/56) ([TangRufus](https://github.com/TangRufus))
 - Misc: Typist Tech code style [\#55](https://github.com/TypistTech/imposter/pull/55) ([TangRufus](https://github.com/TangRufus))
 
