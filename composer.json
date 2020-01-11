@@ -49,15 +49,15 @@
     }
   },
   "scripts": {
-    "style:check": "phpcs --colors -p",
     "pretag": [
-      "composer update",
+      "composer update --no-suggest",
       "@test",
       "@style:check",
       "composer normalize",
-      "doctoc README.md",
+      "npx doctoc README.md",
       "github_changelog_generator --no-verbose"
     ],
+    "style:check": "phpcs --colors -p",
     "test": "codecept run",
     "test:coverage": "codecept run --coverage --coverage-html --coverage-xml"
   },
