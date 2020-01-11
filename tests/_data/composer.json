@@ -3,6 +3,7 @@
     "php": "^7.0",
     "dummy/dummy": "*",
     "dummy/dummy-psr4": "*",
+    "dummy/dummy-no-autoload": "*",
     "typisttech/imposter": "*"
   },
   "require-dev": {
