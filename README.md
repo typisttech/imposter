@@ -1,12 +1,13 @@
 # Imposter
 
-[![Latest Stable Version](https://poser.pugx.org/typisttech/imposter/v/stable)](https://packagist.org/packages/typisttech/imposter)
+[![Packagist](https://img.shields.io/packagist/v/typisttech/imposter.svg)](https://packagist.org/packages/typisttech/imposter)
+[![Packagist](https://img.shields.io/packagist/dt/typisttech/imposter.svg)](https://packagist.org/packages/typisttech/imposter)
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/typisttech/imposter.svg)](https://packagist.org/packages/typisttech/imposter)
-[![Total Downloads](https://poser.pugx.org/typisttech/imposter/downloads)](https://packagist.org/packages/typisttech/imposter)
-[![Build Status](https://travis-ci.org/TypistTech/imposter.svg?branch=master)](https://travis-ci.org/TypistTech/imposter)
+[![CircleCI](https://circleci.com/gh/TypistTech/imposter.svg?style=svg)](https://circleci.com/gh/TypistTech/imposter)
 [![codecov](https://codecov.io/gh/TypistTech/imposter/branch/master/graph/badge.svg)](https://codecov.io/gh/TypistTech/imposter)
-[![License](https://poser.pugx.org/typisttech/imposter/license)](https://packagist.org/packages/typisttech/imposter)
-[![Donate via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://typist.tech/donate/imposter/)
+[![License](https://img.shields.io/github/license/TypistTech/imposter.svg)](https://github.com/TypistTech/imposter/blob/master/LICENSE.md)
+[![GitHub Sponsor](https://img.shields.io/badge/Sponsor-GitHub-ea4aaa)](https://github.com/sponsors/TangRufus)
+[![Sponsor via PayPal](https://img.shields.io/badge/Sponsor-PayPal-blue.svg)](https://typist.tech/donate/imposter/)
 [![Hire Typist Tech](https://img.shields.io/badge/Hire-Typist%20Tech-ff69b4.svg)](https://typist.tech/contact/)
 
 Wrapping all composer vendor packages inside your own namespace. Intended for WordPress plugins.
@@ -34,10 +35,11 @@ Wrapping all composer vendor packages inside your own namespace. Intended for Wo
   - [Will you add support for older PHP versions?](#will-you-add-support-for-older-php-versions)
   - [It looks awesome. Where can I find some more goodies like this?](#it-looks-awesome-where-can-i-find-some-more-goodies-like-this)
   - [This package isn't on wp.org. Where can I give a :star::star::star::star::star: review?](#this-package-isnt-on-wporg-where-can-i-give-a-starstarstarstarstar-review)
-- [Alternatives](#alternatives)
-- [Support](#support)
+- [Sponsoring :heart:](#sponsoring-heart)
+  - [GitHub Sponsors Matching Fund](#github-sponsors-matching-fund)
   - [Why don't you hire me?](#why-dont-you-hire-me)
   - [Want to help in other way? Want to be a sponsor?](#want-to-help-in-other-way-want-to-be-a-sponsor)
+- [Alternatives](#alternatives)
 - [Running the Tests](#running-the-tests)
 - [Feedback](#feedback)
 - [Change log](#change-log)
@@ -244,7 +246,7 @@ Imposter skips classes that on global namespace, for example: `\ArrayObject`, `\
 ### How about packages that don't use namespaces?
 
 Not for now.
-Tell me your idea by [opening an issue](https://github.com/TypistTech/imposter/issues/new)
+Tell me your idea by [opening an issue](https://github.com/TypistTech/imposter/issues/new).
 
 ### How about packages that use fully qualified name?
 
@@ -269,7 +271,25 @@ Don't use it on **end of life** or **security fixes only** PHP versions.
 
 Thanks!
 
-Consider writing a blog post, submitting pull requests, [donating](https://typist.tech/donation/) or [hiring me](https://typist.tech/contact/) instead.
+Consider writing a blog post, submitting pull requests, [sponsoring](https://typist.tech/donation/) or [hiring me](https://typist.tech/contact/) instead.
+
+## Sponsoring :heart:
+
+Love `imposter`? Help me maintain it, a [sponsorship here](https://typist.tech/donation/) can help with it.
+
+### GitHub Sponsors Matching Fund
+
+Do you know [GitHub is going to match your sponsorship](https://help.github.com/en/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors#about-the-github-sponsors-matching-fund)?
+
+[Sponsor now via GitHub](https://github.com/sponsors/TangRufus) to double your greatness.
+
+### Why don't you hire me?
+
+Ready to take freelance WordPress jobs. Contact me via the contact form [here](https://typist.tech/contact/) or, via email [info@typist.tech](mailto:info@typist.tech)
+
+### Want to help in other way? Want to be a sponsor?
+
+Contact: [Tang Rufus](mailto:tangrufus@gmail.com)
 
 ## Alternatives
 
@@ -283,18 +303,6 @@ Here is a list of alternatives that I found. But none satisfied my requirements.
 
 * [PHP Scoper](https://github.com/humbug/php-scoper)
     - Prefixes all PHP namespaces in a file/directory to isolate the code bundled in PHARs
-
-## Support
-
-Love `imposter`? Help me maintain it, a [donation here](https://typist.tech/donation/) can help with it.
-
-### Why don't you hire me?
-
-Ready to take freelance WordPress jobs. Contact me via the contact form [here](https://typist.tech/contact/) or, via email [info@typist.tech](mailto:info@typist.tech)
-
-### Want to help in other way? Want to be a sponsor?
-
-Contact: [Tang Rufus](mailto:tangrufus@gmail.com)
 
 ## Running the Tests
 
