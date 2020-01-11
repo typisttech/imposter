@@ -14,7 +14,7 @@ class ArrayUtil
     }
 
     /**
-     * Flatten a multi-dimensional array into a single level.
+     * Flatten array by one level.
      *
      * @param array $array
      *
