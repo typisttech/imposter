@@ -55,7 +55,7 @@ class FilesystemTest extends Unit
 
         $expected = new RuntimeException('File does not exist at path ' . $path);
 
-        $this->tester->expectException($expected, function () use ($path) {
+        $this->tester->expectThrowable($expected, function () use ($path) {
             $this->filesystem->get($path);
         });
     }

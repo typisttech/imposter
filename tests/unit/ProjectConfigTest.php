@@ -76,7 +76,7 @@ class ProjectConfigTest extends Unit
 
         $expected = new UnexpectedValueException('Imposter namespace is empty');
 
-        $this->tester->expectException($expected, function () use ($projectConfig) {
+        $this->tester->expectThrowable($expected, function () use ($projectConfig) {
             $projectConfig->getImposterNamespace();
         });
     }
