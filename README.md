@@ -17,35 +17,35 @@ Wrapping all composer vendor packages inside your own namespace. Intended for Wo
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Imposter](#imposter)
-  - [Why?](#why)
-  - [Install](#install)
-  - [Config](#config)
-    - [extra.imposter.namespace](#extraimposternamespace)
-    - [extra.imposter.excludes](#extraimposterexcludes)
-  - [Usage](#usage)
-  - [Frequently Asked Questions](#frequently-asked-questions)
-    - [How can I integrate imposter with composer?](#how-can-i-integrate-imposter-with-composer)
-    - [Does imposter support `PSR4`, `PSR0`, `Classmap` and `Files`?](#does-imposter-support-psr4-psr0-classmap-and-files)
-    - [Can I exclude some of the packages from imposter?](#can-i-exclude-some-of-the-packages-from-imposter)
-    - [Does imposter support `exclude-from-classmap`?](#does-imposter-support-exclude-from-classmap)
-    - [How about `require-dev` packages?](#how-about-require-dev-packages)
-    - [How about PHP built-in classes?](#how-about-php-built-in-classes)
-    - [How about packages that don't use namespaces?](#how-about-packages-that-dont-use-namespaces)
-    - [How about packages that use fully qualified name?](#how-about-packages-that-use-fully-qualified-name)
-    - [Will you add support for older PHP versions?](#will-you-add-support-for-older-php-versions)
-    - [It looks awesome. Where can I find some more goodies like this?](#it-looks-awesome-where-can-i-find-some-more-goodies-like-this)
-    - [This package isn't on wp.org. Where can I give a :star::star::star::star::star: review?](#this-package-isnt-on-wporg-where-can-i-give-a-starstarstarstarstar-review)
-  - [Alternatives](#alternatives)
-  - [Support](#support)
-    - [Why don't you hire me?](#why-dont-you-hire-me)
-    - [Want to help in other way? Want to be a sponsor?](#want-to-help-in-other-way-want-to-be-a-sponsor)
-  - [Running the Tests](#running-the-tests)
-  - [Feedback](#feedback)
-  - [Change log](#change-log)
-  - [Security](#security)
-  - [Credits](#credits)
-  - [License](#license)
+- [Why?](#why)
+- [Install](#install)
+- [Config](#config)
+  - [extra.imposter.namespace](#extraimposternamespace)
+  - [extra.imposter.excludes](#extraimposterexcludes)
+- [Usage](#usage)
+- [Frequently Asked Questions](#frequently-asked-questions)
+  - [How can I integrate imposter with composer?](#how-can-i-integrate-imposter-with-composer)
+  - [Does imposter support `PSR4`, `PSR0`, `Classmap` and `Files`?](#does-imposter-support-psr4-psr0-classmap-and-files)
+  - [Can I exclude some of the packages from imposter?](#can-i-exclude-some-of-the-packages-from-imposter)
+  - [Does imposter support `exclude-from-classmap`?](#does-imposter-support-exclude-from-classmap)
+  - [How about `require-dev` packages?](#how-about-require-dev-packages)
+  - [How about PHP built-in classes?](#how-about-php-built-in-classes)
+  - [How about packages that don't use namespaces?](#how-about-packages-that-dont-use-namespaces)
+  - [How about packages that use fully qualified name?](#how-about-packages-that-use-fully-qualified-name)
+  - [Will you add support for older PHP versions?](#will-you-add-support-for-older-php-versions)
+  - [It looks awesome. Where can I find some more goodies like this?](#it-looks-awesome-where-can-i-find-some-more-goodies-like-this)
+  - [This package isn't on wp.org. Where can I give a :star::star::star::star::star: review?](#this-package-isnt-on-wporg-where-can-i-give-a-starstarstarstarstar-review)
+- [Sponsoring :heart:](#sponsoring-heart)
+  - [GitHub Sponsors Matching Fund](#github-sponsors-matching-fund)
+  - [Why don't you hire me?](#why-dont-you-hire-me)
+  - [Want to help in other way? Want to be a sponsor?](#want-to-help-in-other-way-want-to-be-a-sponsor)
+- [Alternatives](#alternatives)
+- [Running the Tests](#running-the-tests)
+- [Feedback](#feedback)
+- [Change log](#change-log)
+- [Security](#security)
+- [Credits](#credits)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -246,7 +246,7 @@ Imposter skips classes that on global namespace, for example: `\ArrayObject`, `\
 ### How about packages that don't use namespaces?
 
 Not for now.
-Tell me your idea by [opening an issue](https://github.com/TypistTech/imposter/issues/new)
+Tell me your idea by [opening an issue](https://github.com/TypistTech/imposter/issues/new).
 
 ### How about packages that use fully qualified name?
 
@@ -271,7 +271,25 @@ Don't use it on **end of life** or **security fixes only** PHP versions.
 
 Thanks!
 
-Consider writing a blog post, submitting pull requests, [donating](https://typist.tech/donation/) or [hiring me](https://typist.tech/contact/) instead.
+Consider writing a blog post, submitting pull requests, [sponsoring](https://typist.tech/donation/) or [hiring me](https://typist.tech/contact/) instead.
+
+## Sponsoring :heart:
+
+Love `imposter`? Help me maintain it, a [sponsorship here](https://typist.tech/donation/) can help with it.
+
+### GitHub Sponsors Matching Fund
+
+Do you know [GitHub is going to match your sponsorship](https://help.github.com/en/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors#about-the-github-sponsors-matching-fund)?
+
+[Sponsor now via GitHub](https://github.com/sponsors/TangRufus) to double your greatness.
+
+### Why don't you hire me?
+
+Ready to take freelance WordPress jobs. Contact me via the contact form [here](https://typist.tech/contact/) or, via email [info@typist.tech](mailto:info@typist.tech)
+
+### Want to help in other way? Want to be a sponsor?
+
+Contact: [Tang Rufus](mailto:tangrufus@gmail.com)
 
 ## Alternatives
 
@@ -285,18 +303,6 @@ Here is a list of alternatives that I found. But none satisfied my requirements.
 
 * [PHP Scoper](https://github.com/humbug/php-scoper)
     - Prefixes all PHP namespaces in a file/directory to isolate the code bundled in PHARs
-
-## Support
-
-Love `imposter`? Help me maintain it, a [donation here](https://typist.tech/donation/) can help with it.
-
-### Why don't you hire me?
-
-Ready to take freelance WordPress jobs. Contact me via the contact form [here](https://typist.tech/contact/) or, via email [info@typist.tech](mailto:info@typist.tech)
-
-### Want to help in other way? Want to be a sponsor?
-
-Contact: [Tang Rufus](mailto:tangrufus@gmail.com)
 
 ## Running the Tests
 
