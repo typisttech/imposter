@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace TypistTech\Imposter;
@@ -130,6 +131,6 @@ class FilesystemTest extends Unit
 
     protected function _before()
     {
-        $this->filesystem = new Filesystem;
+        $this->filesystem = new Filesystem();
     }
 }

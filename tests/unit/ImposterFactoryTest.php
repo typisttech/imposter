@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace TypistTech\Imposter;
@@ -12,7 +13,7 @@ class ImposterFactoryTest extends Unit
 {
     public function testForProject()
     {
-        $filesystem = new Filesystem;
+        $filesystem = new Filesystem();
 
         $projectConfig = ConfigFactory::buildProjectConfig(codecept_data_dir('composer.json'), $filesystem);
         $configCollection = ConfigCollectionFactory::forProject($projectConfig, $filesystem);

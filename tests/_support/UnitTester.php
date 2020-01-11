@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace TypistTech\Imposter;
@@ -23,7 +24,4 @@ use Codeception\Actor;
 class UnitTester extends Actor
 {
     use _generated\UnitTesterActions;
-    /**
-     * Define custom actions here
-     */
 }

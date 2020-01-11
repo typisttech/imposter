@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace TypistTech\Imposter;
@@ -22,7 +23,7 @@ class ProjectConfigTest extends Unit
     public function testsGetExcludes()
     {
         $json = codecept_data_dir('composer.json');
-        $projectConfig = ConfigFactory::buildProjectConfig($json, new Filesystem);
+        $projectConfig = ConfigFactory::buildProjectConfig($json, new Filesystem());
 
         $expected = [
             'typisttech/imposter',
@@ -40,7 +41,7 @@ class ProjectConfigTest extends Unit
     public function testsGetExcludesDefault()
     {
         $json = codecept_data_dir('tmp-vendor/dummy/dummy-dependency/composer.json');
-        $projectConfig = ConfigFactory::buildProjectConfig($json, new Filesystem);
+        $projectConfig = ConfigFactory::buildProjectConfig($json, new Filesystem());
 
         $expected = [
             'typisttech/imposter',
@@ -57,7 +58,7 @@ class ProjectConfigTest extends Unit
     public function testsGetImposterNamespace()
     {
         $json = codecept_data_dir('composer.json');
-        $projectConfig = ConfigFactory::buildProjectConfig($json, new Filesystem);
+        $projectConfig = ConfigFactory::buildProjectConfig($json, new Filesystem());
 
         $expected = 'TypistTech\Imposter\Vendor';
 
@@ -72,7 +73,7 @@ class ProjectConfigTest extends Unit
     public function testsGetImposterNamespaceThrowsUnexpectedValueException()
     {
         $json = codecept_data_dir('tmp-vendor/dummy/dummy-dependency/composer.json');
-        $projectConfig = ConfigFactory::buildProjectConfig($json, new Filesystem);
+        $projectConfig = ConfigFactory::buildProjectConfig($json, new Filesystem());
 
         $expected = new UnexpectedValueException('Imposter namespace is empty');
 
@@ -87,7 +88,7 @@ class ProjectConfigTest extends Unit
     public function testsGetVendorDir()
     {
         $json = codecept_data_dir('composer.json');
-        $projectConfig = ConfigFactory::buildProjectConfig($json, new Filesystem);
+        $projectConfig = ConfigFactory::buildProjectConfig($json, new Filesystem());
 
         $expected = codecept_data_dir('tmp-vendor/');
 
@@ -102,7 +103,7 @@ class ProjectConfigTest extends Unit
     public function testsGetVendorDirWithDefaultFallback()
     {
         $json = codecept_data_dir('tmp-vendor/dummy/dummy-dependency/composer.json');
-        $projectConfig = ConfigFactory::buildProjectConfig($json, new Filesystem);
+        $projectConfig = ConfigFactory::buildProjectConfig($json, new Filesystem());
 
         $expected = codecept_data_dir('tmp-vendor/dummy/dummy-dependency/vendor/');
 
@@ -117,7 +118,7 @@ class ProjectConfigTest extends Unit
     public function testsIsAnInstanceOfConfig()
     {
         $json = codecept_data_dir('composer.json');
-        $projectConfig = ConfigFactory::buildProjectConfig($json, new Filesystem);
+        $projectConfig = ConfigFactory::buildProjectConfig($json, new Filesystem());
 
         $this->assertInstanceOf(ProjectConfig::class, $projectConfig);
         $this->assertInstanceOf(Config::class, $projectConfig);
@@ -129,7 +130,7 @@ class ProjectConfigTest extends Unit
     public function testsSetExtraExcludes()
     {
         $json = codecept_data_dir('tmp-vendor/dummy/dummy-dependency/composer.json');
-        $projectConfig = ConfigFactory::buildProjectConfig($json, new Filesystem);
+        $projectConfig = ConfigFactory::buildProjectConfig($json, new Filesystem());
 
         $expected = [
             'typisttech/imposter',

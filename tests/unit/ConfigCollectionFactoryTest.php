@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace TypistTech\Imposter;
@@ -15,7 +16,7 @@ class ConfigCollectionFactoryTest extends Unit
      */
     public function testForProject()
     {
-        $filesystem = new Filesystem;
+        $filesystem = new Filesystem();
         $projectConfig = ConfigFactory::buildProjectConfig(
             codecept_data_dir('composer.json'),
             $filesystem
@@ -26,7 +27,7 @@ class ConfigCollectionFactoryTest extends Unit
             $filesystem
         );
 
-        $expected = new ConfigCollection;
+        $expected = new ConfigCollection();
         $expected->add(
             ConfigFactory::build(
                 codecept_data_dir('tmp-vendor/dummy/dummy/composer.json'),
@@ -60,7 +61,7 @@ class ConfigCollectionFactoryTest extends Unit
      */
     public function testForProjectExcludes()
     {
-        $filesystem = new Filesystem;
+        $filesystem = new Filesystem();
         $projectConfig = ConfigFactory::buildProjectConfig(
             codecept_data_dir('excludes.json'),
             $filesystem
@@ -71,7 +72,7 @@ class ConfigCollectionFactoryTest extends Unit
             $filesystem
         );
 
-        $expected = new ConfigCollection;
+        $expected = new ConfigCollection();
         $expected->add(
             ConfigFactory::build(
                 codecept_data_dir('tmp-vendor/dummy/dummy/composer.json'),

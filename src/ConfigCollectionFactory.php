@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace TypistTech\Imposter;
@@ -9,8 +10,8 @@ class ConfigCollectionFactory
         ProjectConfigInterface $projectConfig,
         Filesystem $filesystem
     ): ConfigCollectionInterface {
-        return self::addRequiredPackageConfigsRecursively(
-            new ConfigCollection,
+        return static::addRequiredPackageConfigsRecursively(
+            new ConfigCollection(),
             $projectConfig,
             $projectConfig,
             $filesystem
@@ -23,7 +24,7 @@ class ConfigCollectionFactory
         ConfigInterface $config,
         Filesystem $filesystem
     ): ConfigCollectionInterface {
-        $filteredRequires = self::getFilteredPackages($projectConfig, $config);
+        $filteredRequires = static::getFilteredPackages($projectConfig, $config);
 
         foreach ($filteredRequires as $package) {
             $packageConfig = ConfigFactory::build(
@@ -33,7 +34,7 @@ class ConfigCollectionFactory
 
             $configCollection->add($packageConfig);
 
-            self::addRequiredPackageConfigsRecursively(
+            static::addRequiredPackageConfigsRecursively(
                 $configCollection,
                 $projectConfig,
                 $packageConfig,
