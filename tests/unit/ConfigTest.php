@@ -89,6 +89,19 @@ class ConfigTest extends Unit
     /**
      * @covers \TypistTech\Imposter\Config
      */
+    public function testGetAutoloadsWhenNotDefined()
+    {
+        $json = codecept_data_dir('tmp-vendor/dummy/dummy-no-autoload/composer.json');
+        $config = ConfigFactory::build($json, new Filesystem());
+
+        $actual = $config->getAutoloads();
+
+        $this->assertSame([], $actual);
+    }
+
+    /**
+     * @covers \TypistTech\Imposter\Config
+     */
     public function testGetPackageDir()
     {
         $expected = codecept_data_dir();
@@ -107,6 +120,7 @@ class ConfigTest extends Unit
             'php',
             'dummy/dummy',
             'dummy/dummy-psr4',
+            'dummy/dummy-no-autoload',
             'typisttech/imposter',
         ];
 

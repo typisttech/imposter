@@ -48,6 +48,12 @@ class ConfigCollectionFactoryTest extends Unit
         );
         $expected->add(
             ConfigFactory::build(
+                codecept_data_dir('tmp-vendor/dummy/dummy-no-autoload/composer.json'),
+                $filesystem
+            )
+        );
+        $expected->add(
+            ConfigFactory::build(
                 codecept_data_dir('tmp-vendor/dummy/dummy-dependency/composer.json'),
                 $filesystem
             )

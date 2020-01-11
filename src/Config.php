@@ -27,7 +27,7 @@ class Config implements ConfigInterface
      */
     public function getAutoloads(): array
     {
-        return array_map(function (string $autoload) {
+        return array_map(function (string $autoload): string {
             return $this->packageDir . $autoload;
         }, array_unique($this->getAutoloadPaths()));
     }
@@ -37,11 +37,9 @@ class Config implements ConfigInterface
      */
     private function getAutoloadPaths(): array
     {
-        $autoload = $this->get('autoload');
-
-        return ArrayUtil::flattenMap(function ($autoloadConfig) {
+        return ArrayUtil::flattenMap(function ($autoloadConfig): array {
             return $this->normalizeAutoload($autoloadConfig);
-        }, $autoload);
+        }, $this->get('autoload'));
     }
 
     protected function get(string $key): array
@@ -60,7 +58,7 @@ class Config implements ConfigInterface
             return [$autoloadConfigs];
         }
 
-        return ArrayUtil::flattenMap(function ($autoloadConfig) {
+        return ArrayUtil::flattenMap(function ($autoloadConfig): array {
             return $this->normalizeAutoload($autoloadConfig);
         }, $autoloadConfigs);
     }
