@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace TypistTech\Imposter;
@@ -10,7 +11,7 @@ class ProjectConfig extends Config implements ProjectConfigInterface
     /**
      * @var string[]
      */
-    const DEFAULT_EXCLUDES = ['typisttech/imposter'];
+    protected const DEFAULT_EXCLUDES = ['typisttech/imposter'];
 
     /**
      * @var string[]
@@ -25,7 +26,7 @@ class ProjectConfig extends Config implements ProjectConfigInterface
         $extra = $this->get('extra');
         $excludes = $extra['imposter']['excludes'] ?? [];
 
-        return array_merge(self::DEFAULT_EXCLUDES, $excludes, $this->extraExcludes);
+        return array_merge(static::DEFAULT_EXCLUDES, $excludes, $this->extraExcludes);
     }
 
     public function getImposterNamespace(): string

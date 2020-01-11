@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace TypistTech\Imposter;
@@ -13,7 +14,7 @@ class ImposterFactory
      */
     public static function forProject(string $projectPath, array $extraExcludes = []): Imposter
     {
-        $filesystem = new Filesystem;
+        $filesystem = new Filesystem();
 
         $projectConfig = ConfigFactory::buildProjectConfig($projectPath . '/composer.json', $filesystem);
         $projectConfig->setExtraExcludes($extraExcludes);

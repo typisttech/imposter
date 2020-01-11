@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace TypistTech\Imposter;
@@ -55,7 +56,7 @@ class FilesystemTest extends Unit
 
         $expected = new RuntimeException('File does not exist at path ' . $path);
 
-        $this->tester->expectException($expected, function () use ($path) {
+        $this->tester->expectThrowable($expected, function () use ($path) {
             $this->filesystem->get($path);
         });
     }
@@ -130,6 +131,6 @@ class FilesystemTest extends Unit
 
     protected function _before()
     {
-        $this->filesystem = new Filesystem;
+        $this->filesystem = new Filesystem();
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace TypistTech\Imposter;
@@ -135,12 +136,12 @@ class ConfigCollectionTest extends Unit
 
     protected function _before()
     {
-        $filesystem = new Filesystem;
+        $filesystem = new Filesystem();
         $json1 = codecept_data_dir('composer.json');
         $json2 = codecept_data_dir('tmp-vendor/dummy/dummy-psr4/composer.json');
         $this->config1 = ConfigFactory::build($json1, $filesystem);
         $this->config2 = ConfigFactory::build($json2, $filesystem);
 
-        $this->configCollection = new ConfigCollection;
+        $this->configCollection = new ConfigCollection();
     }
 }

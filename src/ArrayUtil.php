@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace TypistTech\Imposter;
@@ -9,7 +10,7 @@ class ArrayUtil
     {
         $map = array_map($callable, $array);
 
-        return self::flatten($map);
+        return static::flatten($map);
     }
 
     /**
