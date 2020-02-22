@@ -23,6 +23,7 @@ Wrapping all composer vendor packages inside your own namespace. Intended for Wo
   - [extra.imposter.namespace](#extraimposternamespace)
   - [extra.imposter.excludes](#extraimposterexcludes)
 - [Usage](#usage)
+- [Known Issues](#known-issues)
 - [Frequently Asked Questions](#frequently-asked-questions)
   - [How can I integrate imposter with composer?](#how-can-i-integrate-imposter-with-composer)
   - [Does imposter support `PSR4`, `PSR0`, `Classmap` and `Files`?](#does-imposter-support-psr4-psr0-classmap-and-files)
@@ -213,6 +214,13 @@ foreach ([] as $namespace => $prefix) {
 
 /** Just a comment for testing $namespace transformation */
 ```
+
+## Known Issues
+
+Help wanted. Pull requests are welcomed.
+
+1. Traits are not transformed
+1. Virtual packages are not supported
 
 ## Frequently Asked Questions
 
