@@ -7,4 +7,5 @@ modules:
   enabled:
     - Asserts
     - Filesystem
+    - Mockery
     - \TypistTech\Imposter\Helper\Unit
