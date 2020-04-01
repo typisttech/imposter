@@ -54,6 +54,24 @@ class ConfigTest extends Unit
     /**
      * @covers \TypistTech\Imposter\Config
      */
+    public function testGetAutoloadsExcludeFromClassmap()
+    {
+        $actual = $this->config->getAutoloads();
+
+        $exceptions = [
+            codecept_data_dir('/exclude-me1/'),
+            codecept_data_dir('/exclude-me2/abc/'),
+            codecept_data_dir('/exclude-me3/abc/*xyz/'),
+        ];
+
+        foreach ($exceptions as $expected) {
+            $this->assertNotContains($expected, $actual);
+        }
+    }
+
+    /**
+     * @covers \TypistTech\Imposter\Config
+     */
     public function testGetAutoloadsInVendorDir()
     {
         $json = codecept_data_dir('tmp-vendor/dummy/dummy-psr4/composer.json');

@@ -48,7 +48,12 @@
       "namespace-2": [
         "i-am-object-array-3"
       ]
-    }
+    },
+    "exclude-from-classmap": [
+      "/exclude-me1/",
+      "/exclude-me2/abc/",
+      "/exclude-me3/abc/*xyz/"
+    ]
   },
   "extra": {
     "imposter": {
