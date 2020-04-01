@@ -37,10 +37,10 @@ class Config implements ConfigInterface
      */
     private function getAutoloadPaths(): array
     {
-	    $autoloads = $this->get('autoload');
-		unset($autoloads['exclude-from-classmap']);
+        $autoloads = $this->get('autoload');
+        unset($autoloads['exclude-from-classmap']);
 
-	    return ArrayUtil::flattenMap(function ($autoloadConfig): array {
+        return ArrayUtil::flattenMap(function ($autoloadConfig): array {
             return $this->normalizeAutoload($autoloadConfig);
         }, $autoloads);
     }
