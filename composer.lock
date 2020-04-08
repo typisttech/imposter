@@ -4,8 +4,76 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "867f7aa7959c7dce71784c2aa9d201cd",
-    "packages": [],
+    "content-hash": "97a1ea6dea5810082639711c79badb35",
+    "packages": [
+        {
+            "name": "rawr/t-regx",
+            "version": "v0.9.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/T-Regx/T-Regx.git",
+                "reference": "2e5b65622a194a66401db720c931fe3012c4fcee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/T-Regx/T-Regx/zipball/2e5b65622a194a66401db720c931fe3012c4fcee",
+                "reference": "2e5b65622a194a66401db720c931fe3012c4fcee",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "kelunik/fqn-check": "^0.1.3",
+                "php-coveralls/php-coveralls": "^2.0",
+                "phpunit/phpunit": "^9.0 || ^8.0 || ^7.5",
+                "rawr/cross-data-providers": "^2.1"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "helper/helper.php"
+                ],
+                "psr-4": {
+                    "TRegx\\": "src/TRegx"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "The most advanced PHP regexp library. Clean, descriptive wrapper functions enhancing PCRE extension methods.",
+            "keywords": [
+                "OOP",
+                "PCRE",
+                "TDD",
+                "automatic delimiters",
+                "clean",
+                "delimiters",
+                "expression",
+                "php",
+                "preg",
+                "preg_match",
+                "preg_match_all",
+                "preg_quote",
+                "preg_replace",
+                "preg_replace_callback",
+                "prepared patterns",
+                "regex",
+                "regexp",
+                "regular",
+                "t-regx"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/Danon",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-04-02T17:02:33+00:00"
+        }
+    ],
     "packages-dev": [
         {
             "name": "behat/gherkin",
@@ -2854,5 +2922,6 @@
         "php": "^7.2",
         "ext-json": "*"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }

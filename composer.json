@@ -25,7 +25,8 @@
   ],
   "require": {
     "php": "^7.2",
-    "ext-json": "*"
+    "ext-json": "*",
+    "rawr/t-regx": "^0.9.6"
   },
   "require-dev": {
     "codeception/codeception": "^4.1",
