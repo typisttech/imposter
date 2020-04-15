@@ -62,11 +62,11 @@ class Imposter implements ImposterInterface
 
         $notfound = [];
         foreach ($autoloads as $autoload) {
-        	try {
-        		$this->transform($autoload);
-	        } catch (PathNotFoundException $exception) {
-        		$notfound[] = $exception->getPath();
-	        }
+            try {
+                $this->transform($autoload);
+            } catch (PathNotFoundException $exception) {
+                $notfound[] = $exception->getPath();
+            }
         }
 
         return $notfound;

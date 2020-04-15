@@ -19,14 +19,14 @@ class Filesystem implements FilesystemInterface
      */
     public function allFiles(string $path): array
     {
-    	try {
-		    $directory_iterator = new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS);
-	    } catch (\UnexpectedValueException $exception) {
-    		throw new PathNotFoundException($path, $exception);
-	    }
+        try {
+            $directory_iterator = new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS);
+        } catch (\UnexpectedValueException $exception) {
+            throw new PathNotFoundException($path, $exception);
+        }
 
-	    $iterator                     = new RecursiveIteratorIterator(
-		    $directory_iterator
+        $iterator                     = new RecursiveIteratorIterator(
+            $directory_iterator
         );
 
         return iterator_to_array($iterator);
