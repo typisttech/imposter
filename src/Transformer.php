@@ -38,6 +38,7 @@ class Transformer implements TransformerInterface
      * @param string $target Path to the target file or directory.
      *
      * @return void
+     * @throws PathNotFoundException
      */
     public function transform(string $target)
     {

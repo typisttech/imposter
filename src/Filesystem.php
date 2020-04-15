@@ -15,14 +15,14 @@ class Filesystem implements FilesystemInterface
      * @param string $path
      *
      * @return \SplFileInfo[]
-     * @throws \UnexpectedValueException
+     * @throws PathNotFoundException
      */
     public function allFiles(string $path): array
     {
     	try {
 		    $directory_iterator = new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS);
 	    } catch (\UnexpectedValueException $exception) {
-    		return [];
+    		throw new PathNotFoundException($path, $exception);
 	    }
 
 	    $iterator                     = new RecursiveIteratorIterator(

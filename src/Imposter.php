@@ -52,12 +52,24 @@ class Imposter implements ImposterInterface
     /**
      * Transform all autoload files.
      *
-     * @return void
+     * Returns an array of paths that weren't found
+     * @return string[]
      */
     public function run()
     {
         $autoloads = $this->getAutoloads();
         array_walk($autoloads, [$this, 'transform']);
+
+        $notfound = [];
+        foreach ($autoloads as $autoload) {
+        	try {
+        		$this->transform($autoload);
+	        } catch (PathNotFoundException $exception) {
+        		$notfound[] = $exception->getPath();
+	        }
+        }
+
+        return $notfound;
     }
 
     /**
@@ -78,7 +90,7 @@ class Imposter implements ImposterInterface
      * Transform a file or directory recursively.
      *
      * @param string $target Path to the target file or directory.
-     *
+     * @throws PathNotFoundException
      * @return void
      */
     public function transform(string $target)
