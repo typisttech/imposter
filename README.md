@@ -221,6 +221,7 @@ Help wanted. Pull requests are welcomed.
 
 1. Traits are not transformed
 1. Virtual packages are not supported
+1. [`exclude-from-classmap` are not excluded from transformation](https://github.com/TypistTech/imposter/issues/154)
 
 ## Frequently Asked Questions
 
