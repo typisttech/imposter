@@ -6,7 +6,6 @@ namespace TypistTech\Imposter;
 
 use FilesystemIterator;
 use RecursiveDirectoryIterator;
-use RecursiveIteratorIterator;
 use RuntimeException;
 
 class Filesystem implements FilesystemInterface
@@ -19,17 +18,34 @@ class Filesystem implements FilesystemInterface
      */
     public function allFiles(string $path): array
     {
-        $iterator = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS)
+        $iterator = new \RecursiveIteratorIterator(
+            new \RecursiveCallbackFilterIterator(
+                new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS),
+                function ($current, $key, $iterator) {
+                    if ($iterator->hasChildren()) {
+                        return preg_match(
+                            '/[\._](svn|CVS|arch-params|monotone|bzr|git|hg)|CVS|_darcs/',
+                            $current->getFilename()
+                        ) === 0;
+                    }
+                    return preg_match('/\.php$/i', $current->getFileName()) === 1;
+                }
+            )
         );
 
         return iterator_to_array($iterator);
     }
 
+    public function filter($current, $key, $iterator)
+    {
+
+        return $current->isFile() && preg_match('/.php$/i', $current->getFilename());
+    }
+
     /**
      * Extract the parent directory from a file path.
      *
-     * @param  string $path
+     * @param string $path
      *
      * @return string
      */
@@ -41,14 +57,14 @@ class Filesystem implements FilesystemInterface
     /**
      * Get the contents of a file.
      *
-     * @param  string $path
+     * @param string $path
      *
      * @return string
      * @throws \RuntimeException
      */
     public function get(string $path): string
     {
-        if (! $this->isFile($path)) {
+        if (!$this->isFile($path)) {
             throw new RuntimeException('File does not exist at path ' . $path);
         }
 
@@ -58,7 +74,7 @@ class Filesystem implements FilesystemInterface
     /**
      * Determine if the given path is a file.
      *
-     * @param  string $file
+     * @param string $file
      *
      * @return bool
      */
@@ -70,8 +86,8 @@ class Filesystem implements FilesystemInterface
     /**
      * Write the contents of a file.
      *
-     * @param  string $path
-     * @param  string $contents
+     * @param string $path
+     * @param string $contents
      *
      * @return int|false
      */

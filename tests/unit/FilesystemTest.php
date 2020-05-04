@@ -117,8 +117,12 @@ class FilesystemTest extends Unit
             return $file->getRealPath();
         }, $actual);
 
-        $expects = [
+        $other = [
             codecept_data_dir('tmp-vendor/dummy/dummy-psr4/composer.json'),
+            codecept_data_dir('tmp-vendor/dummy/dummy-psr4/.git/dummy'),
+        ];
+
+        $expects = [
             codecept_data_dir('tmp-vendor/dummy/dummy-psr4/src/DummyOne.php'),
             codecept_data_dir('tmp-vendor/dummy/dummy-psr4/src/DummyTwo.php'),
             codecept_data_dir('tmp-vendor/dummy/dummy-psr4/src/Sub/DummyOne.php'),
