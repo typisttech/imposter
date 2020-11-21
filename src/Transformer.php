@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace TypistTech\Imposter;
 
 use SplFileInfo;
+use TRegx\CleanRegex\Match\Details\Match;
 
 class Transformer implements TransformerInterface
 {
@@ -155,12 +156,29 @@ class Transformer implements TransformerInterface
     private function prefixUse(string $targetFile)
     {
         $pattern = sprintf(
-            '/%1$s\\s+(?!(const)|(function)|(%2$s)|(\\\\(?!.*\\\\.*))|(Composer(\\\\|;)|(?!.*\\\\.*)))/',
+            '%1$s\\s+(?!(const)|(function)|(%2$s)|(\\\\(?!.*\\\\.*))|(Composer(\\\\|;)|(?!.*\\\\.*)))',
             'use',
             $this->namespacePrefix
         );
-        $replacement = sprintf('%1$s %2$s', 'use', $this->namespacePrefix);
+        $replacement = sprintf('%1$s %2$s', 'use', str_replace('\\\\', '\\', $this->namespacePrefix));
 
-        $this->replace($pattern, $replacement, $targetFile);
+        $content = $this->filesystem->get($targetFile);
+        $output = pattern($pattern)->replace($content)->all()
+            ->callback(function (Match $m) use ($replacement, $content) {
+                // Find previous offset content and check if the last match of namespace or class is "class"
+                $offsetContent = substr($content, 0, $m->offset());
+                preg_match_all(
+                    '/(namespace|class)[A-Za-z0-9\\\\ ]+.?{/sm',
+                    $offsetContent,
+                    $nsClass,
+                    PREG_SET_ORDER
+                );
+                if (count($nsClass) > 0 && $nsClass[count($nsClass) - 1][1] === 'class') {
+                    return $m->text();
+                }
+                return $replacement;
+            });
+
+        $this->filesystem->put($targetFile, $output);
     }
 }

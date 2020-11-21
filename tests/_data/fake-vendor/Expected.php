@@ -13,6 +13,16 @@ use RuntimeException;
 use \UnexpectedValueException;
 use function MyPlugin\Vendor\OtherVendor\myFunc;
 use const MyPlugin\Vendor\OtherVendor\MY_MAGIC_NUMBER;
+use MyPlugin\Vendor\OtherVendor\MyTrait;
+use MyPlugin\Vendor\OtherVendor\Package;
+
+namespace MyPlugin\Vendor\OtherVendor\Package2 {
+    use MyPlugin\Vendor\OtherVendor\MyTrait;
+
+    class DummyClass2 {
+        use OtherVendor\MyTrait;
+    }
+}
 
 $closure = function () use ($aaa) {
     // Just testing.
@@ -20,6 +30,9 @@ $closure = function () use ($aaa) {
 
 class DummyClass
 {
+    use MyTrait;
+    use Package\OtherTrait;
+
     public function useClosure()
     {
         array_map(function () use ($xxx) {

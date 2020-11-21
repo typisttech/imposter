@@ -13,6 +13,16 @@ use RuntimeException;
 use \UnexpectedValueException;
 use function OtherVendor\myFunc;
 use const OtherVendor\MY_MAGIC_NUMBER;
+use OtherVendor\MyTrait;
+use OtherVendor\Package;
+
+namespace OtherVendor\Package2 {
+    use OtherVendor\MyTrait;
+
+    class DummyClass2 {
+        use OtherVendor\MyTrait;
+    }
+}
 
 $closure = function () use ($aaa) {
     // Just testing.
@@ -20,6 +30,9 @@ $closure = function () use ($aaa) {
 
 class DummyClass
 {
+    use MyTrait;
+    use Package\OtherTrait;
+
     public function useClosure()
     {
         array_map(function () use ($xxx) {
