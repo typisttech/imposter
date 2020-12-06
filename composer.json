@@ -50,6 +50,11 @@
       "TypistTech\\Imposter\\": "src"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "TypistTech\\Imposter\\": "tests/unit"
+    }
+  },
   "scripts": {
     "pretag": [
       "composer update --no-suggest",

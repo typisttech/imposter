@@ -25,6 +25,6 @@ class ImposterFactory
             $filesystem
         );
 
-        return new Imposter($configCollection, $transformer);
+        return new Imposter($configCollection, $transformer, $filesystem);
     }
 }

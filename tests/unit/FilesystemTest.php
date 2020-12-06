@@ -85,6 +85,30 @@ class FilesystemTest extends Unit
         $this->assertFalse($actual);
     }
 
+    /**
+     * @covers \TypistTech\Imposter\Filesystem
+     */
+    public function testIsDir()
+    {
+        $path = codecept_data_dir();
+
+        $actual = $this->filesystem->isDir($path);
+
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers \TypistTech\Imposter\Filesystem
+     */
+    public function testIsDirNotExist()
+    {
+        $path = codecept_data_dir('NotExist/');
+
+        $actual = $this->filesystem->isDir($path);
+
+        $this->assertFalse($actual);
+    }
+
     public function testIsInstanceOfFilesystemInterface()
     {
         $this->assertInstanceOf(FilesystemInterface::class, $this->filesystem);

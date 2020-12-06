@@ -21,7 +21,7 @@ class ImposterFactoryTest extends Unit
 
         $actual = ImposterFactory::forProject(codecept_data_dir());
 
-        $expected = new Imposter($configCollection, $transformer);
+        $expected = new Imposter($configCollection, $transformer, $filesystem);
 
         $this->assertEquals($expected, $actual);
     }
