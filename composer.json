@@ -1,6 +1,6 @@
 {
   "name": "typisttech/imposter",
-  "description": "Wrapping all composer vendor packages inside your own namespace. Intended for WordPress plugins",
+  "description": "Wrapping all composer vendor packages inside your own namespace. Intended for WordPress plugins.",
   "keywords": [
     "composer",
     "dependency",
@@ -8,7 +8,7 @@
     "namespace",
     "wordpress"
   ],
-  "homepage": "https://typist.tech/projects/imposter",
+  "homepage": "https://github.com/TypistTech/imposter",
   "license": "MIT",
   "authors": [
     {
@@ -56,15 +56,8 @@
     }
   },
   "scripts": {
-    "pretag": [
-      "composer update --no-suggest",
-      "@test",
-      "@style:check",
-      "composer normalize",
-      "npx doctoc README.md",
-      "github_changelog_generator --no-verbose"
-    ],
-    "style:check": "phpcs --colors -p",
+    "style:check": "phpcs",
+    "style:fix": "phpcbf",
     "test": "codecept run",
     "test:coverage": "phpdbg -qrr ./vendor/bin/codecept run --coverage --coverage-html --coverage-xml"
   },
