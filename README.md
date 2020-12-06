@@ -208,6 +208,14 @@ foreach ([] as $namespace => $prefix) {
 /** Just a comment for testing $namespace transformation */
 ```
 
+---
+
+<p align="center">
+  <strong>Typist Tech is ready to build your next awesome WordPress site. <a href="https://typist.tech/contact/">Hire us!</a></strong>
+</p>
+
+---
+
 ## Known Issues
 
 **Help Wanted.** Pull requests are welcomed.
