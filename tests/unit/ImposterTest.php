@@ -32,7 +32,21 @@ class ImposterTest extends Unit
     public function testGetAutoloads()
     {
         $actual = $this->imposter->getAutoloads();
-        $expected = $this->configCollection->getAutoloads();
+        $expected = [
+            'path/to/dir',
+            'path/to/file.php',
+        ];
+
+        $this->assertSame($expected, $actual);
+    }
+
+    public function testGetInvalidAutoloads()
+    {
+        $actual = $this->imposter->getInvalidAutoloads();
+        $expected = [
+            'path/to/invalid-file.php',
+            'path/to/invalid-dir',
+        ];
 
         $this->assertSame($expected, $actual);
     }
@@ -73,6 +87,8 @@ class ImposterTest extends Unit
                                ->andReturn([
                                    'path/to/dir',
                                    'path/to/file.php',
+                                   'path/to/invalid-file.php',
+                                   'path/to/invalid-dir',
                                ]);
 
         $this->transformer = Mockery::spy(Transformer::class);
@@ -80,6 +96,14 @@ class ImposterTest extends Unit
                           ->withNoArgs()
                           ->andReturnNull();
 
-        $this->imposter = new Imposter($this->configCollection, $this->transformer);
+        $this->filesystem = Mockery::spy(Filesystem::class);
+        $this->filesystem->allows('isDir')
+                          ->with('path/to/dir')
+                          ->andReturnTrue();
+        $this->filesystem->allows('isFile')
+                         ->with('path/to/file.php')
+                         ->andReturnTrue();
+
+        $this->imposter = new Imposter($this->configCollection, $this->transformer, $this->filesystem);
     }
 }

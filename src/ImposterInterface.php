@@ -7,11 +7,18 @@ namespace TypistTech\Imposter;
 interface ImposterInterface
 {
     /**
-     * Get all autoload paths.
+     * Get all valid (exist) autoload paths.
      *
      * @return string[]
      */
     public function getAutoloads(): array;
+
+    /**
+     * Get all invalid (not exist) autoload paths.
+     *
+     * @return string[]
+     */
+    public function getInvalidAutoloads(): array;
 
     /**
      * Transform all autoload files.
