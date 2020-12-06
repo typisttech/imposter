@@ -1,52 +1,36 @@
 version: 2.1
 
 orbs:
-  composer: itinerisltd/composer@0.3
+  php: circleci/php@1
   codecov: codecov/codecov@1
 
 workflows:
   test:
     jobs:
-      - composer/install:
-          name: test-latest
-          executor: composer/latest
+      - php/test:
+          name: test-coverage-php-<< matrix.version >>
+          version: "7.3"
+          test-command: test:coverage
+          pre-steps:
+            - run: sudo apt-get update
+            - run: sudo apt-get install php<< matrix.version >>-phpdbg
           post-steps:
-            - composer/exec:
-                command: test:coverage
+            - store_artifacts:
+                path: tests/_output/coverage/
             - codecov/upload:
                 file: tests/_output/coverage.xml
+          matrix:
+            parameters:
+              version: ["7.3"]
+      - php/test:
+          name: test-php-<< matrix.version >>
+          matrix:
+            parameters:
+              version: ["8.0", "7.4"]
+      - php/test:
+          name: style-check-php-<< matrix.version >>
+          test-command: style:check
+          matrix:
+            parameters:
+              version: ["8.0", "7.3"]
 
-      - composer/install:
-          name: test-7.4
-          executor: composer/php-74
-          post-steps:
-            - composer/exec:
-                command: test
-
-      - composer/install:
-          name: test-7.3
-          executor: composer/php-73
-          post-steps:
-            - composer/exec:
-                command: test
-
-      - composer/install:
-          name: test-7.2
-          executor: composer/php-72
-          post-steps:
-            - composer/exec:
-                command: test
-
-      - composer/install:
-          name: style-check-latest
-          executor: composer/latest
-          post-steps:
-            - composer/exec:
-                command: style:check
-
-      - composer/install:
-          name: style-check-7.2
-          executor: composer/php-72
-          post-steps:
-            - composer/exec:
-                command: style:check
