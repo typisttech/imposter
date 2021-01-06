@@ -11,9 +11,6 @@ workflows:
           name: test-coverage-php-<< matrix.version >>
           version: "7.3"
           test-command: test:coverage
-          pre-steps:
-            - run: sudo apt-get update
-            - run: sudo apt-get install php<< matrix.version >>-phpdbg
           post-steps:
             - store_artifacts:
                 path: tests/_output/coverage/
