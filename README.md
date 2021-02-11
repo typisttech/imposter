@@ -51,6 +51,7 @@ Monkey patching composer vendor packages, wrapping them inside your own namespac
 See:
 - [A Narrative of Using Composer in a WordPress Plugin](https://wptavern.com/a-narrative-of-using-composer-in-a-wordpress-plugin)
 - [A Warning About Using Composer With WordPress](https://wppusher.com/blog/a-warning-about-using-composer-with-wordpress/)
+- [Plugin Dependencies (Yet Another Plugin Dependencies Ticket)](https://core.trac.wordpress.org/ticket/22316)
 
 ## Install
 
@@ -256,6 +257,15 @@ Tell me your idea by [opening an issue](https://github.com/TypistTech/imposter/i
 
 Not for now. We need a better regex(or something better than regex) in the [Transformer](src/Transformer.php) class.
 Tell me your idea by [opening an issue](https://github.com/TypistTech/imposter/issues/new)
+
+### The whole imposter situation is horrible. What can we do about it?
+
+Until WordPress core comes up with a [solution on dependency managment](https://core.trac.wordpress.org/ticket/22316), keep clam and carry on.
+
+In the meantime, checkout these tools ~~~to make WordPress suck less~~~ modernizing WordPress development:
+
+- [bring OOP into WordPress](https://github.com/search?q=topic%3Awordpress-development+org%3ATypistTech&type=Repositories)
+- [leveraging development practices from other languages and ecosystems, and applying them to WordPress](https://roots.io)
 
 ### Which composer versions are supported?
 
